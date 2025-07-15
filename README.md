@@ -43,7 +43,7 @@
 | `auth_service.py`                 | Provides user authentication functions                                     |
 | `app_state.py`                    | Controls global state transitions using commands                           |
 | `command.py`                      | Defines `Command` and `CommandValue` enums for state control               |
-| `state_machine.py`                | Optional: core finite state engine logic                                   |
+| `state_machine.py`                | Core finite state engine logic                                             |
 | `dashboard.py`                    | `Ui_dashboard` view generated from `dashboard.ui`                          |
 | `login.py`                        | `Ui_login` view from `login.ui`                                            |
 | `home_logged_in.py`              | `Ui_home_logged_in` view from `home_logged_in.ui`                          |
