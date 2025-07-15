@@ -1,30 +1,75 @@
-📊 BuddyTrade – AI-Powered Stock Portfolio Dashboard
-BuddyTrade is a desktop application that provides users with a dynamic dashboard for managing portfolios, analyzing stocks, and tracking market insights. Built with a modular MVC structure, it integrates a PyQt6 front-end with a secure Azure SQL backend for persistent user data storage.
+# 📊 BuddyTrade – Stock Portfolio Dashboard (Python + PyQt6)
 
-🚀 Features
-📈 Real-Time Portfolio Viewer – Displays current positions, gains/losses, and AI-powered recommendations
+**BuddyTrade** is a desktop stock analysis and portfolio management system developed using Python and PyQt6. Designed with a scalable MVC architecture and a command-driven state engine, the system enables users to manage their portfolios, perform technical stock analysis, and explore market insights through a user-friendly GUI.
 
-📊 Technical Analysis Panel – Visual and tabular indicators like EMA, SMA, ADX, RSI, and more
+---
 
-💼 Watchlist & Ticker Analyzer – Track favorite stocks and perform quick lookups
+## 🚀 Key Features
 
-🧠 Modular MVC Design – Separated views, controllers, and services for clean architecture
+- 📈 Dynamic portfolio viewer with entry price, shares, current price, gain/loss, and recommendations
+- 📊 Technical indicator analyzer (EMA, SMA, RSI, ADX, Volume SMA, etc.)
+- 📋 Personalized watchlist panel
+- 📰 Market summary and insights frame
+- 🖥️ PyQt6 GUI auto-generated from Qt Designer `.ui` files
+- 🧠 MVC + Command pattern for maintainable architecture
+- 🗄️ Azure SQL Database integration for persistent storage
+- 🔒 Login/logout view state management with `CommandValue` enums
 
-🖥️ PyQt6 GUI – Custom-designed GUI using Qt Designer and PyQt6
+---
 
-🧠 Tech Stack
-Python 3.11+
+## 🔧 Technologies Used
 
-PyQt6
+- `Python 3.11+`
+- `PyQt6`
+- `Azure SQL Database`
+- `ODBC Driver 17+`
+- `Object-Oriented Programming`
+- `MVC Design Pattern`
+- `Command Pattern`
+- `Qt Designer`
 
-Azure SQL Database
+---
 
-ODBC Driver 17+
+## 📁 Core Classes & Structure
 
-MVC Architecture
+| Class / File                      | Description                                                                 |
+|-----------------------------------|-----------------------------------------------------------------------------|
+| `main.py`                         | Entry point of the application                                              |
+| `dashboard_controller.py`         | Loads the main dashboard, portfolio, watchlist, and charts                 |
+| `portfolio_controller.py`         | Manages portfolio-related data flow and updates                            |
+| `user_controller.py`              | Handles login, logout, and user session state                              |
+| `analysis_controller.py`          | Loads and responds to technical analysis interactions                      |
+| `db_service.py`                   | Azure SQL data access layer; handles portfolio, user, and analysis queries |
+| `auth_service.py`                 | Provides user authentication functions                                     |
+| `app_state.py`                    | Controls global state transitions using commands                           |
+| `command.py`                      | Defines `Command` and `CommandValue` enums for state control               |
+| `state_machine.py`                | Optional: core finite state engine logic                                   |
+| `dashboard.py`                    | `Ui_dashboard` view generated from `dashboard.ui`                          |
+| `login.py`                        | `Ui_login` view from `login.ui`                                            |
+| `home_logged_in.py`              | `Ui_home_logged_in` view from `home_logged_in.ui`                          |
+| `home_logged_out.py`             | `Ui_home_logged_out` view from `home_logged_out.ui`                        |
+| `analysis.py`                     | `Ui_analysis` view from `analysis.ui`                                      |
+| `user.py`                         | User model (id, email, password, etc.)                                     |
+| `portfolio.py`                    | Portfolio model (ticker, shares, price, gain/loss, etc.)                   |
+| `holding.py`                      | Represents a single stock position                                         |
+| `orchestrator_agent.py`          | Agent pipeline orchestrator (future AI integration)                        |
+| `search_agent.py`                 | Stub for semantic search integration                                       |
+| `portfolio_agent.py`              | Stub for portfolio analytics agent                                         |
+| `news_sentiment_agent.py`         | Stub for news sentiment analysis                                           |
+| `alert_agent.py`                  | Stub for alert/trigger generation                                          |
+| `api_service.py`                  | Connects to external APIs (for market data, etc.)                          |
+| `file_service.py`                 | Handles file uploads/downloads if used                                     |
 
-🖥️ UI Preview
-<h4 align="center">🔹 Dashboard View</h4> <p align="center"> <img src="assets/dashboard_main.png" alt="Dashboard View" width="700"/> </p> <p align="center"><i>Portfolio overview, market insights, and technical analysis all in one screen.</i></p>
-<h4 align="center">🔹 Portfolio Table</h4> <p align="center"> <img src="assets/portfolio_table.png" alt="Portfolio Table" width="700"/> </p> <p align="center"><i>Dynamically loaded portfolio with entry price, shares, gains/losses, and more.</i></p>
-<h4 align="center">🔹 Market Summary Panel</h4> <p align="center"> <img src="assets/market_summary.png" alt="Market Insights" width="700"/> </p> <p align="center"><i>Daily summaries and briefings to keep users informed of current trends.</i></p>
-<h4 align="center">🔹 Technical Analyzer</h4> <p align="center"> <img src="assets/analyzer_panel.png" alt="Technical Analysis Panel" width="700"/> </p> <p align="center"><i>Analyze tickers using moving averages, volume trends, and momentum indicators.</i></p>
+---
+
+## 🧠 Concepts Demonstrated
+
+- MVC structure for GUI and logic separation
+- GUI Controller for every `.ui` view
+- Command pattern with `CommandValue` enum for view state routing
+- Persistent storage using Azure SQL + `pyodbc`
+- Modular service layers for authentication, data access, and state control
+- Qt Designer `.ui` files compiled and linked dynamically via PyQt6
+- Responsive architecture for scaling with future AI integrations
+
+---
