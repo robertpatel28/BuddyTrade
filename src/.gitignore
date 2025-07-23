@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Qt Designer UI-generated Python files
+*.ui.py
+*.qrc.py
+
+# MacOS metadata
+.DS_Store
+
+# PyInstaller / PyQt / build artifacts
+build/
+dist/
+*.spec
+
+# Python virtual environment
+venv/
+ENV/
+.env/
+.venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE configs
+.vscode/
+.idea/
+
+# Logs and runtime files
+*.log
+*.tmp
+*.pid
+
+# Test artifacts
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+
+# Ignore DB credentials/config (if any created)
+config.py
+
+# Temp folders
+temp/
+testing/
+.env

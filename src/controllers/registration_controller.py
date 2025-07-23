@@ -26,6 +26,9 @@ class RegistrationController:
 
     def connect_signals(self):
         self.ui.btnRegister.clicked.connect(self.handle_register)
+        self.ui.btnLogin.clicked.connect(self.handle_login)
+        self.ui.btnDashboard.clicked.connect(self.handle_dashboard)
+        self.ui.btnHome.clicked.connect(self.handle_home)
 
     def handle_register(self):
         email = self.ui.txtEmail.text().strip()
@@ -52,8 +55,22 @@ class RegistrationController:
         except Exception as e:
             self.show_error("Unexpected Error", str(e))
 
+    # Opens the home window (guest version)
+    def handle_home(self):
+        self.screen_manager.show_home_logged_out()
+
+    # Method that opens the dashboard. Throws an error when called in this window as user is not logged in.
+    def handle_dashboard(self):
+        self.show_error("Invalid User", "Must login to the application to access the 'Dashboard' tab.")
+    
+    # Method that opens the login window.
+    def handle_login(self):
+        self.screen_manager.show_login()
+
+    # Helper method that shows error box with given title and message.
     def show_error(self, title, message):
         QMessageBox.warning(self.main_window, title, message)
 
+    # Helper method that shows information box with given title and message.
     def show_info(self, title, message):
         QMessageBox.information(self.main_window, title, message)
