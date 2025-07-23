@@ -9,7 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Home(object):
+class Ui_Home_Logged_Out(object):
     def setupUi(self, Home):
         Home.setObjectName("Home")
         Home.resize(1021, 777)
@@ -251,7 +251,8 @@ class Ui_Home(object):
         self.showcaseFooterExtended.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.showcaseFooterExtended.setObjectName("showcaseFooterExtended")
         self.txtShowcase = QtWidgets.QTextEdit(parent=self.showcaseFooterExtended)
-        self.txtShowcase.setGeometry(QtCore.QRect(0, 0, 421, 81))
+        self.txtShowcase.setGeometry(QtCore.QRect(0, 0, 421, 90))
+        self.txtShowcase.setReadOnly(True)
         font = QtGui.QFont()
         font.setFamily("Futura")
         font.setPointSize(9)
@@ -348,7 +349,7 @@ class Ui_Home(object):
         font.setFamily("Futura")
         font.setPointSize(12)
         self.lblTicker.setFont(font)
-        self.lblTicker.setStyleSheet("background-color:#BCBCBC;\ncolor:black;")
+        self.lblTicker.setStyleSheet("background-color:#CECECE;\ncolor:black;")
         self.lblTicker.setObjectName("lblTicker")
         self.lblTickerHeader = QtWidgets.QLabel(parent=self.tickerSearchFrame)
         self.lblTickerHeader.setGeometry(QtCore.QRect(0, 5, 421, 16))
@@ -363,9 +364,17 @@ class Ui_Home(object):
         font = QtGui.QFont()
         font.setFamily("Futura")
         self.btnAnalyzeTicker.setFont(font)
-        self.btnAnalyzeTicker.setStyleSheet("background-color:#BCBCBC;\n"
-"border: 2px solid black;\n"
-"border-radius: 10px;\ncolor:black;")
+        self.btnAnalyzeTicker.setStyleSheet("QPushButton {\n"
+"    color: black;\n"
+"    background-color: #BCBCBC;\n"
+"    font-family: \'Futura\';\n"
+"    font-size: 12px;\n"
+"    border: 2px solid black;\nborder-radius: 10px;\ncolor:black"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #A0A0A0;\n"
+"}\n"
+"")
         self.btnAnalyzeTicker.setObjectName("btnAnalyzeTicker")
         self.ticketSearchFrameFooter.raise_()
         self.lblTicker.raise_()
@@ -412,6 +421,7 @@ class Ui_Home(object):
         self.lblSummary.setObjectName("lblSummary")
         self.txtMarketSummary = QtWidgets.QTextEdit(parent=self.marketUpdateFrame)
         self.txtMarketSummary.setGeometry(QtCore.QRect(10, 90, 501, 231))
+        self.txtMarketSummary.setReadOnly(True)
         font = QtGui.QFont()
         font.setFamily("Futura")
         font.setPointSize(9)
@@ -531,7 +541,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Home = QtWidgets.QMainWindow()
-    ui = Ui_Home()
+    ui = Ui_Home_Logged_Out()
     ui.setupUi(Home)
     Home.show()
     sys.exit(app.exec())

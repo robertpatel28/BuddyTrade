@@ -822,8 +822,7 @@ class Ui_dashboard(object):
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         item.setForeground(brush)
         self.tblTechnicalAnalysis.setHorizontalHeaderItem(8, item)
-        item = QtWidgetaFe POWER Ford Mustang Magnum FORCE Dynamic Air Scoop
-s.QTableWidgetItem()
+        item = QtWidgets.QTableWidgetItem()
         font = QtGui.QFont()
         font.setFamily("Futura")
         font.setPointSize(9)

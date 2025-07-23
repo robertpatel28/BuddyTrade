@@ -40,6 +40,10 @@ class User:
     def get_hashed_password(self):
         return self.hashed_password
     
+    # Gets hashed_password
+    def get_hashed_password(self) -> str:
+        return self.hashed_password
+
     # Sets hashed_password
     def set_hashed_password(self, hashed_password: str):
         self.hashed_password = hashed_password

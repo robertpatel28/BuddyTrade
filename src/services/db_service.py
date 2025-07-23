@@ -8,6 +8,7 @@
 import sys
 import os
 import pyodbc
+from models.user import User
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import DB_SERVER, DB_NAME, DB_USER, DB_PASSWORD, DB_DRIVER
 
@@ -36,24 +37,22 @@ class DatabaseService:
             return None
 
     # Retrieves a user ID via email search.
-    def get_user_by_email(self, email: str) -> str:
-        # Connects to db.
-        conn = self.connect()
-
-        if conn is None:
-            return None
-        
+    def get_user_by_email(self, email: str) -> User | None:
         try:
+            conn = self.connect()
             cursor = conn.cursor()
-            cursor.execute("SELECT id FROM Users WHERE email = ?", (email,))
+            cursor.execute("SELECT first_name, last_name, hashed_password, email FROM Users WHERE email = ?", (email,))
             row = cursor.fetchone()
-            return str(row[0]) if row else None
-        except Exception as e:
-            print("❌ Error retrieving user by email:", e)
-            return None
-        finally:
+            cursor.close()
             conn.close()
 
+            if row:
+                # row = (first_name, last_name, hashed_password, email)
+                return User(first_name=row[0], last_name=row[1], hashed_password=row[2], email=row[3])
+            return None
+        except Exception as e:
+            print(f"❌ Error retrieving user: {e}")
+            return None
 
     # Saves a user to the database.
     def save_user(self, user: str) -> bool:

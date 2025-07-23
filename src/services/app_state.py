@@ -8,7 +8,6 @@ from models.portfolio import Portfolio
 
 class AppState():
 
-
     def __init__(self):
         self.current_user = None
         self.current_portfolio = None

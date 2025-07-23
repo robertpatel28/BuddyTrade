@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'login.ui'
+# Form implementation generated from reading ui file 'register.ui'
 #
 # Created by: PyQt6 UI code generator 6.9.1
 #
@@ -9,7 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Login(object):
+class Ui_Register(object):
     def setupUi(self, Home):
         Home.setObjectName("Home")
         Home.resize(1021, 777)
@@ -204,47 +204,45 @@ class Ui_Login(object):
 "")
         self.btnFAQs.setObjectName("btnFAQs")
         self.loginFrame = QtWidgets.QFrame(parent=self.backgroundFrame)
-        self.loginFrame.setGeometry(QtCore.QRect(290, 220, 501, 311))
+        self.loginFrame.setGeometry(QtCore.QRect(290, 220, 501, 391))
         self.loginFrame.setStyleSheet("background-color: #CECECE;\n"
 "")
         self.loginFrame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.loginFrame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.loginFrame.setObjectName("loginFrame")
         self.txtEmail = QtWidgets.QLineEdit(parent=self.loginFrame)
-        self.txtEmail.setGeometry(QtCore.QRect(150, 110, 241, 21))
+        self.txtEmail.setGeometry(QtCore.QRect(160, 30, 241, 21))
+        self.txtEmail.setToolTipDuration(0)
+        self.txtEmail.setStyleSheet("background-color:#F4F3F3; color: black; font-family: Futura; font-size: 12px")
         self.txtEmail.setObjectName("txtEmail")
-        self.txtEmail.setStyleSheet("background-color:#F4F3F3; color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
         self.txtPassword = QtWidgets.QLineEdit(parent=self.loginFrame)
-        self.txtPassword.setGeometry(QtCore.QRect(150, 150, 241, 21))
-        self.txtPassword.setStyleSheet("background-color:#F4F3F3; color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n")
+        self.txtPassword.setGeometry(QtCore.QRect(160, 150, 241, 21))
+        self.txtPassword.setToolTipDuration(0)
+        self.txtPassword.setStyleSheet("background-color:#F4F3F3; color: black; font-family: Futura; font-size: 12px")
         self.txtPassword.setObjectName("txtPassword")
         self.lblEmail = QtWidgets.QLabel(parent=self.loginFrame)
-        self.lblEmail.setGeometry(QtCore.QRect(100, 110, 41, 20))
+        self.lblEmail.setGeometry(QtCore.QRect(110, 30, 41, 20))
         self.lblEmail.setStyleSheet("color: Black;\n"
 "font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
+"font-size: 12px;\n")
         font = QtGui.QFont()
         font.setFamily("Futura")
         self.lblEmail.setFont(font)
+        self.lblEmail.setToolTipDuration(0)
         self.lblEmail.setObjectName("lblEmail")
         self.lblPassword = QtWidgets.QLabel(parent=self.loginFrame)
         self.lblPassword.setGeometry(QtCore.QRect(80, 150, 71, 20))
         font = QtGui.QFont()
         font.setFamily("Futura")
         self.lblPassword.setFont(font)
+        self.lblPassword.setToolTipDuration(0)
+        self.lblPassword.setIndent(0)
         self.lblPassword.setObjectName("lblPassword")
         self.lblPassword.setStyleSheet("color: Black;\n"
 "font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
+"font-size: 12px;\n")
         self.btnRegister = QtWidgets.QPushButton(parent=self.loginFrame)
-        self.btnRegister.setGeometry(QtCore.QRect(210, 230, 113, 32))
+        self.btnRegister.setGeometry(QtCore.QRect(220, 320, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
         self.btnRegister.setFont(font)
@@ -260,31 +258,79 @@ class Ui_Login(object):
 "}\n"
 "")
         self.btnRegister.setObjectName("btnRegister")
-        self.btnLoginUser = QtWidgets.QPushButton(parent=self.loginFrame)
-        self.btnLoginUser.setGeometry(QtCore.QRect(210, 190, 113, 32))
+        self.txtVerifyEmail = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtVerifyEmail.setGeometry(QtCore.QRect(160, 60, 241, 21))
+        self.txtVerifyEmail.setToolTipDuration(0)
+        self.txtVerifyEmail.setStyleSheet("background-color:#F4F3F3; color: black; font-family: Futura; font-size: 12px")
+        self.txtVerifyEmail.setObjectName("txtVerifyEmail")
+        self.lblVerifyEmail = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblVerifyEmail.setGeometry(QtCore.QRect(74, 60, 81, 20))
         font = QtGui.QFont()
         font.setFamily("Futura")
-        self.btnLoginUser.setFont(font)
-        self.btnLoginUser.setStyleSheet("QPushButton {\n"
-"    color: black;\n"
-"    background-color: #BCBCBC;\n"
-"    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: #A0A0A0;\n"
-"}\n"
-"")
-        self.btnLoginUser.setObjectName("btnLoginUser")
-        self.headerFooter_2 = QtWidgets.QFrame(parent=self.backgroundFrame)
-        self.headerFooter_2.setGeometry(QtCore.QRect(290, 511, 501, 20))
+        self.lblVerifyEmail.setFont(font)
+        self.lblVerifyEmail.setToolTipDuration(0)
+        self.lblVerifyEmail.setIndent(0)
+        self.lblVerifyEmail.setObjectName("lblVerifyEmail")
+        self.lblVerifyEmail.setStyleSheet("color: Black;\n"
+"font-family: \'Futura\';\n"
+"font-size: 12px;\n")
+        self.headerFooter_2 = QtWidgets.QFrame(parent=self.loginFrame)
+        self.headerFooter_2.setGeometry(QtCore.QRect(0, 370, 501, 20))
         self.headerFooter_2.setStyleSheet("background-color:#BCBCBC;\n"
 "border:none\n"
 "")
         self.headerFooter_2.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.headerFooter_2.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.headerFooter_2.setObjectName("headerFooter_2")
+        self.txtVerifyPassword = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtVerifyPassword.setGeometry(QtCore.QRect(160, 180, 241, 21))
+        self.txtVerifyPassword.setToolTipDuration(0)
+        self.txtVerifyPassword.setStyleSheet("background-color:#F4F3F3; color: black; font-family: Futura; font-size: 12px")
+        self.txtVerifyPassword.setObjectName("txtVerifyPassword")
+        self.lblVerifyPassword = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblVerifyPassword.setGeometry(QtCore.QRect(50, 180, 101, 20))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        self.lblVerifyPassword.setFont(font)
+        self.lblVerifyPassword.setToolTipDuration(0)
+        self.lblVerifyPassword.setIndent(0)
+        self.lblVerifyPassword.setStyleSheet("color: Black;\n"
+"font-family: \'Futura\';\n"
+"font-size: 12px;\n")
+        self.lblVerifyPassword.setObjectName("lblVerifyPassword")
+        self.txtFirstName = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtFirstName.setGeometry(QtCore.QRect(160, 240, 241, 21))
+        self.txtFirstName.setToolTipDuration(0)
+        self.txtFirstName.setStyleSheet("background-color:#F4F3F3; color: black; font-family: Futura; font-size: 12px")
+        self.txtFirstName.setObjectName("txtFirstName")
+        self.txtLastName = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtLastName.setGeometry(QtCore.QRect(160, 270, 241, 21))
+        self.txtLastName.setToolTipDuration(0)
+        self.txtLastName.setStyleSheet("background-color:#F4F3F3; color: black; font-family: Futura; font-size: 12px")
+        self.txtLastName.setReadOnly(False)
+        self.txtLastName.setObjectName("txtLastName")
+        self.lblFirstName = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblFirstName.setStyleSheet("color: Black;\n"
+"font-family: \'Futura\';\n"
+"font-size: 12px;\n")
+        self.lblFirstName.setGeometry(QtCore.QRect(50, 240, 101, 20))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        self.lblFirstName.setFont(font)
+        self.lblFirstName.setToolTipDuration(0)
+        self.lblFirstName.setIndent(0)
+        self.lblFirstName.setObjectName("lblFirstName")
+        self.lblLastName = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblLastName.setStyleSheet("color: Black;\n"
+"font-family: \'Futura\';\n"
+"font-size: 12px;\n")
+        self.lblLastName.setGeometry(QtCore.QRect(50, 270, 101, 20))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        self.lblLastName.setFont(font)
+        self.lblLastName.setToolTipDuration(0)
+        self.lblLastName.setIndent(0)
+        self.lblLastName.setObjectName("lblLastName")
         Home.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=Home)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1021, 43))
@@ -303,7 +349,7 @@ class Ui_Login(object):
         self.btnLogin.setText(_translate("Home", "Login"))
         self.btnDashboard.setText(_translate("Home", "Dashboard"))
         self.btnHome.setText(_translate("Home", "Home"))
-        self.lblDashboardHeader.setText(_translate("Home", " Login"))
+        self.lblDashboardHeader.setText(_translate("Home", " Register"))
         self.lblTitle.setText(_translate("Home", "BuddyTrade AI"))
         self.lblLogo.setText(_translate("Home", "logo"))
         self.btnSupport.setText(_translate("Home", "Support"))
@@ -312,16 +358,19 @@ class Ui_Login(object):
         self.btnGitHub.setText(_translate("Home", "git"))
         self.btnFAQs.setText(_translate("Home", "FAQs"))
         self.lblEmail.setText(_translate("Home", " Email:"))
-        self.lblPassword.setText(_translate("Home", "Password:"))
+        self.lblPassword.setText(_translate("Home", "  Password:"))
         self.btnRegister.setText(_translate("Home", "Register"))
-        self.btnLoginUser.setText(_translate("Home", "Login"))
+        self.lblVerifyEmail.setText(_translate("Home", " Verify Email:"))
+        self.lblVerifyPassword.setText(_translate("Home", "Verify Password:"))
+        self.lblFirstName.setText(_translate("Home", "        First Name:"))
+        self.lblLastName.setText(_translate("Home", "        Last Name:"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Home = QtWidgets.QMainWindow()
-    ui = Ui_Login()
+    ui = Ui_Register()
     ui.setupUi(Home)
     Home.show()
     sys.exit(app.exec())

@@ -5,7 +5,7 @@
 
 import bcrypt
 from models.user import User
-from services.database_service import DatabaseService
+from services.db_service import DatabaseService
 
 class AuthService:
 

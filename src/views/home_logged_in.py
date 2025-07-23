@@ -9,7 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Home(object):
+class Ui_Home_Logged_In(object):
     def setupUi(self, Home):
         Home.setObjectName("Home")
         Home.resize(1021, 777)
@@ -531,7 +531,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Home = QtWidgets.QMainWindow()
-    ui = Ui_Home()
+    ui = Ui_Home_Logged_In()
     ui.setupUi(Home)
     Home.show()
     sys.exit(app.exec())
