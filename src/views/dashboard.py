@@ -9,6 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
+
 class Ui_dashboard(object):
     def setupUi(self, dashboard):
         dashboard.setObjectName("dashboard")
