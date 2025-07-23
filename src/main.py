@@ -17,6 +17,11 @@ from services.auth_service import AuthService
 from services.db_service import DatabaseService
 from services.app_state import AppState
 from controllers.user_controller import UserController
+from controllers.home_logged_out_controller import HomeLoggedOutController
+from controllers.home_logged_in_controller import HomeLoggedInController
+from controllers.analysis_controller import AnalysisController
+
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
@@ -74,6 +79,16 @@ if __name__ == "__main__":
         db_service, auth_service, app_state, user_controller, screen_manager
     )
 
+    home_logged_out_controller = HomeLoggedOutController(
+        home_logged_out_ui, home_logged_out_window,
+        db_service, auth_service, app_state, user_controller, screen_manager
+    )
+
+    analysis_controller = AnalysisController(
+        analysis_ui, analysis_window,
+        db_service, auth_service, app_state, user_controller, screen_manager
+    )
+
     # Start app at login
-    login_window.show()
+    home_logged_out_window.show()
     sys.exit(app.exec())

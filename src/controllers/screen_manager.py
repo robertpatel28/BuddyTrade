@@ -2,6 +2,7 @@
 # Author: Robert Patel
 # This class is used for managing and navigating the screen transitions.
 #
+
 from views.login import Ui_Login
 from views.register import Ui_Register
 from views.dashboard import Ui_dashboard
@@ -12,6 +13,7 @@ from PyQt6.QtWidgets import QMainWindow
 
 class ScreenManager:
 
+    # Constructor used for the ScreenManager class.
     def __init__(self, login_window: QMainWindow, register_window: QMainWindow, dashboard_window: QMainWindow, home_logged_out: QMainWindow, home_logged_in: QMainWindow, analysis: QMainWindow):
         self.login_window = login_window
         self.register_window = register_window
@@ -20,30 +22,41 @@ class ScreenManager:
         self.home_logged_in = home_logged_in
         self.analysis = analysis
 
+    # Opens the login page.
     def show_login(self):
         self.hide_all()
         self.login_window.show()
 
+    # Opens the register page.
     def show_register(self):
         self.hide_all()
         self.register_window.show()
 
+    # Opens the dashboard for the user.
     def show_dashboard(self):
         self.hide_all()
         self.dashboard_window.show()
 
+    # Opens the analysis page.
     def show_analysis(self):
         self.hide_all()
         self.analysis.show()
 
+    # Opens the logged-in home page for user.
     def show_home_logged_in(self):
         self.hide_all()
         self.home_logged_in.show()
 
+    # Opens the guest home page.
     def show_home_logged_out(self):
         self.hide_all()
         self.home_logged_out.show()
 
+    # Opens the user / settings page.
+    def show_user_settings(self):
+        self.hide_all()
+
+    # Helper method for closing previous windows to maintain efficiency.
     def hide_all(self):
         self.login_window.hide()
         self.register_window.hide()

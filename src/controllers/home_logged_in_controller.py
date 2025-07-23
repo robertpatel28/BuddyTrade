@@ -12,7 +12,7 @@ from services.app_state import AppState
 from PyQt6.QtWidgets import QMainWindow
 from controllers.screen_manager import ScreenManager
 
-class RegistrationController:
+class HomeLoggedInController:
     def __init__(self, ui, main_window: QMainWindow, db_service: DatabaseService, auth_service: AuthService, app_state: AppState, user_controller: UserController, screen_manager: ScreenManager):
         super().__init__()
         self.ui = ui
@@ -26,35 +26,8 @@ class RegistrationController:
         self.connect_signals()
 
     def connect_signals(self):
-        self.ui.btnRegister.clicked.connect(self.handle_register)
-        self.ui.btnLogin.clicked.connect(self.handle_login)
         self.ui.btnDashboard.clicked.connect(self.handle_dashboard)
         self.ui.btnHome.clicked.connect(self.handle_home)
-
-    def handle_register(self):
-        email = self.ui.txtEmail.text().strip()
-        verify_email = self.ui.txtVerifyEmail.text().strip()
-        password = self.ui.txtPassword.text().strip()
-        verify_password = self.ui.txtVerifyPassword.text().strip()
-        first_name = self.ui.txtFirstName.text().strip()
-        last_name = self.ui.txtLastName.text().strip()
-
-        # Validation
-        if email != verify_email:
-            self.show_error("Email Mismatch", "Emails do not match.")
-            return
-        if password != verify_password:
-            self.show_error("Password Mismatch", "Passwords do not match.")
-            return
-
-        try:
-            success = self.user_controller.register_user(password, first_name, last_name, email)
-            if success:
-                self.show_info("Success", "Account successfully created!")
-        except ValueError as e:
-            self.show_error("Registration Error", str(e))
-        except Exception as e:
-            self.show_error("Unexpected Error", str(e))
 
     # Opens the home window (guest version)
     def handle_home(self):
@@ -62,11 +35,12 @@ class RegistrationController:
 
     # Method that opens the dashboard. Throws an error when called in this window as user is not logged in.
     def handle_dashboard(self):
-        self.show_error("Invalid User", "Must login to the application to access the 'Dashboard' tab.")
+        self.screen_manager.show_dashboard()
     
-    # Method that opens the login window.
-    def handle_login(self):
-        self.screen_manager.show_login()
+    # Method that opens the user / settings window.
+    def handle_usersettings(self):
+        None
+        # IN PROGRESS
 
     def handle_faqs(self):
         None

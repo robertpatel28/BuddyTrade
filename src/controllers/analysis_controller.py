@@ -1,18 +1,18 @@
 #
 # Author: Robert Patel
-# This class is the controller which connects backend logic to the
-# login screen for the user.
+# This class represents the controller which connects the UI for the user registration window
+# and the backend logic for registering a user.
 #
-
+# registration_controller.py
 from PyQt6.QtWidgets import QMessageBox
 from controllers.user_controller import UserController
 from services.auth_service import AuthService
 from services.db_service import DatabaseService
 from services.app_state import AppState
-from controllers.screen_manager import ScreenManager
 from PyQt6.QtWidgets import QMainWindow
+from controllers.screen_manager import ScreenManager
 
-class LoginController:
+class AnalysisController:
     def __init__(self, ui, main_window: QMainWindow, db_service: DatabaseService, auth_service: AuthService, app_state: AppState, user_controller: UserController, screen_manager: ScreenManager):
         super().__init__()
         self.ui = ui
@@ -26,28 +26,10 @@ class LoginController:
         self.connect_signals()
 
     def connect_signals(self):
-        self.ui.btnLoginUser.clicked.connect(self.handle_login)
         self.ui.btnRegister.clicked.connect(self.handle_register)
-        self.ui.btnHome.clicked.connect(self.handle_home)
+        self.ui.btnLogin.clicked.connect(self.handle_login)
         self.ui.btnDashboard.clicked.connect(self.handle_dashboard)
-        self.ui.btnLogin.clicked.connect(self.handle_login_window)
-
-    def handle_login(self):
-        email = self.ui.txtEmail.text().strip()
-        password = self.ui.txtPassword.text().strip()
-
-        # Attempts to log user into the application.
-        try:
-            # If successful, user is prompted to the dashboard screen.
-            success = self.user_controller.login_user(email, password)
-            if success:
-                self.screen_manager.show_dashboard()
-                self.user_controller.set_authenticated_status(True)
-                print(self.user_controller.is_authenticated())
-        except ValueError as e:
-            self.show_error("Login Error", str(e))
-        except Exception as e:
-            self.show_error("Unexpected Error", str(e))
+        self.ui.btnHome.clicked.connect(self.handle_home)
 
     # Opens the home window (guest version)
     def handle_home(self):
@@ -55,13 +37,17 @@ class LoginController:
 
     # Method that opens the dashboard. Throws an error when called in this window as user is not logged in.
     def handle_dashboard(self):
-        self.show_error("Invalid User", "Must login to the application to access the 'Dashboard' tab.")
-
-    # Method that opens the login window.
-    def handle_login_window(self):
+        if self.app_state.is_user_authenticated():
+            self.screen_manager.show_dashboard()
+        else:
+            self.show_error("Invalid User", "Please log in or register to access the dashboard tab.")
+            self.screen_manager.show_login()
+    
+    # Opens the login window for user to log into application.
+    def handle_login(self):
         self.screen_manager.show_login()
 
-    # Method that opens the register window.
+    # Method that opens register window.
     def handle_register(self):
         self.screen_manager.show_register()
 
@@ -77,6 +63,10 @@ class LoginController:
         None
         # IN PROGRESS
 
-    # Helper method to display error box to user with given title and message.
+    # Helper method that shows error box with given title and message.
     def show_error(self, title, message):
         QMessageBox.warning(self.main_window, title, message)
+
+    # Helper method that shows information box with given title and message.
+    def show_info(self, title, message):
+        QMessageBox.information(self.main_window, title, message)
