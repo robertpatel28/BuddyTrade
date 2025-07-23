@@ -45,3 +45,4 @@ config.py
 # Temp folders
 temp/
 testing/
+.env
