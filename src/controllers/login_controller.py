@@ -11,9 +11,10 @@ from services.db_service import DatabaseService
 from services.app_state import AppState
 from controllers.screen_manager import ScreenManager
 from PyQt6.QtWidgets import QMainWindow
+from controllers.portfolio_controller import PortfolioController
 
 class LoginController:
-    def __init__(self, ui, main_window: QMainWindow, db_service: DatabaseService, auth_service: AuthService, app_state: AppState, user_controller: UserController, screen_manager: ScreenManager):
+    def __init__(self, ui, main_window: QMainWindow, db_service: DatabaseService, auth_service: AuthService, app_state: AppState, user_controller: UserController, screen_manager: ScreenManager, portfolio_controller: PortfolioController):
         super().__init__()
         self.ui = ui
         self.main_window = main_window
@@ -22,6 +23,7 @@ class LoginController:
         self.app_state = app_state
         self.user_controller = user_controller
         self.screen_manager = screen_manager
+        self.portfolio_controller = portfolio_controller
 
         self.connect_signals()
 
@@ -42,6 +44,7 @@ class LoginController:
             success = self.user_controller.login_user(email, password)
             if success:
                 self.screen_manager.show_dashboard()
+                self.app_state.set_current_portfolio(self.portfolio_controller.get_portfolio_by_user_id(self.db_service.get_user_id(email)))
         except ValueError as e:
             self.show_error("Login Error", str(e))
         except Exception as e:

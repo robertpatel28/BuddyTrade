@@ -10,9 +10,8 @@ from services.db_service import DatabaseService
 class PortfolioController:
 
     # Contructor for the portfolio controller.
-    def __init__(self, db_service: DatabaseService, current_portfolio: Portfolio | None = None):
+    def __init__(self, db_service: DatabaseService):
         self.db_service = db_service
-        self.curret_portfolio = current_portfolio
 
     # Creates a new portfolio.
     def create_portfolio(self, user_id: int) -> bool:
@@ -38,4 +37,24 @@ class PortfolioController:
     def export_portfolio(self, user_id: int) -> bool:
         # IN PROGRESS
         pass
+
+    # Retrieves a portfolio given the user_id.
+    def get_portfolio_by_user_id(self, user_id: int) -> Portfolio | None:
+        try:
+            conn = self.db_service.connect()
+            cursor = conn.cursor()
+            cursor.execute("SELECT id FROM Portfolios WHERE user_id = ?", (user_id,))
+            row = cursor.fetchone()
+            cursor.close()
+            conn.close()
+
+            if row:
+                portfolio_id = row
+                return Portfolio(portfolio_id, user_id)
+            return None
+        except Exception as e:
+            print(e)
+            return None
+        
+    
     

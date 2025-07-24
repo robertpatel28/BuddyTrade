@@ -21,7 +21,7 @@ class AppState():
     # Gets the current_user
     def get_current_user(self) -> User:
         return self.current_user
-    
+
     # Sets the current_portfolio
     def set_current_portfolio(self, portfolio: Portfolio):
         self.current_portfolio = portfolio
