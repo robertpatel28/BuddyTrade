@@ -355,7 +355,6 @@ class Ui_Home_Logged_In(object):
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
 "    font-size: 12px;\n"
-"    border: 2px solid black;\n"
 "    border-radius: 10px;\n"
 "}\n"
 "QPushButton:hover {\n"

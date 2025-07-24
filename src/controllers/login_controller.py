@@ -42,8 +42,6 @@ class LoginController:
             success = self.user_controller.login_user(email, password)
             if success:
                 self.screen_manager.show_dashboard()
-                self.user_controller.set_authenticated_status(True)
-                print(self.user_controller.is_authenticated())
         except ValueError as e:
             self.show_error("Login Error", str(e))
         except Exception as e:

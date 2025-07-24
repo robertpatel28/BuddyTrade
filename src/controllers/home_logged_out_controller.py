@@ -38,7 +38,7 @@ class HomeLoggedOutController:
 
     # Method that opens the dashboard. Throws an error when called in this window as user is not logged in.
     def handle_dashboard(self):
-        self.screen_manager.show_dashboard()
+        self.show_error("Invalid User", "Must login to the application to access the 'Dashboard' tab.")
     
     # Opens the login window for user to log into application.
     def handle_login(self):

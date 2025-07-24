@@ -54,13 +54,12 @@ class DatabaseService:
             print(f"❌ Error retrieving user: {e}")
             return None
 
-    # Saves a user to the database.
-    def save_user(self, user: str) -> bool:
-        pass
-
     # Verifies the existence of an email in the database.
     def email_exists(self, email: str) -> bool:
-        pass
+        if self.get_user_by_email(email):
+            return True
+        else:
+            return False
 
     # Retrieves a user's portfolio from the database.
     def get_user_portfolio(self, user_id: str) -> list[dict]:
@@ -97,14 +96,22 @@ class DatabaseService:
         finally:
             conn.close()
 
-
-
-        
-        pass
-
     # Saves a holding currently in a portfolio in the database.
-    def save_holding(self, user_id: str, ticker: str, quantity: int, price: float) -> bool:
-        pass
+    def save_holding(self, ticker: str, quantity: int, price: float) -> bool:
+        # Connects to db
+        conn = self.connect()
+
+        if conn is None:
+            return None
+        
+        try:
+            cursor = self.conn.cursor()
+            query = ("UPATE holdings SET ticker = ?, quantity = ?, price = ? ", (ticker, quantity, price,))
+            cursor.execute(query)
+        except Exception as e:
+            print(e)
+        finally:
+            conn.close( )
 
     # Remove's a holding from a portfolio in the database.
     def remove_holding(self, user_id: str, ticker: str) -> bool:
