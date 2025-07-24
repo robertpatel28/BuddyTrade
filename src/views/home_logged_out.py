@@ -369,7 +369,7 @@ class Ui_Home_Logged_Out(object):
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
 "    font-size: 12px;\n"
-"    border: 2px solid black;\nborder-radius: 10px;\ncolor:black"
+"    border-radius: 10px;\ncolor:black"
 "}\n"
 "QPushButton:hover {\n"
 "    background-color: #A0A0A0;\n"

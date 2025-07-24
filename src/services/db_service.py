@@ -8,6 +8,7 @@
 import sys
 import os
 import pyodbc
+from datetime import datetime
 from models.user import User
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import DB_SERVER, DB_NAME, DB_USER, DB_PASSWORD, DB_DRIVER
@@ -36,7 +37,7 @@ class DatabaseService:
             print("❌ Connection failed:", e)
             return None
 
-    # Retrieves a user ID via email search.
+    # Retrieves a user via email search.
     def get_user_by_email(self, email: str) -> User | None:
         try:
             conn = self.connect()
@@ -53,6 +54,41 @@ class DatabaseService:
         except Exception as e:
             print(f"❌ Error retrieving user: {e}")
             return None
+        
+    # Retrieves the user ID using the email to search.
+    def get_user_id(self, email: str) -> int | None:
+        try:
+            conn = self.connect()
+            cursor = conn.cursor()
+            cursor.execute("SELECT id FROM users WHERE email = ?", (email,))
+            row = cursor.fetchone()
+            cursor.close()
+            conn.close()
+
+            if row:
+                return row[0]
+            else:
+                return None
+            
+        except Exception as e:
+            print(e)
+            return None
+
+    def get_portfolio_id(self, user_id: int) -> int | None:
+        # Connects to db and fetches the portfolio_id linked with the given user_id.
+        try:
+            # Connects to db and creates cursor to execute query.
+            conn = self.connect()
+            cursor = conn.cursor()
+            cursor.execute("SELECT id FROM Portfolios WHERE user_id = ?", (user_id,))
+            row = cursor.fetchone()
+            # Closes the connections to the db.
+            cursor.close()
+            conn.close()
+            return row[0] if row else None
+        except Exception as e:
+            print("Error retrieving portfolio ID:", e)
+            return None
 
     # Verifies the existence of an email in the database.
     def email_exists(self, email: str) -> bool:
@@ -62,7 +98,7 @@ class DatabaseService:
             return False
 
     # Retrieves a user's portfolio from the database.
-    def get_user_portfolio(self, user_id: str) -> list[dict]:
+    def get_user_portfolio(self, user_id: str) -> list[dict] | None:
         
         # Connects to db.
         conn = self.connect()
@@ -97,7 +133,7 @@ class DatabaseService:
             conn.close()
 
     # Saves a holding currently in a portfolio in the database.
-    def save_holding(self, ticker: str, quantity: int, price: float) -> bool:
+    def save_holding(self, ticker: str, quantity: int, price: float) -> bool | None:
         # Connects to db
         conn = self.connect()
 
@@ -114,17 +150,34 @@ class DatabaseService:
             conn.close( )
 
     # Remove's a holding from a portfolio in the database.
-    def remove_holding(self, user_id: str, ticker: str) -> bool:
+    def remove_holding(self, user_id: int, ticker: str) -> bool:
         pass
 
     # Retrieves a watchlist from the database.
-    def get_watchlist(self, user_id: str) -> list[str]:
+    def get_watchlist(self, user_id: int) -> list[str]:
         pass
 
     # Adds a ticker to a watchlist in the database.
-    def add_to_watchlist(self, user_id: str, ticker: str, color_id: int) -> bool:
+    def add_to_watchlist(self, user_id: int, ticker: str, color_id: int) -> bool:
         pass
 
     # Removes a ticker from the watchlist in the database.
-    def remove_from_watchlist(self, user_id: str, ticker: str, color_id: int) -> bool:
+    def remove_from_watchlist(self, user_id: int, ticker: str, color_id: int) -> bool:
         pass
+
+    # Adds a holding to the database into the 'Holdings' table.
+    def add_holding(self, ticker: str, purchase_price: float, quantity: int, date_time: datetime):
+        # Connects to db
+        conn = self.connect()
+
+        if conn is None:
+            return None
+        
+        try:
+            cursor = self.conn.cursor()
+            query = ("INSERT INTO Holdings (portfolio_id, ticker, buy_price, quantity, date_added)VALUES (?, ?, ?, ?, ?)")
+            cursor.execute(query)
+        except Exception as e:
+            print(e)
+        finally:
+            conn.close()

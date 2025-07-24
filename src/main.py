@@ -20,6 +20,8 @@ from controllers.user_controller import UserController
 from controllers.home_logged_out_controller import HomeLoggedOutController
 from controllers.home_logged_in_controller import HomeLoggedInController
 from controllers.analysis_controller import AnalysisController
+from controllers.portfolio_controller import PortfolioController
+from models.portfolio import Portfolio
 
 
 
@@ -57,6 +59,7 @@ if __name__ == "__main__":
     db_service = DatabaseService()
     auth_service = AuthService(db_service)
     app_state = AppState()
+    portfolio_controller = PortfolioController(db_service, None)
 
     # Initialize screen manager
     screen_manager = ScreenManager(
@@ -66,7 +69,7 @@ if __name__ == "__main__":
 
     # Initialize controllers
     user_controller = UserController(
-        None, auth_service, db_service, app_state, screen_manager
+        None, auth_service, db_service, app_state, screen_manager, portfolio_controller
     )
 
     login_controller = LoginController(

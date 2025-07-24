@@ -4,25 +4,25 @@
 # for the User class.
 #
 
-import tkinter as tk
-from tkinter import messagebox
 from models.user import User
 from services.db_service import DatabaseService
 from services.auth_service import AuthService
 from services.app_state import AppState
 from PyQt6.QtWidgets import QMainWindow
 from controllers.screen_manager import ScreenManager
+from controllers.portfolio_controller import PortfolioController
 
 # Handles interactions regarding the User's information in the database.
 class UserController:
 
     # Constructor for user_controller class.
-    def __init__(self, current_user: User, auth_service: AuthService, db_service: DatabaseService, app_state: AppState, screen_manager: ScreenManager):
+    def __init__(self, current_user: User, auth_service: AuthService, db_service: DatabaseService, app_state: AppState, screen_manager: ScreenManager, portfolio_controller: PortfolioController):
         self.current_user = current_user
         self.auth_service = auth_service
         self.db_service = db_service
         self.app_state = app_state
         self.screen_manager = screen_manager
+        self.portfolio_controller = portfolio_controller
 
     # Logins user into the application.
     def login_user(self, email: str, password: str) -> bool:
@@ -73,6 +73,7 @@ class UserController:
             cursor = conn.cursor()
             cursor.execute("INSERT INTO users (first_name, last_name, email, hashed_password) VALUES (?, ?, ?, ?)", (first_name, last_name, email, hashed_password))
             conn.commit()
+            self.portfolio_controller.create_portfolio(self.db_service.get_user_id(email))
             return True
         except Exception as e:
             print(e)
