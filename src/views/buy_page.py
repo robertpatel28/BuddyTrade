@@ -8,7 +8,6 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
-
 class Ui_PurchaseWindow(object):
     def setupUi(self, PurchaseWindow):
         PurchaseWindow.setObjectName("PurchaseWindow")
@@ -39,7 +38,7 @@ class Ui_PurchaseWindow(object):
         font = QtGui.QFont()
         font.setFamily("Futura")
         self.txtTicker.setFont(font)
-        self.txtTicker.setStyleSheet("background-color: White; font-color: black; font-family: Futura; font-size: 13")
+        self.txtTicker.setStyleSheet("background-color: White; color: black; font-family: Futura; font-size: 13")
         self.txtTicker.setText("")
         self.txtTicker.setObjectName("txtTicker")
         self.txtPurchasePrice = QtWidgets.QLineEdit(parent=self.CenterPageBackgroundFrame)
@@ -47,7 +46,7 @@ class Ui_PurchaseWindow(object):
         font = QtGui.QFont()
         font.setFamily("Futura")
         self.txtPurchasePrice.setFont(font)
-        self.txtPurchasePrice.setStyleSheet("background-color: White; font-color: black; font-family: Futura; font-size: 13")
+        self.txtPurchasePrice.setStyleSheet("background-color: White; color: black; font-family: Futura; font-size: 13")
         self.txtPurchasePrice.setText("")
         self.txtPurchasePrice.setObjectName("txtPurchasePrice")
         self.lblPurchasePrice = QtWidgets.QLabel(parent=self.CenterPageBackgroundFrame)
@@ -62,7 +61,7 @@ class Ui_PurchaseWindow(object):
         font = QtGui.QFont()
         font.setFamily("Futura")
         self.txtQuantity.setFont(font)
-        self.txtQuantity.setStyleSheet("background-color: White; font-color: black; font-family: Futura; font-size: 13")
+        self.txtQuantity.setStyleSheet("background-color: White; color: black; font-family: Futura; font-size: 13")
         self.txtQuantity.setText("")
         self.txtQuantity.setObjectName("txtQuantity")
         self.lblQuantity = QtWidgets.QLabel(parent=self.CenterPageBackgroundFrame)

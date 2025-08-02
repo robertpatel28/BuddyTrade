@@ -307,7 +307,7 @@ class Ui_dashboard(object):
         font.setKerning(True)
         self.tblPortfolio.setFont(font)
         self.tblPortfolio.setStyleSheet("background-color:#BCBCBC;\n"
-"border:2px solid #747171;")
+"border:2px solid #747171; color: Black;")
         self.tblPortfolio.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.SizeAdjustPolicy.AdjustIgnored)
         self.tblPortfolio.setShowGrid(True)
         self.tblPortfolio.setGridStyle(QtCore.Qt.PenStyle.SolidLine)
@@ -494,7 +494,7 @@ class Ui_dashboard(object):
         font.setFamily("Futura")
         font.setPointSize(10)
         self.txtTickerAnalyzer.setFont(font)
-        self.txtTickerAnalyzer.setStyleSheet("background-color:#BCBCBC; \n"
+        self.txtTickerAnalyzer.setStyleSheet("color: black; background-color:#BCBCBC; \n"
 "border: 2px solid black;\n"
 "")
         self.txtTickerAnalyzer.setText("")
@@ -516,7 +516,7 @@ class Ui_dashboard(object):
         self.tblIndicators = QtWidgets.QTableWidget(parent=self.analyzerFrame)
         self.tblIndicators.setEnabled(True)
         self.tblIndicators.setGeometry(QtCore.QRect(10, 50, 151, 111))
-        self.tblIndicators.setStyleSheet("background-color:white;\n"
+        self.tblIndicators.setStyleSheet("color: black; background-color:white;\n"
 "border:2px solid black;")
         self.tblIndicators.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.tblIndicators.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
@@ -903,7 +903,7 @@ class Ui_dashboard(object):
         item = self.tblPortfolio.horizontalHeaderItem(4)
         item.setText(_translate("dashboard", "Gain/Loss"))
         item = self.tblPortfolio.horizontalHeaderItem(5)
-        item.setText(_translate("dashboard", "Recommendation"))
+        item.setText(_translate("dashboard", "Date Purchased"))
         self.lblMarketInsights.setText(_translate("dashboard", "Market Insights"))
         self.lblMarketSummary.setText(_translate("dashboard", "Daily Market Summary"))
         item = self.tblWatchlist.horizontalHeaderItem(0)
@@ -918,7 +918,7 @@ class Ui_dashboard(object):
         item = self.tblIndicators.verticalHeaderItem(2)
         item.setText(_translate("dashboard", "EMA 50"))
         item = self.tblIndicators.verticalHeaderItem(3)
-        item.setText(_translate("dashboard", "EMA 20"))
+        item.setText(_translate("dashboard", "SMA 20"))
         item = self.tblIndicators.verticalHeaderItem(4)
         item.setText(_translate("dashboard", "SMA 50"))
         item = self.tblIndicators.verticalHeaderItem(5)

@@ -98,7 +98,7 @@ class DatabaseService:
             return False
 
     # Retrieves a user's portfolio from the database.
-    def get_user_portfolio(self, user_id: str) -> list[dict] | None:
+    def get_user_portfolio(self, portfolio_id: int) -> list[dict] | None:
         
         # Connects to db.
         conn = self.connect()
@@ -107,33 +107,33 @@ class DatabaseService:
             return None
         
         try:
-            cursor = self.conn.cursor()
+            cursor = conn.cursor()
             query = """
                 SELECT
                     ticker,
-                    entry_price,
-                    shares_owned,
-                    current_price,
-                    gain_loss,
-                    recommendation
+                    buy_price,
+                    quantity,
+                    date_added
                 FROM
-                    Portfolios
+                    Holdings
                 WHERE
-                    user_id = ?
+                    portfolio_id = ?
             """
-            cursor.execute(query, (user_id,))
+            cursor.execute(query, (portfolio_id))
             rows = cursor.fetchall()
             columns = [column[0] for column in cursor.description]
 
             # Convert to list of dicts
             portfolio = [dict(zip(columns, row)) for row in rows]
+            return portfolio
         except Exception as e:
             print(e)
+            return None
         finally:
             conn.close()
 
     # Saves a holding currently in a portfolio in the database.
-    def save_holding(self, ticker: str, quantity: int, price: float) -> bool | None:
+    def save_holding(self, ticker: str, quantity: int, price: float, datetime: datetime) -> bool | None:
         # Connects to db
         conn = self.connect()
 
@@ -141,9 +141,9 @@ class DatabaseService:
             return None
         
         try:
-            cursor = self.conn.cursor()
-            query = ("UPATE holdings SET ticker = ?, quantity = ?, price = ? ", (ticker, quantity, price,))
-            cursor.execute(query)
+            cursor = conn.cursor()
+            query = ("UPATE holdings SET ticker = ?, quantity = ?, price = ? ")
+            cursor.execute(query, (ticker, quantity, price, datetime))
         except Exception as e:
             print(e)
         finally:
@@ -166,18 +166,29 @@ class DatabaseService:
         pass
 
     # Adds a holding to the database into the 'Holdings' table.
-    def add_holding(self, ticker: str, purchase_price: float, quantity: int, date_time: datetime):
-        # Connects to db
+    def add_holding(self, ticker: str, purchase_price: float, quantity: int, date_time: datetime, portfolio_id: int) -> bool:
         conn = self.connect()
 
         if conn is None:
-            return None
-        
+            return False
+
         try:
-            cursor = self.conn.cursor()
-            query = ("INSERT INTO Holdings (portfolio_id, ticker, buy_price, quantity, date_added)VALUES (?, ?, ?, ?, ?)")
-            cursor.execute(query)
+            cursor = conn.cursor()
+
+            if isinstance(date_time, datetime):
+                date_time = date_time.strftime("%Y-%m-%d %H:%M:%S")
+
+            query = "INSERT INTO Holdings (portfolio_id, ticker, buy_price, quantity, date_added) VALUES (?, ?, ?, ?, ?)"
+            print("📦 Executing SQL with:", portfolio_id, ticker, purchase_price, quantity, date_time)
+
+            cursor.execute(query, (portfolio_id, ticker, purchase_price, quantity, date_time))
+            conn.commit()
+            return True
         except Exception as e:
-            print(e)
+            print("❌ SQL Error:", e)
+            return False
         finally:
             conn.close()
+
+    def get_holding(self):
+        return

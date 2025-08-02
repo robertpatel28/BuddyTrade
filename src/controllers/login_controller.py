@@ -12,9 +12,10 @@ from services.app_state import AppState
 from controllers.screen_manager import ScreenManager
 from PyQt6.QtWidgets import QMainWindow
 from controllers.portfolio_controller import PortfolioController
+from controllers.dashboard_controller import DashboardController
 
 class LoginController:
-    def __init__(self, ui, main_window: QMainWindow, db_service: DatabaseService, auth_service: AuthService, app_state: AppState, user_controller: UserController, screen_manager: ScreenManager, portfolio_controller: PortfolioController):
+    def __init__(self, ui, main_window: QMainWindow, db_service: DatabaseService, auth_service: AuthService, app_state: AppState, user_controller: UserController, screen_manager: ScreenManager, portfolio_controller: PortfolioController, dashboard_controller: DashboardController):
         super().__init__()
         self.ui = ui
         self.main_window = main_window
@@ -24,6 +25,7 @@ class LoginController:
         self.user_controller = user_controller
         self.screen_manager = screen_manager
         self.portfolio_controller = portfolio_controller
+        self.dashboard_controller = dashboard_controller
 
         self.connect_signals()
 
@@ -38,13 +40,17 @@ class LoginController:
         email = self.ui.txtEmail.text().strip()
         password = self.ui.txtPassword.text().strip()
 
-        # Attempts to log user into the application.
         try:
-            # If successful, user is prompted to the dashboard screen.
             success = self.user_controller.login_user(email, password)
             if success:
+                user = self.db_service.get_user_by_email(email)
+                portfolio = self.portfolio_controller.get_portfolio_by_user_id(self.db_service.get_user_id(email))
+
+                self.app_state.set_current_user(user)
+                self.app_state.set_current_portfolio(portfolio)
+
                 self.screen_manager.show_dashboard()
-                self.app_state.set_current_portfolio(self.portfolio_controller.get_portfolio_by_user_id(self.db_service.get_user_id(email)))
+                self.screen_manager.dashboard_controller.load_portfolio()
         except ValueError as e:
             self.show_error("Login Error", str(e))
         except Exception as e:
