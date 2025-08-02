@@ -19,7 +19,7 @@ class AppState():
         self.is_authenticated = user.is_user_authenticated()
 
     # Gets the current_user
-    def get_current_user(self) -> User:
+    def get_current_user(self) -> User | None:
         return self.current_user
 
     # Sets the current_portfolio

@@ -7,6 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtWidgets import QLineEdit
 
 
 class Ui_Register(object):
@@ -218,6 +219,7 @@ class Ui_Register(object):
         self.txtPassword = QtWidgets.QLineEdit(parent=self.loginFrame)
         self.txtPassword.setGeometry(QtCore.QRect(160, 150, 241, 21))
         self.txtPassword.setToolTipDuration(0)
+        self.txtPassword.setEchoMode(QLineEdit.EchoMode.Password)
         self.txtPassword.setStyleSheet("background-color:#F4F3F3; color: black; font-family: Futura; font-size: 12px")
         self.txtPassword.setObjectName("txtPassword")
         self.lblEmail = QtWidgets.QLabel(parent=self.loginFrame)
@@ -284,6 +286,7 @@ class Ui_Register(object):
         self.headerFooter_2.setObjectName("headerFooter_2")
         self.txtVerifyPassword = QtWidgets.QLineEdit(parent=self.loginFrame)
         self.txtVerifyPassword.setGeometry(QtCore.QRect(160, 180, 241, 21))
+        self.txtVerifyPassword.setEchoMode(QLineEdit.EchoMode.Password)
         self.txtVerifyPassword.setToolTipDuration(0)
         self.txtVerifyPassword.setStyleSheet("background-color:#F4F3F3; color: black; font-family: Futura; font-size: 12px")
         self.txtVerifyPassword.setObjectName("txtVerifyPassword")

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Home</class>
- <widget class="QMainWindow" name="Home">
+ <class>Analysis</class>
+ <widget class="QMainWindow" name="Analysis">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Home</string>
+   <string>Analysis</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QFrame" name="backgroundFrame">
@@ -168,10 +168,12 @@ border:none
        <string notr="true">color: Black;
 font-family: 'Futura';
 font-size: 20px;
+background-color: #CECECE;
+color: black;
    </string>
       </property>
       <property name="text">
-       <string> Register</string>
+       <string> Analysis</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -190,6 +192,8 @@ font-size: 20px;
        <string notr="true">color: Black;
 font-family: 'Futura';
 font-size: 20px;
+background-color: #CECECE;
+color: black;
    </string>
       </property>
       <property name="text">
@@ -413,9 +417,9 @@ font-size: 12px;
     <widget class="QFrame" name="loginFrame">
      <property name="geometry">
       <rect>
-       <x>290</x>
+       <x>240</x>
        <y>220</y>
-       <width>501</width>
+       <width>571</width>
        <height>391</height>
       </rect>
      </property>
@@ -429,12 +433,12 @@ font-size: 12px;
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLineEdit" name="txtEmail">
+     <widget class="QLineEdit" name="txtEma10">
       <property name="geometry">
        <rect>
-        <x>160</x>
+        <x>90</x>
         <y>30</y>
-        <width>241</width>
+        <width>131</width>
         <height>21</height>
        </rect>
       </property>
@@ -442,15 +446,24 @@ font-size: 12px;
        <number>0</number>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:#F4F3F3</string>
+       <string notr="true">background-color:#F4F3F3;
+color: black;
+font-family: Futura;
+font: 13px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLineEdit" name="txtPassword">
+     <widget class="QLineEdit" name="txtEma50">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>150</y>
-        <width>241</width>
+        <x>90</x>
+        <y>90</y>
+        <width>131</width>
         <height>21</height>
        </rect>
       </property>
@@ -458,15 +471,21 @@ font-size: 12px;
        <number>0</number>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:#F4F3F3</string>
+       <string notr="true">background-color:#F4F3F3;
+color: black;
+font-family: Futura;
+font: 13px;</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="lblEmail">
+     <widget class="QLabel" name="lblEma10">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>20</x>
         <y>30</y>
-        <width>41</width>
+        <width>61</width>
         <height>20</height>
        </rect>
       </property>
@@ -478,16 +497,20 @@ font-size: 12px;
       <property name="toolTipDuration">
        <number>0</number>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #CECECE;
+color: black;</string>
+      </property>
       <property name="text">
-       <string> Email:</string>
+       <string>  EMA 10:</string>
       </property>
      </widget>
-     <widget class="QLabel" name="lblPassword">
+     <widget class="QLabel" name="lblEma50">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>150</y>
-        <width>71</width>
+        <x>20</x>
+        <y>90</y>
+        <width>61</width>
         <height>20</height>
        </rect>
       </property>
@@ -499,45 +522,23 @@ font-size: 12px;
       <property name="toolTipDuration">
        <number>0</number>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #CECECE;
+color: black;</string>
+      </property>
       <property name="text">
-       <string>  Password:</string>
+       <string>  EMA 50:</string>
       </property>
       <property name="indent">
        <number>0</number>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnRegister">
+     <widget class="QLineEdit" name="txtEma34">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>320</y>
-        <width>113</width>
-        <height>32</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Futura</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: black;
-background-color: #BCBCBC;
-font-family: 'Futura';
-font-size: 12px;
-   </string>
-      </property>
-      <property name="text">
-       <string>Register</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="txtVerifyEmail">
-      <property name="geometry">
-       <rect>
-        <x>160</x>
+        <x>90</x>
         <y>60</y>
-        <width>241</width>
+        <width>131</width>
         <height>21</height>
        </rect>
       </property>
@@ -545,16 +546,22 @@ font-size: 12px;
        <number>0</number>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:#F4F3F3</string>
+       <string notr="true">background-color:#F4F3F3;
+color: black;
+font-family: Futura;
+font: 13px;</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="lblEmail_2">
+     <widget class="QLabel" name="lblEma34">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>20</x>
         <y>60</y>
-        <width>81</width>
-        <height>20</height>
+        <width>61</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="font">
@@ -565,8 +572,12 @@ font-size: 12px;
       <property name="toolTipDuration">
        <number>0</number>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #CECECE;
+color: black;</string>
+      </property>
       <property name="text">
-       <string> Verify Email:</string>
+       <string>  EMA 34:</string>
       </property>
       <property name="indent">
        <number>0</number>
@@ -577,7 +588,7 @@ font-size: 12px;
        <rect>
         <x>0</x>
         <y>370</y>
-        <width>501</width>
+        <width>561</width>
         <height>20</height>
        </rect>
       </property>
@@ -593,12 +604,12 @@ border:none
        <enum>QFrame::Raised</enum>
       </property>
      </widget>
-     <widget class="QLineEdit" name="txtVerifyPassword">
+     <widget class="QLineEdit" name="txtSma20">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>180</y>
-        <width>241</width>
+        <x>90</x>
+        <y>140</y>
+        <width>131</width>
         <height>21</height>
        </rect>
       </property>
@@ -606,74 +617,21 @@ border:none
        <number>0</number>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:#F4F3F3</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="lblVerifyPassword">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>180</y>
-        <width>101</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Futura</family>
-       </font>
-      </property>
-      <property name="toolTipDuration">
-       <number>0</number>
-      </property>
-      <property name="text">
-       <string>Verify Password:</string>
-      </property>
-      <property name="indent">
-       <number>0</number>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="txtFirstName">
-      <property name="geometry">
-       <rect>
-        <x>160</x>
-        <y>240</y>
-        <width>241</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="toolTipDuration">
-       <number>0</number>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:#F4F3F3</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="txtLastName">
-      <property name="geometry">
-       <rect>
-        <x>160</x>
-        <y>270</y>
-        <width>241</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="toolTipDuration">
-       <number>0</number>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:#F4F3F3</string>
+       <string notr="true">background-color:#F4F3F3;
+color: black;
+font-family: Futura;
+font: 13px;</string>
       </property>
       <property name="readOnly">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="lblFirstName">
+     <widget class="QLabel" name="lblSma20">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>240</y>
-        <width>101</width>
+        <x>20</x>
+        <y>140</y>
+        <width>61</width>
         <height>20</height>
        </rect>
       </property>
@@ -685,19 +643,217 @@ border:none
       <property name="toolTipDuration">
        <number>0</number>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #CECECE;
+color: black;</string>
+      </property>
       <property name="text">
-       <string>        First Name:</string>
+       <string>  SMA 20:</string>
       </property>
       <property name="indent">
        <number>0</number>
       </property>
      </widget>
-     <widget class="QLabel" name="lblLastName">
+     <widget class="QLineEdit" name="txtSma50">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>170</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:#F4F3F3;
+color: black;
+font-family: Futura;
+font: 13px;</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtSma100">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>200</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:#F4F3F3;
+color: black;
+font-family: Futura;
+font: 13px;</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblSma50">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>170</y>
+        <width>61</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+       </font>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #CECECE;
+color: black;</string>
+      </property>
+      <property name="text">
+       <string>  SMA 50:</string>
+      </property>
+      <property name="indent">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblSma100">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>200</y>
+        <width>61</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+       </font>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #CECECE;
+color: black;</string>
+      </property>
+      <property name="text">
+       <string>SMA 100:</string>
+      </property>
+      <property name="indent">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtSma200">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>230</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:#F4F3F3;
+color: black;
+font-family: Futura;
+font: 13px;</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblSma200">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>230</y>
+        <width>61</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+       </font>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #CECECE;
+color: black;</string>
+      </property>
+      <property name="text">
+       <string>SMA 200:</string>
+      </property>
+      <property name="indent">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtAdx">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>270</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:#F4F3F3;
+color: black;
+font-family: Futura;
+font: 13px;</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtRsi">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>300</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:#F4F3F3;
+color: black;
+font-family: Futura;
+font: 13px;</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblAdx">
       <property name="geometry">
        <rect>
         <x>50</x>
         <y>270</y>
-        <width>101</width>
+        <width>31</width>
         <height>20</height>
        </rect>
       </property>
@@ -709,11 +865,293 @@ border:none
       <property name="toolTipDuration">
        <number>0</number>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #CECECE;
+color: black;</string>
+      </property>
       <property name="text">
-       <string>        Last Name:</string>
+       <string>ADX:</string>
       </property>
       <property name="indent">
        <number>0</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblRsi">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>300</y>
+        <width>61</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+       </font>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #CECECE;
+color: black;</string>
+      </property>
+      <property name="text">
+       <string>         RSI:</string>
+      </property>
+      <property name="indent">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblRsiVolume">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>330</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+       </font>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #CECECE;
+color: black;</string>
+      </property>
+      <property name="text">
+       <string>RSI Volume:</string>
+      </property>
+      <property name="indent">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtRsiVolume">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>330</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:#F4F3F3;
+color: black;
+font-family: Futura;
+font: 13px;</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtMarketCap">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>30</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:#F4F3F3;
+color: black;
+font-family: Futura;
+font: 13px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblMarketCap">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>30</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+       </font>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #CECECE;
+color: black;</string>
+      </property>
+      <property name="text">
+       <string> Market Cap:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtPriceToEarningsRatio">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>60</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:#F4F3F3;
+color: black;
+font-family: Futura;
+font: 13px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblPriceToEarningsRatio">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>60</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+       </font>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #CECECE;
+color: black;</string>
+      </property>
+      <property name="text">
+       <string> Price-to-Earnings Ratio:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtEps">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>90</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:#F4F3F3;
+color: black;
+font-family: Futura;
+font: 13px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblEps">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>90</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+       </font>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #CECECE;
+color: black;</string>
+      </property>
+      <property name="text">
+       <string>                    Basis EPS:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblDividendYield">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>120</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+       </font>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #CECECE;
+color: black;</string>
+      </property>
+      <property name="text">
+       <string>             Dividend Yield:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtDividendYield">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>120</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:#F4F3F3;
+color: black;
+font-family: Futura;
+font: 13px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>

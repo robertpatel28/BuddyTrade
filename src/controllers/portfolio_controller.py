@@ -151,6 +151,58 @@ class PortfolioController:
         latest_rsi_volume = price_data['RSI_Volume'].dropna().iloc[-1]
         # Returns the rsi_volume
         return latest_rsi_volume
+    
+    # Retrieves the market cap for given ticker.
+    def get_market_cap(self, ticker: str) -> float | None:
+        try:
+            ticker_obj = yf.Ticker(ticker.strip().upper())
+            market_cap = ticker_obj.info.get("marketCap")
+            if market_cap is None:
+                raise ValueError("Market cap not available for this ticker.")
+            return market_cap
+        except Exception:
+            raise ValueError("Invalid ticker or data unavailable.") 
+        
+    # Returns the p/e ratio for given ticker.
+    def get_pe_ratio(self, ticker: str) -> float | None:
+        try:
+            ticker_obj = yf.Ticker(ticker.strip().upper())
+            pe_ratio = ticker_obj.info.get("trailingPE")
+            if pe_ratio is None:
+                raise ValueError("P/E ratio not available for this ticker.")
+            return pe_ratio
+        except Exception:
+            raise ValueError("Invalid ticker or data unavailable.")
+        
+    # Returns the dividend yield for given ticker.
+    def get_dividend_yield(self, ticker: str) -> str:
+        try:
+            ticker_obj = yf.Ticker(ticker.strip().upper())
+            dividend_yield = ticker_obj.info.get("dividendYield")
+
+            if dividend_yield is None or not isinstance(dividend_yield, (int, float)):
+                return "N/A"
+
+            # Prevent unrealistic values (>20% is almost always invalid)
+            if dividend_yield > 1:
+                # Assume already in % (Yahoo Finance does this sometimes)
+                return f"{dividend_yield:.2f}%"
+            else:
+                # Convert from decimal to percentage
+                return f"{dividend_yield * 100:.2f}%"
+        except Exception:
+            return "N/A"
+
+
+
+    # Returns the earnings per share for given ticker.
+    def get_eps(self, ticker: str) -> float | None:
+        try:
+            ticker_obj = yf.Ticker(ticker.strip().upper())
+            eps = ticker_obj.info.get("trailingEps")  # or "forwardEps"
+            return eps
+        except Exception:
+            raise ValueError("Invalid ticker or EPS unavailable.")
         
     # Helper method to fetch price_data for given ticker.
     def get_price_data(self, ticker: str):
@@ -166,4 +218,5 @@ class PortfolioController:
             price_data.columns = price_data.columns.get_level_values(0)
         
         return price_data
+
     

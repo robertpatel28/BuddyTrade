@@ -10,10 +10,10 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class Ui_Analysis(object):
-    def setupUi(self, Home):
-        Home.setObjectName("Home")
-        Home.resize(1021, 777)
-        self.centralwidget = QtWidgets.QWidget(parent=Home)
+    def setupUi(self, Analysis):
+        Analysis.setObjectName("Analysis")
+        Analysis.resize(1021, 777)
+        self.centralwidget = QtWidgets.QWidget(parent=Analysis)
         self.centralwidget.setObjectName("centralwidget")
         self.backgroundFrame = QtWidgets.QFrame(parent=self.centralwidget)
         self.backgroundFrame.setGeometry(QtCore.QRect(-10, 0, 1031, 731))
@@ -93,6 +93,8 @@ class Ui_Analysis(object):
         self.lblDashboardHeader.setStyleSheet("color: Black;\n"
 "font-family: \'Futura\';\n"
 "font-size: 20px;\n"
+"background-color: #CECECE;\n"
+"color: black;\n"
 "   ")
         self.lblDashboardHeader.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lblDashboardHeader.setObjectName("lblDashboardHeader")
@@ -101,6 +103,8 @@ class Ui_Analysis(object):
         self.lblTitle.setStyleSheet("color: Black;\n"
 "font-family: \'Futura\';\n"
 "font-size: 20px;\n"
+"background-color: #CECECE;\n"
+"color: black;\n"
 "   ")
         self.lblTitle.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lblTitle.setObjectName("lblTitle")
@@ -204,197 +208,333 @@ class Ui_Analysis(object):
 "")
         self.btnFAQs.setObjectName("btnFAQs")
         self.loginFrame = QtWidgets.QFrame(parent=self.backgroundFrame)
-        self.loginFrame.setGeometry(QtCore.QRect(290, 220, 501, 391))
+        self.loginFrame.setGeometry(QtCore.QRect(240, 220, 571, 391))
         self.loginFrame.setStyleSheet("background-color: #CECECE;\n"
 "")
         self.loginFrame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.loginFrame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.loginFrame.setObjectName("loginFrame")
-        self.txtEmail = QtWidgets.QLineEdit(parent=self.loginFrame)
-        self.txtEmail.setGeometry(QtCore.QRect(160, 30, 241, 21))
-        self.txtEmail.setToolTipDuration(0)
-        self.txtEmail.setStyleSheet("background-color:#F4F3F3; color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
-        self.txtEmail.setObjectName("txtEmail")
-        self.txtPassword = QtWidgets.QLineEdit(parent=self.loginFrame)
-        self.txtPassword.setGeometry(QtCore.QRect(160, 150, 241, 21))
-        self.txtPassword.setToolTipDuration(0)
-        self.txtPassword.setStyleSheet("background-color:#F4F3F3; color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
-        self.txtPassword.setObjectName("txtPassword")
-        self.lblEmail = QtWidgets.QLabel(parent=self.loginFrame)
-        self.lblEmail.setGeometry(QtCore.QRect(110, 30, 41, 20))
+        self.txtEma10 = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtEma10.setGeometry(QtCore.QRect(90, 30, 131, 21))
+        self.txtEma10.setToolTipDuration(0)
+        self.txtEma10.setStyleSheet("background-color:#F4F3F3;\n"
+"color: black;\n"
+"font-family: Futura;\n"
+"font: 13px;")
+        self.txtEma10.setText("")
+        self.txtEma10.setReadOnly(True)
+        self.txtEma10.setObjectName("txtEma10")
+        self.txtEma50 = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtEma50.setGeometry(QtCore.QRect(90, 90, 131, 21))
+        self.txtEma50.setToolTipDuration(0)
+        self.txtEma50.setStyleSheet("background-color:#F4F3F3;\n"
+"color: black;\n"
+"font-family: Futura;\n"
+"font: 13px;")
+        self.txtEma50.setReadOnly(True)
+        self.txtEma50.setObjectName("txtEma50")
+        self.lblEma10 = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblEma10.setGeometry(QtCore.QRect(20, 30, 61, 20))
         font = QtGui.QFont()
         font.setFamily("Futura")
-        self.lblEmail.setFont(font)
-        self.lblEmail.setToolTipDuration(0)
-        self.lblEmail.setObjectName("lblEmail")
-        self.lblEmail.setStyleSheet("color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
-        self.lblPassword = QtWidgets.QLabel(parent=self.loginFrame)
-        self.lblPassword.setGeometry(QtCore.QRect(80, 150, 71, 20))
-        self.lblPassword.setStyleSheet("color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
+        self.lblEma10.setFont(font)
+        self.lblEma10.setToolTipDuration(0)
+        self.lblEma10.setStyleSheet("background-color: #CECECE;\n"
+"color: black;")
+        self.lblEma10.setObjectName("lblEma10")
+        self.lblEma50 = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblEma50.setGeometry(QtCore.QRect(20, 90, 61, 20))
         font = QtGui.QFont()
         font.setFamily("Futura")
-        self.lblPassword.setFont(font)
-        self.lblPassword.setToolTipDuration(0)
-        self.lblPassword.setIndent(0)
-        self.lblPassword.setObjectName("lblPassword")
-        self.btnRegister = QtWidgets.QPushButton(parent=self.loginFrame)
-        self.btnRegister.setGeometry(QtCore.QRect(220, 320, 113, 32))
+        self.lblEma50.setFont(font)
+        self.lblEma50.setToolTipDuration(0)
+        self.lblEma50.setStyleSheet("background-color: #CECECE;\n"
+"color: black;")
+        self.lblEma50.setIndent(0)
+        self.lblEma50.setObjectName("lblEma50")
+        self.txtEma34 = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtEma34.setGeometry(QtCore.QRect(90, 60, 131, 21))
+        self.txtEma34.setToolTipDuration(0)
+        self.txtEma34.setStyleSheet("background-color:#F4F3F3;\n"
+"color: black;\n"
+"font-family: Futura;\n"
+"font: 13px;")
+        self.txtEma34.setReadOnly(True)
+        self.txtEma34.setObjectName("txtEma34")
+        self.lblEma34 = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblEma34.setGeometry(QtCore.QRect(20, 60, 61, 21))
         font = QtGui.QFont()
         font.setFamily("Futura")
-        self.btnRegister.setFont(font)
-        self.btnRegister.setStyleSheet("QPushButton {\n"
-"    color: black;\n"
-"    background-color: #BCBCBC;\n"
-"    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: #A0A0A0;\n"
-"}\n"
-"")
-        self.btnRegister.setObjectName("btnRegister")
-        self.txtVerifyEmail = QtWidgets.QLineEdit(parent=self.loginFrame)
-        self.txtVerifyEmail.setGeometry(QtCore.QRect(160, 60, 241, 21))
-        self.txtVerifyEmail.setToolTipDuration(0)
-        self.txtVerifyEmail.setStyleSheet("background-color:#F4F3F3; color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
-        self.txtVerifyEmail.setObjectName("txtVerifyEmail")
-        self.lblEmail_2 = QtWidgets.QLabel(parent=self.loginFrame)
-        self.lblEmail_2.setGeometry(QtCore.QRect(70, 60, 81, 20))
-        self.lblEmail_2.setStyleSheet("color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
-        font = QtGui.QFont()
-        font.setFamily("Futura")
-        self.lblEmail_2.setFont(font)
-        self.lblEmail_2.setToolTipDuration(0)
-        self.lblEmail_2.setIndent(0)
-        self.lblEmail_2.setObjectName("lblEmail_2")
-        self.registerFooter = QtWidgets.QFrame(parent=self.loginFrame)
-        self.registerFooter.setGeometry(QtCore.QRect(0, 370, 501, 20))
-        self.registerFooter.setStyleSheet("background-color:#BCBCBC;\n"
+        self.lblEma34.setFont(font)
+        self.lblEma34.setToolTipDuration(0)
+        self.lblEma34.setStyleSheet("background-color: #CECECE;\n"
+"color: black;")
+        self.lblEma34.setIndent(0)
+        self.lblEma34.setObjectName("lblEma34")
+        self.headerFooter_2 = QtWidgets.QFrame(parent=self.loginFrame)
+        self.headerFooter_2.setGeometry(QtCore.QRect(0, 370, 561, 20))
+        self.headerFooter_2.setStyleSheet("background-color:#BCBCBC;\n"
 "border:none\n"
 "")
-        self.registerFooter.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.registerFooter.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.registerFooter.setObjectName("registerFooter")
-        self.txtVerifyPassword = QtWidgets.QLineEdit(parent=self.loginFrame)
-        self.txtVerifyPassword.setGeometry(QtCore.QRect(160, 180, 241, 21))
-        self.txtVerifyPassword.setToolTipDuration(0)
-        self.txtVerifyPassword.setStyleSheet("background-color:#F4F3F3; color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
-        self.txtVerifyPassword.setObjectName("txtVerifyPassword")
-        self.lblVerifyPassword = QtWidgets.QLabel(parent=self.loginFrame)
-        self.lblVerifyPassword.setGeometry(QtCore.QRect(50, 180, 101, 20))
+        self.headerFooter_2.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.headerFooter_2.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.headerFooter_2.setObjectName("headerFooter_2")
+        self.txtSma20 = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtSma20.setGeometry(QtCore.QRect(90, 140, 131, 21))
+        self.txtSma20.setToolTipDuration(0)
+        self.txtSma20.setStyleSheet("background-color:#F4F3F3;\n"
+"color: black;\n"
+"font-family: Futura;\n"
+"font: 13px;")
+        self.txtSma20.setReadOnly(True)
+        self.txtSma20.setObjectName("txtSma20")
+        self.lblSma20 = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblSma20.setGeometry(QtCore.QRect(20, 140, 61, 20))
         font = QtGui.QFont()
         font.setFamily("Futura")
-        self.lblVerifyPassword.setFont(font)
-        self.lblVerifyPassword.setToolTipDuration(0)
-        self.lblVerifyPassword.setIndent(0)
-        self.lblVerifyPassword.setObjectName("lblVerifyPassword")
-        self.lblVerifyPassword.setStyleSheet("color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
-        self.txtFirstName = QtWidgets.QLineEdit(parent=self.loginFrame)
-        self.txtFirstName.setGeometry(QtCore.QRect(160, 240, 241, 21))
-        self.txtFirstName.setToolTipDuration(0)
-        self.txtFirstName.setStyleSheet("background-color:#F4F3F3; color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
-        self.txtFirstName.setObjectName("txtFirstName")
-        self.txtLastName = QtWidgets.QLineEdit(parent=self.loginFrame)
-        self.txtLastName.setGeometry(QtCore.QRect(160, 270, 241, 21))
-        self.txtLastName.setToolTipDuration(0)
-        self.txtLastName.setStyleSheet("background-color:#F4F3F3; color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
-        self.txtLastName.setReadOnly(False)
-        self.txtLastName.setObjectName("txtLastName")
-        self.lblFirstName = QtWidgets.QLabel(parent=self.loginFrame)
-        self.lblFirstName.setGeometry(QtCore.QRect(50, 240, 101, 20))
+        self.lblSma20.setFont(font)
+        self.lblSma20.setToolTipDuration(0)
+        self.lblSma20.setStyleSheet("background-color: #CECECE;\n"
+"color: black;")
+        self.lblSma20.setIndent(0)
+        self.lblSma20.setObjectName("lblSma20")
+        self.txtSma50 = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtSma50.setGeometry(QtCore.QRect(90, 170, 131, 21))
+        self.txtSma50.setToolTipDuration(0)
+        self.txtSma50.setStyleSheet("background-color:#F4F3F3;\n"
+"color: black;\n"
+"font-family: Futura;\n"
+"font: 13px;")
+        self.txtSma50.setReadOnly(True)
+        self.txtSma50.setObjectName("txtSma50")
+        self.txtSma100 = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtSma100.setGeometry(QtCore.QRect(90, 200, 131, 21))
+        self.txtSma100.setToolTipDuration(0)
+        self.txtSma100.setStyleSheet("background-color:#F4F3F3;\n"
+"color: black;\n"
+"font-family: Futura;\n"
+"font: 13px;")
+        self.txtSma100.setReadOnly(True)
+        self.txtSma100.setObjectName("txtSma100")
+        self.lblSma50 = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblSma50.setGeometry(QtCore.QRect(20, 170, 61, 20))
         font = QtGui.QFont()
         font.setFamily("Futura")
-        self.lblFirstName.setFont(font)
-        self.lblFirstName.setToolTipDuration(0)
-        self.lblFirstName.setIndent(0)
-        self.lblFirstName.setStyleSheet("color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
-        self.lblFirstName.setObjectName("lblFirstName")
-        self.lblLastName = QtWidgets.QLabel(parent=self.loginFrame)
-        self.lblLastName.setStyleSheet("color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
-        self.lblLastName.setGeometry(QtCore.QRect(50, 270, 101, 20))
+        self.lblSma50.setFont(font)
+        self.lblSma50.setToolTipDuration(0)
+        self.lblSma50.setStyleSheet("background-color: #CECECE;\n"
+"color: black;")
+        self.lblSma50.setIndent(0)
+        self.lblSma50.setObjectName("lblSma50")
+        self.lblSma100 = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblSma100.setGeometry(QtCore.QRect(20, 200, 61, 20))
         font = QtGui.QFont()
         font.setFamily("Futura")
-        self.lblLastName.setFont(font)
-        self.lblLastName.setToolTipDuration(0)
-        self.lblLastName.setIndent(0)
-        self.lblLastName.setObjectName("lblLastName")
-        Home.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(parent=Home)
+        self.lblSma100.setFont(font)
+        self.lblSma100.setToolTipDuration(0)
+        self.lblSma100.setStyleSheet("background-color: #CECECE;\n"
+"color: black;")
+        self.lblSma100.setIndent(0)
+        self.lblSma100.setObjectName("lblSma100")
+        self.txtSma200 = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtSma200.setGeometry(QtCore.QRect(90, 230, 131, 21))
+        self.txtSma200.setToolTipDuration(0)
+        self.txtSma200.setStyleSheet("background-color:#F4F3F3;\n"
+"color: black;\n"
+"font-family: Futura;\n"
+"font: 13px;")
+        self.txtSma200.setReadOnly(True)
+        self.txtSma200.setObjectName("txtSma200")
+        self.lblSma200 = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblSma200.setGeometry(QtCore.QRect(20, 230, 61, 20))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        self.lblSma200.setFont(font)
+        self.lblSma200.setToolTipDuration(0)
+        self.lblSma200.setStyleSheet("background-color: #CECECE;\n"
+"color: black;")
+        self.lblSma200.setIndent(0)
+        self.lblSma200.setObjectName("lblSma200")
+        self.txtAdx = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtAdx.setGeometry(QtCore.QRect(90, 270, 131, 21))
+        self.txtAdx.setToolTipDuration(0)
+        self.txtAdx.setStyleSheet("background-color:#F4F3F3;\n"
+"color: black;\n"
+"font-family: Futura;\n"
+"font: 13px;")
+        self.txtAdx.setReadOnly(True)
+        self.txtAdx.setObjectName("txtAdx")
+        self.txtRsi = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtRsi.setGeometry(QtCore.QRect(90, 300, 131, 21))
+        self.txtRsi.setToolTipDuration(0)
+        self.txtRsi.setStyleSheet("background-color:#F4F3F3;\n"
+"color: black;\n"
+"font-family: Futura;\n"
+"font: 13px;")
+        self.txtRsi.setReadOnly(True)
+        self.txtRsi.setObjectName("txtRsi")
+        self.lblAdx = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblAdx.setGeometry(QtCore.QRect(50, 270, 31, 20))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        self.lblAdx.setFont(font)
+        self.lblAdx.setToolTipDuration(0)
+        self.lblAdx.setStyleSheet("background-color: #CECECE;\n"
+"color: black;")
+        self.lblAdx.setIndent(0)
+        self.lblAdx.setObjectName("lblAdx")
+        self.lblRsi = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblRsi.setGeometry(QtCore.QRect(20, 300, 61, 20))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        self.lblRsi.setFont(font)
+        self.lblRsi.setToolTipDuration(0)
+        self.lblRsi.setStyleSheet("background-color: #CECECE;\n"
+"color: black;")
+        self.lblRsi.setIndent(0)
+        self.lblRsi.setObjectName("lblRsi")
+        self.lblRsiVolume = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblRsiVolume.setGeometry(QtCore.QRect(10, 330, 71, 20))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        self.lblRsiVolume.setFont(font)
+        self.lblRsiVolume.setToolTipDuration(0)
+        self.lblRsiVolume.setStyleSheet("background-color: #CECECE;\n"
+"color: black;")
+        self.lblRsiVolume.setIndent(0)
+        self.lblRsiVolume.setObjectName("lblRsiVolume")
+        self.txtRsiVolume = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtRsiVolume.setGeometry(QtCore.QRect(90, 330, 131, 21))
+        self.txtRsiVolume.setToolTipDuration(0)
+        self.txtRsiVolume.setStyleSheet("background-color:#F4F3F3;\n"
+"color: black;\n"
+"font-family: Futura;\n"
+"font: 13px;")
+        self.txtRsiVolume.setReadOnly(True)
+        self.txtRsiVolume.setObjectName("txtRsiVolume")
+        self.txtMarketCap = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtMarketCap.setGeometry(QtCore.QRect(420, 30, 131, 21))
+        self.txtMarketCap.setToolTipDuration(0)
+        self.txtMarketCap.setStyleSheet("background-color:#F4F3F3;\n"
+"color: black;\n"
+"font-family: Futura;\n"
+"font: 13px;")
+        self.txtMarketCap.setText("")
+        self.txtMarketCap.setReadOnly(True)
+        self.txtMarketCap.setObjectName("txtMarketCap")
+        self.lblMarketCap = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblMarketCap.setGeometry(QtCore.QRect(330, 30, 81, 21))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        self.lblMarketCap.setFont(font)
+        self.lblMarketCap.setToolTipDuration(0)
+        self.lblMarketCap.setStyleSheet("background-color: #CECECE;\n"
+"color: black;")
+        self.lblMarketCap.setObjectName("lblMarketCap")
+        self.txtPriceToEarningsRatio = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtPriceToEarningsRatio.setGeometry(QtCore.QRect(420, 60, 131, 21))
+        self.txtPriceToEarningsRatio.setToolTipDuration(0)
+        self.txtPriceToEarningsRatio.setStyleSheet("background-color:#F4F3F3;\n"
+"color: black;\n"
+"font-family: Futura;\n"
+"font: 13px;")
+        self.txtPriceToEarningsRatio.setText("")
+        self.txtPriceToEarningsRatio.setReadOnly(True)
+        self.txtPriceToEarningsRatio.setObjectName("txtPriceToEarningsRatio")
+        self.lblPriceToEarningsRatio = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblPriceToEarningsRatio.setGeometry(QtCore.QRect(270, 60, 141, 21))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        self.lblPriceToEarningsRatio.setFont(font)
+        self.lblPriceToEarningsRatio.setToolTipDuration(0)
+        self.lblPriceToEarningsRatio.setStyleSheet("background-color: #CECECE;\n"
+"color: black;")
+        self.lblPriceToEarningsRatio.setObjectName("lblPriceToEarningsRatio")
+        self.txtEps = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtEps.setGeometry(QtCore.QRect(420, 90, 131, 21))
+        self.txtEps.setToolTipDuration(0)
+        self.txtEps.setStyleSheet("background-color:#F4F3F3;\n"
+"color: black;\n"
+"font-family: Futura;\n"
+"font: 13px;")
+        self.txtEps.setText("")
+        self.txtEps.setReadOnly(True)
+        self.txtEps.setObjectName("txtEps")
+        self.lblEps = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblEps.setGeometry(QtCore.QRect(270, 90, 141, 21))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        self.lblEps.setFont(font)
+        self.lblEps.setToolTipDuration(0)
+        self.lblEps.setStyleSheet("background-color: #CECECE;\n"
+"color: black;")
+        self.lblEps.setObjectName("lblEps")
+        self.lblDividendYield = QtWidgets.QLabel(parent=self.loginFrame)
+        self.lblDividendYield.setGeometry(QtCore.QRect(270, 120, 141, 21))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        self.lblDividendYield.setFont(font)
+        self.lblDividendYield.setToolTipDuration(0)
+        self.lblDividendYield.setStyleSheet("background-color: #CECECE;\n"
+"color: black;")
+        self.lblDividendYield.setObjectName("lblDividendYield")
+        self.txtDividendYield = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtDividendYield.setGeometry(QtCore.QRect(420, 120, 131, 21))
+        self.txtDividendYield.setToolTipDuration(0)
+        self.txtDividendYield.setStyleSheet("background-color:#F4F3F3;\n"
+"color: black;\n"
+"font-family: Futura;\n"
+"font: 13px;")
+        self.txtDividendYield.setText("")
+        self.txtDividendYield.setReadOnly(True)
+        self.txtDividendYield.setObjectName("txtDividendYield")
+        Analysis.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(parent=Analysis)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1021, 43))
         self.menubar.setObjectName("menubar")
-        Home.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(parent=Home)
+        Analysis.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(parent=Analysis)
         self.statusbar.setObjectName("statusbar")
-        Home.setStatusBar(self.statusbar)
+        Analysis.setStatusBar(self.statusbar)
 
-        self.retranslateUi(Home)
-        QtCore.QMetaObject.connectSlotsByName(Home)
+        self.retranslateUi(Analysis)
+        QtCore.QMetaObject.connectSlotsByName(Analysis)
 
-    def retranslateUi(self, Home):
+    def retranslateUi(self, Analysis):
         _translate = QtCore.QCoreApplication.translate
-        Home.setWindowTitle(_translate("Home", "Home"))
-        self.btnLogin.setText(_translate("Home", "Login"))
-        self.btnDashboard.setText(_translate("Home", "Dashboard"))
-        self.btnHome.setText(_translate("Home", "Home"))
-        self.lblDashboardHeader.setText(_translate("Home", " Register"))
-        self.lblTitle.setText(_translate("Home", "BuddyTrade AI"))
-        self.lblLogo.setText(_translate("Home", "logo"))
-        self.btnSupport.setText(_translate("Home", "Support"))
-        self.btnAbout.setText(_translate("Home", "About"))
-        self.btnLinkedIn.setText(_translate("Home", "lkin"))
-        self.btnGitHub.setText(_translate("Home", "git"))
-        self.btnFAQs.setText(_translate("Home", "FAQs"))
-        self.lblEmail.setText(_translate("Home", " Email:"))
-        self.lblPassword.setText(_translate("Home", "  Password:"))
-        self.btnRegister.setText(_translate("Home", "Register"))
-        self.lblEmail_2.setText(_translate("Home", " Verify Email:"))
-        self.lblVerifyPassword.setText(_translate("Home", "Verify Password:"))
-        self.lblFirstName.setText(_translate("Home", "        First Name:"))
-        self.lblLastName.setText(_translate("Home", "        Last Name:"))
+        Analysis.setWindowTitle(_translate("Analysis", "Analysis"))
+        self.btnLogin.setText(_translate("Analysis", "Login"))
+        self.btnDashboard.setText(_translate("Analysis", "Dashboard"))
+        self.btnHome.setText(_translate("Analysis", "Home"))
+        self.lblDashboardHeader.setText(_translate("Analysis", " Analysis"))
+        self.lblTitle.setText(_translate("Analysis", "BuddyTrade AI"))
+        self.lblLogo.setText(_translate("Analysis", "logo"))
+        self.btnSupport.setText(_translate("Analysis", "Support"))
+        self.btnAbout.setText(_translate("Analysis", "About"))
+        self.btnLinkedIn.setText(_translate("Analysis", "lkin"))
+        self.btnGitHub.setText(_translate("Analysis", "git"))
+        self.btnFAQs.setText(_translate("Analysis", "FAQs"))
+        self.lblEma10.setText(_translate("Analysis", "  EMA 10:"))
+        self.lblEma50.setText(_translate("Analysis", "  EMA 50:"))
+        self.lblEma34.setText(_translate("Analysis", "  EMA 34:"))
+        self.lblSma20.setText(_translate("Analysis", "  SMA 20:"))
+        self.lblSma50.setText(_translate("Analysis", "  SMA 50:"))
+        self.lblSma100.setText(_translate("Analysis", "SMA 100:"))
+        self.lblSma200.setText(_translate("Analysis", "SMA 200:"))
+        self.lblAdx.setText(_translate("Analysis", "ADX:"))
+        self.lblRsi.setText(_translate("Analysis", "         RSI:"))
+        self.lblRsiVolume.setText(_translate("Analysis", "RSI Volume:"))
+        self.lblMarketCap.setText(_translate("Analysis", " Market Cap:"))
+        self.lblPriceToEarningsRatio.setText(_translate("Analysis", " Price-to-Earnings Ratio:"))
+        self.lblEps.setText(_translate("Analysis", "                    Basis EPS:"))
+        self.lblDividendYield.setText(_translate("Analysis", "             Dividend Yield:"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Home = QtWidgets.QMainWindow()
+    Analysis = QtWidgets.QMainWindow()
     ui = Ui_Analysis()
-    ui.setupUi(Home)
-    Home.show()
+    ui.setupUi(Analysis)
+    Analysis.show()
     sys.exit(app.exec())

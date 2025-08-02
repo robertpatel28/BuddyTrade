@@ -87,19 +87,19 @@ if __name__ == "__main__":
         db_service, auth_service, app_state, user_controller, screen_manager
     )
 
-    home_logged_out_controller = HomeLoggedOutController(
-        home_logged_out_ui, home_logged_out_window,
-        db_service, auth_service, app_state, user_controller, screen_manager
+    analysis_controller = AnalysisController(
+        analysis_ui, analysis_window,
+        db_service, auth_service, app_state, user_controller, screen_manager, portfolio_controller
     )
 
     home_logged_in_controller = HomeLoggedInController(
         home_logged_in_ui, home_logged_in_window,
-        db_service, auth_service, app_state, user_controller, screen_manager
+        db_service, auth_service, app_state, user_controller, screen_manager, analysis_controller
     )
 
-    analysis_controller = AnalysisController(
-        analysis_ui, analysis_window,
-        db_service, auth_service, app_state, user_controller, screen_manager
+    home_logged_out_controller = HomeLoggedOutController(
+        home_logged_out_ui, home_logged_out_window,
+        db_service, auth_service, app_state, user_controller, screen_manager, analysis_controller
     )
 
     buy_page_controller = BuyPageController(

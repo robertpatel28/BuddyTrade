@@ -325,7 +325,7 @@ class Ui_Home_Logged_In(object):
         font.setFamily("Futura")
         self.txtTickerSearch.setFont(font)
         self.txtTickerSearch.setStyleSheet("background-color:#BCBCBC;\n"
-"border: 2px solid #3E3C3C")
+"border: 2px solid #3E3C3C;\ncolor: black;")
         self.txtTickerSearch.setText("")
         self.txtTickerSearch.setObjectName("txtTickerSearch")
         self.lblTicker = QtWidgets.QLabel(parent=self.tickerSearchFrame)

@@ -7,6 +7,8 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtWidgets import QLineEdit
+
 
 
 class Ui_Login(object):
@@ -218,6 +220,7 @@ class Ui_Login(object):
 "font-size: 12px;\n"
 "   ")
         self.txtPassword = QtWidgets.QLineEdit(parent=self.loginFrame)
+        self.txtPassword.setEchoMode(QLineEdit.EchoMode.Password)
         self.txtPassword.setGeometry(QtCore.QRect(150, 150, 241, 21))
         self.txtPassword.setStyleSheet("background-color:#F4F3F3; color: Black;\n"
 "font-family: \'Futura\';\n"
