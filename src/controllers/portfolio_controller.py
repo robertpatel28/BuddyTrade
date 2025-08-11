@@ -177,22 +177,27 @@ class PortfolioController:
     # Returns the dividend yield for given ticker.
     def get_dividend_yield(self, ticker: str) -> str:
         try:
-            ticker_obj = yf.Ticker(ticker.strip().upper())
-            dividend_yield = ticker_obj.info.get("dividendYield")
+            ticker = ticker.strip().upper()
+            ticker_obj = yf.Ticker(ticker)
+            info = ticker_obj.info
 
-            if dividend_yield is None or not isinstance(dividend_yield, (int, float)):
-                return "N/A"
+            current_price = info.get("currentPrice")
+            trailing_dividend = info.get("trailingAnnualDividendRate")
 
-            # Prevent unrealistic values (>20% is almost always invalid)
-            if dividend_yield > 1:
-                # Assume already in % (Yahoo Finance does this sometimes)
-                return f"{dividend_yield:.2f}%"
-            else:
-                # Convert from decimal to percentage
-                return f"{dividend_yield * 100:.2f}%"
-        except Exception:
+            if current_price and trailing_dividend:
+                dividend_yield = (trailing_dividend / current_price) * 100
+                if 0 < dividend_yield <= 20:  # realistic range
+                    return f"{dividend_yield:.2f}%"
+
+            # Fallback to Yahoo's dividendYield if primary fails
+            raw_yield = info.get("dividendYield")
+            if isinstance(raw_yield, (int, float)) and 0 < raw_yield <= 0.2:  # 0.2 = 20%
+                return f"{raw_yield * 100:.2f}%"
+
             return "N/A"
 
+        except Exception:
+            return "N/A"
 
 
     # Returns the earnings per share for given ticker.

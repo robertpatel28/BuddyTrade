@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'analysis.ui'
+# Form implementation generated from reading ui file 'analysis_logged_in.ui'
 #
 # Created by: PyQt6 UI code generator 6.9.1
 #
@@ -37,56 +37,45 @@ class Ui_Analysis(object):
         self.headerFooter.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.headerFooter.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.headerFooter.setObjectName("headerFooter")
-        self.btnLogin = QtWidgets.QPushButton(parent=self.headerFrame)
-        self.btnLogin.setGeometry(QtCore.QRect(900, 20, 113, 32))
+        self.btnProfileSettings = QtWidgets.QPushButton(parent=self.headerFrame)
+        self.btnProfileSettings.setGeometry(QtCore.QRect(900, 20, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
-        self.btnLogin.setFont(font)
-        self.btnLogin.setStyleSheet("QPushButton {\n"
-"    color: black;\n"
-"    background-color: #BCBCBC;\n"
-"    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: #A0A0A0;\n"
-"}\n"
+        font.setPointSize(-1)
+        self.btnProfileSettings.setFont(font)
+        self.btnProfileSettings.setStyleSheet("color: black;\n"
+"background-color: #BCBCBC;\n"
+"font-family: \'Futura\';\n"
+"font-size: 12px;\n"
+"border:none\n"
 "")
-        self.btnLogin.setObjectName("btnLogin")
+        self.btnProfileSettings.setObjectName("btnProfileSettings")
         self.btnDashboard = QtWidgets.QPushButton(parent=self.headerFrame)
         self.btnDashboard.setGeometry(QtCore.QRect(760, 20, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(-1)
         self.btnDashboard.setFont(font)
-        self.btnDashboard.setStyleSheet("QPushButton {\n"
-"    color: black;\n"
-"    background-color: #BCBCBC;\n"
-"    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: #A0A0A0;\n"
-"}\n"
-"")
+        self.btnDashboard.setStyleSheet("color: black;\n"
+"background-color: #BCBCBC;\n"
+"font-family: \'Futura\';\n"
+"font-size: 12px;\n"
+"border:none\n"
+"\n"
+"   ")
         self.btnDashboard.setObjectName("btnDashboard")
         self.btnHome = QtWidgets.QPushButton(parent=self.headerFrame)
         self.btnHome.setGeometry(QtCore.QRect(620, 20, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(-1)
         self.btnHome.setFont(font)
-        self.btnHome.setStyleSheet("QPushButton {\n"
-"    color: black;\n"
-"    background-color: #BCBCBC;\n"
-"    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: #A0A0A0;\n"
-"}\n"
-"")
+        self.btnHome.setStyleSheet("color: black;\n"
+"background-color: #BCBCBC;\n"
+"font-family: \'Futura\';\n"
+"font-size: 12px;\n"
+"border:none\n"
+"   ")
         self.btnHome.setObjectName("btnHome")
         self.lblDashboardHeader = QtWidgets.QLabel(parent=self.headerFrame)
         self.lblDashboardHeader.setGeometry(QtCore.QRect(10, 70, 161, 31))
@@ -138,35 +127,26 @@ class Ui_Analysis(object):
         self.btnSupport.setGeometry(QtCore.QRect(900, 10, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(-1)
         self.btnSupport.setFont(font)
-        self.btnSupport.setStyleSheet("QPushButton {\n"
-"    color: black;\n"
-"    background-color: #BCBCBC;\n"
-"    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: #A0A0A0;\n"
-"}\n"
-"")
+        self.btnSupport.setStyleSheet("color: black;\n"
+"background-color: #BCBCBC;\n"
+"font-family: \'Futura\';\n"
+"font-size: 12px;\n"
+"border:none;\n"
+"   ")
         self.btnSupport.setObjectName("btnSupport")
         self.btnAbout = QtWidgets.QPushButton(parent=self.footerFrame)
         self.btnAbout.setGeometry(QtCore.QRect(760, 10, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(-1)
         self.btnAbout.setFont(font)
-        self.btnAbout.setStyleSheet("QPushButton {\n"
-"    color: black;\n"
-"    background-color: #BCBCBC;\n"
-"    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: #A0A0A0;\n"
-"}\n"
-"")
+        self.btnAbout.setStyleSheet("color: black;\n"
+"background-color: #BCBCBC;\n"
+"font-family: \'Futura\';\n"
+"font-size: 12px;\n"
+"   ")
         self.btnAbout.setObjectName("btnAbout")
         self.btnLinkedIn = QtWidgets.QPushButton(parent=self.footerFrame)
         self.btnLinkedIn.setGeometry(QtCore.QRect(0, 30, 41, 21))
@@ -194,18 +174,13 @@ class Ui_Analysis(object):
         self.btnFAQs.setGeometry(QtCore.QRect(620, 10, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(-1)
         self.btnFAQs.setFont(font)
-        self.btnFAQs.setStyleSheet("QPushButton {\n"
-"    color: black;\n"
-"    background-color: #BCBCBC;\n"
-"    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: #A0A0A0;\n"
-"}\n"
-"")
+        self.btnFAQs.setStyleSheet("color: black;\n"
+"background-color: #BCBCBC;\n"
+"font-family: \'Futura\';\n"
+"font-size: 12px;\n"
+"   ")
         self.btnFAQs.setObjectName("btnFAQs")
         self.loginFrame = QtWidgets.QFrame(parent=self.backgroundFrame)
         self.loginFrame.setGeometry(QtCore.QRect(240, 220, 571, 391))
@@ -503,7 +478,7 @@ class Ui_Analysis(object):
     def retranslateUi(self, Analysis):
         _translate = QtCore.QCoreApplication.translate
         Analysis.setWindowTitle(_translate("Analysis", "Analysis"))
-        self.btnLogin.setText(_translate("Analysis", "Login"))
+        self.btnProfileSettings.setText(_translate("Analysis", "Profile / Settings"))
         self.btnDashboard.setText(_translate("Analysis", "Dashboard"))
         self.btnHome.setText(_translate("Analysis", "Home"))
         self.lblDashboardHeader.setText(_translate("Analysis", " Analysis"))
@@ -527,7 +502,7 @@ class Ui_Analysis(object):
         self.lblMarketCap.setText(_translate("Analysis", " Market Cap:"))
         self.lblPriceToEarningsRatio.setText(_translate("Analysis", " Price-to-Earnings Ratio:"))
         self.lblEps.setText(_translate("Analysis", "                    Basis EPS:"))
-        self.lblDividendYield.setText(_translate("Analysis", " Annual Dividend Yield:"))
+        self.lblDividendYield.setText(_translate("Analysis", "             Dividend Yield:"))
 
 
 if __name__ == "__main__":

@@ -16,7 +16,7 @@ class AppState():
     # Sets current_user
     def set_current_user(self, user: User):
         self.current_user = user
-        self.is_authenticated = user.is_user_authenticated()
+        self.is_authenticated = True
 
     # Gets the current_user
     def get_current_user(self) -> User | None:
