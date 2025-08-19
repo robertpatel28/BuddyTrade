@@ -11,6 +11,7 @@ import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 import pandas_ta as ta
 import pandas as pd
+from datetime import datetime
 
 
 
@@ -69,29 +70,6 @@ class PortfolioController:
         __ticker__ = yf.Ticker(ticker)
         live_price = __ticker__.info["regularMarketPrice"]
         return live_price
-    
-    # Returns Yes/No for golden cross opportunity.
-    def get_golden_cross(self, ticker: str) -> str:
-        
-        # Retrieves price data for ticker.
-        price_data = yf.download(ticker, period="3mo", interval="1h", auto_adjust=True)
-        
-        # Calculate SMAs
-        price_data['SMA_50'] = ta.sma(price_data['Close'], length=50)
-        price_data['SMA_100'] = ta.sma(price_data['Close'], length=100)
-        price_data['SMA_200'] = ta.sma(price_data['Close'], length=200)
-
-        # Detect Golden Cross: yesterday SMA50 < SMA200 and today SMA50 > SMA200
-        price_data['Golden_Cross'] = (
-            (price_data['SMA_50'].shift(1) < price_data['SMA_200'].shift(1)) &
-            (price_data['SMA_50'] > price_data['SMA_200'])
-        )
-        # Return result
-        if price_data['Golden_Cross'].tail(5).any():
-            result = 'Yes'
-        else:
-            result = 'No'
-        return result
 
     # Retrieves the EMA for given dataframe.
     def get_ema(self, price_data: pd.DataFrame, leng: int):
@@ -127,7 +105,6 @@ class PortfolioController:
         adx_col = f'ADX_{lensig}'  # e.g., ADX_10
 
         if adx_col not in adx_data.columns:
-            print(f"[ERROR] Column '{adx_col}' not found in ADX data: {adx_data.columns}")
             return None
 
         price_data['ADX'] = adx_data[adx_col]
@@ -199,7 +176,6 @@ class PortfolioController:
         except Exception:
             return "N/A"
 
-
     # Returns the earnings per share for given ticker.
     def get_eps(self, ticker: str) -> float | None:
         try:
@@ -208,15 +184,127 @@ class PortfolioController:
             return eps
         except Exception:
             raise ValueError("Invalid ticker or EPS unavailable.")
+                
+    # Retrieves current time.
+    def get_datetime(self) -> str:
+        current_time_str = datetime.now().strftime("%H:%M:%S")
+        return current_time_str
+    
+    # Returns true if a golden_cross is present, false otherwise.
+    def is_golden_cross(self, ticker: str, price_data: pd.DataFrame) -> bool:
+        sma50 = price_data["Close"].rolling(50).mean()
+        sma200 = price_data["Close"].rolling(200).mean()
+        if pd.isna(sma50.iloc[-1]) or pd.isna(sma200.iloc[-1]):
+            return False
+        return sma50.iloc[-1] > sma200.iloc[-1]
+
+    
+    # Returns short-term momentum signal: "Bullish", "Bearish", or "Neutral"
+    def get_short_momentum(self, price_data: pd.DataFrame) -> str:
+        if price_data is None or price_data.empty:
+            return "N/A"
+        if "Close" not in price_data.columns:
+            return "N/A"
+        if len(price_data) < 20:  # not enough for short EMAs
+            return "N/A"
+
+        ema_10 = price_data["Close"].ewm(span=10, adjust=False).mean()
+        ema_20 = price_data["Close"].ewm(span=20, adjust=False).mean()
+
+        # Compare latest values
+        if ema_10.iloc[-1] > ema_20.iloc[-1]:
+            return "Bullish"
+        elif ema_10.iloc[-1] < ema_20.iloc[-1]:
+            return "Bearish"
+        else:
+            return "Neutral"
         
+    # Returns True if the current price is above the 200 EMA, False otherwise
+    def is_price_over_200_ema(self, price_data: pd.DataFrame) -> bool:
+        latest_ema_200 = self.get_ema(price_data, 200)
+        if latest_ema_200 is None:
+            return False
+        latest_close = price_data["Close"].iloc[-1]
+        return latest_close > latest_ema_200
+
+    # Returns True if RSI is strong, False otherwise.
+    def get_rsi_strength(self, price_data: pd.DataFrame, threshold: float = 70) -> bool:
+        latest_rsi = self.get_rsi(price_data)
+        if latest_rsi is None:
+            return False
+        return latest_rsi >= threshold
+
+    # Returns True is RSI is oversold, False otherise.
+    def is_rsi_oversold(self, price_data: pd.DataFrame, threshold: float = 30) -> bool:
+        latest_rsi = self.get_rsi(price_data)
+        if latest_rsi is None:
+            return False
+        return latest_rsi <= threshold
+
+    # Returns True if ADX is above 25 (strong trend)
+    def is_adx_strong(self, price_data: pd.DataFrame) -> bool:
+        latest_adx = self.get_adx(price_data)
+        if latest_adx is None:
+            return False
+        return latest_adx > 25
+    
+    # Detects if current price is in a pullback during an uptrend
+    def pullback_opportunity(self, ticker: str, price_data: pd.DataFrame) -> bool:
+        if price_data is None or price_data.empty:
+            return False
+
+        current_price = self.get_current_price(ticker)
+        ema_200 = self.get_ema(price_data, 200)
+        rsi = self.get_rsi(price_data)
+
+        if ema_200 is None or rsi is None:
+            return False
+
+        # In uptrend AND RSI in pullback range
+        return current_price > ema_200 and 40 <= rsi <= 50
+    
+    # Detects if current volume is significantly higher than recent average
+    def volume_spike(self, price_data: pd.DataFrame, multiplier: float = 1.5) -> bool:
+        if price_data is None or price_data.empty:
+            return False
+        if "Volume" not in price_data.columns:
+            return False
+        if len(price_data) < 20:  # need enough data for average
+            return False
+
+        avg_volume = price_data["Volume"].rolling(20).mean().iloc[-1]
+        current_volume = price_data["Volume"].iloc[-1]
+
+        if pd.isna(avg_volume) or pd.isna(current_volume):
+            return False
+
+        return current_volume > avg_volume * multiplier
+    
+    # Checks if the current volume is in the top X% of the last N periods
+    def high_volume(self, price_data: pd.DataFrame, percentile: float = 0.9) -> bool:
+        if price_data is None or price_data.empty:
+            return False
+        if "Volume" not in price_data.columns:
+            return False
+        if len(price_data) < 20:
+            return False
+
+        # Get volume threshold at the given percentile
+        threshold = price_data["Volume"].quantile(percentile)
+        current_volume = price_data["Volume"].iloc[-1]
+
+        if pd.isna(threshold) or pd.isna(current_volume):
+            return False
+
+        return current_volume >= threshold
+
     # Helper method to fetch price_data for given ticker.
     def get_price_data(self, ticker: str):
         ticker = ticker.strip().upper()
         price_data = yf.download(ticker, period="3mo", interval="1h", auto_adjust=True)
 
         if price_data.empty or len(price_data) < 15:
-            print(f"[ERROR] Insufficient or empty data for ticker '{ticker}'. Data rows: {len(price_data)}")
-            return None
+            raise ValueError("No price data found.")
 
         # Flatten MultiIndex if needed
         if isinstance(price_data.columns, pd.MultiIndex):
@@ -224,4 +312,3 @@ class PortfolioController:
         
         return price_data
 
-    

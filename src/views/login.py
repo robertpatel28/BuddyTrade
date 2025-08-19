@@ -7,15 +7,14 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QLineEdit
-
+from PyQt6.QtGui import QPixmap
 
 
 class Ui_Login(object):
-    def setupUi(self, Home):
-        Home.setObjectName("Home")
-        Home.resize(1021, 777)
-        self.centralwidget = QtWidgets.QWidget(parent=Home)
+    def setupUi(self, Login):
+        Login.setObjectName("Login")
+        Login.resize(1021, 777)
+        self.centralwidget = QtWidgets.QWidget(parent=Login)
         self.centralwidget.setObjectName("centralwidget")
         self.backgroundFrame = QtWidgets.QFrame(parent=self.centralwidget)
         self.backgroundFrame.setGeometry(QtCore.QRect(-10, 0, 1031, 731))
@@ -43,12 +42,14 @@ class Ui_Login(object):
         self.btnLogin.setGeometry(QtCore.QRect(900, 20, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(12)
         self.btnLogin.setFont(font)
+        self.btnLogin.setAutoFillBackground(False)
         self.btnLogin.setStyleSheet("QPushButton {\n"
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
+"    font-size: 12pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
@@ -60,12 +61,13 @@ class Ui_Login(object):
         self.btnDashboard.setGeometry(QtCore.QRect(760, 20, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(12)
         self.btnDashboard.setFont(font)
         self.btnDashboard.setStyleSheet("QPushButton {\n"
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
+"    font-size: 12pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
@@ -77,12 +79,13 @@ class Ui_Login(object):
         self.btnHome.setGeometry(QtCore.QRect(620, 20, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(12)
         self.btnHome.setFont(font)
         self.btnHome.setStyleSheet("QPushButton {\n"
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
+"    font-size: 12pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
@@ -107,8 +110,11 @@ class Ui_Login(object):
         self.lblTitle.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lblTitle.setObjectName("lblTitle")
         self.lblLogo = QtWidgets.QLabel(parent=self.headerFrame)
-        self.lblLogo.setGeometry(QtCore.QRect(30, 20, 16, 16))
+        self.lblLogo.setGeometry(QtCore.QRect(24, 11, 32, 32))
         self.lblLogo.setObjectName("lblLogo")
+        pixmap = QPixmap("../resources/logo-removebg-preview.png")
+        self.lblLogo.setPixmap(pixmap.scaled(32, 32, QtCore.Qt.AspectRatioMode.KeepAspectRatio, QtCore.Qt.TransformationMode.SmoothTransformation))
+        self.lblLogo.setGeometry(QtCore.QRect(24, 11, 32, 32))
         self.lineBetweenHomeAndDashboard = QtWidgets.QFrame(parent=self.headerFrame)
         self.lineBetweenHomeAndDashboard.setGeometry(QtCore.QRect(746, 13, 1, 45))
         self.lineBetweenHomeAndDashboard.setStyleSheet("background-color: Black;\n"
@@ -136,12 +142,13 @@ class Ui_Login(object):
         self.btnSupport.setGeometry(QtCore.QRect(900, 10, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(12)
         self.btnSupport.setFont(font)
         self.btnSupport.setStyleSheet("QPushButton {\n"
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
+"    font-size: 12pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
@@ -153,12 +160,13 @@ class Ui_Login(object):
         self.btnAbout.setGeometry(QtCore.QRect(760, 10, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(12)
         self.btnAbout.setFont(font)
         self.btnAbout.setStyleSheet("QPushButton {\n"
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
+"    font-size: 12pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
@@ -167,11 +175,39 @@ class Ui_Login(object):
 "")
         self.btnAbout.setObjectName("btnAbout")
         self.btnLinkedIn = QtWidgets.QPushButton(parent=self.footerFrame)
-        self.btnLinkedIn.setGeometry(QtCore.QRect(0, 30, 41, 21))
-        self.btnLinkedIn.setObjectName("btnLinkedIn")
+        self.btnLinkedIn.setGeometry(QtCore.QRect(0, 30, 32, 32))  # Adjust size as needed
+        self.btnLinkedIn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.btnLinkedIn.setStyleSheet("""
+        QPushButton {
+                background-color: transparent;
+                border: none;
+        }
+        QPushButton:hover {
+                background-color: #B0B0B0;
+                border-radius: 4px;
+        }
+        """)
+        linkedin_icon = QtGui.QIcon("../resources/linkedin-logo-removebg-preview.png")  # Adjust if filename differs
+        self.btnLinkedIn.setIcon(linkedin_icon)
+        self.btnLinkedIn.setIconSize(QtCore.QSize(28, 28))
+        self.btnLinkedIn.setToolTip("View LinkedIn")
         self.btnGitHub = QtWidgets.QPushButton(parent=self.footerFrame)
-        self.btnGitHub.setGeometry(QtCore.QRect(40, 30, 41, 21))
-        self.btnGitHub.setObjectName("btnGitHub")
+        self.btnGitHub.setGeometry(QtCore.QRect(40, 30, 32, 32))  # Adjust as needed
+        self.btnGitHub.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.btnGitHub.setStyleSheet("""
+        QPushButton {
+                background-color: transparent;
+                border: none;
+        }
+        QPushButton:hover {
+                background-color: #B0B0B0;
+                border-radius: 4px;
+        }
+        """)
+        github_icon = QtGui.QIcon("../resources/github-logo-removebg-preview.png")  # Correct path from src/
+        self.btnGitHub.setIcon(github_icon)
+        self.btnGitHub.setIconSize(QtCore.QSize(36, 36))  # Slightly smaller than geometry
+        self.btnGitHub.setToolTip("View GitHub")
         self.lineBetweenAboutAndSupport = QtWidgets.QFrame(parent=self.footerFrame)
         self.lineBetweenAboutAndSupport.setGeometry(QtCore.QRect(885, 5, 1, 45))
         self.lineBetweenAboutAndSupport.setStyleSheet("background-color: Black;\n"
@@ -192,12 +228,13 @@ class Ui_Login(object):
         self.btnFAQs.setGeometry(QtCore.QRect(620, 10, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(12)
         self.btnFAQs.setFont(font)
         self.btnFAQs.setStyleSheet("QPushButton {\n"
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
+"    font-size: 12pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
@@ -214,65 +251,66 @@ class Ui_Login(object):
         self.loginFrame.setObjectName("loginFrame")
         self.txtEmail = QtWidgets.QLineEdit(parent=self.loginFrame)
         self.txtEmail.setGeometry(QtCore.QRect(150, 110, 241, 21))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        self.txtEmail.setFont(font)
+        self.txtEmail.setStyleSheet("background-color:#F4F3F3;\n"
+"color: black;")
         self.txtEmail.setObjectName("txtEmail")
-        self.txtEmail.setStyleSheet("background-color:#F4F3F3; color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
         self.txtPassword = QtWidgets.QLineEdit(parent=self.loginFrame)
-        self.txtPassword.setEchoMode(QLineEdit.EchoMode.Password)
         self.txtPassword.setGeometry(QtCore.QRect(150, 150, 241, 21))
-        self.txtPassword.setStyleSheet("background-color:#F4F3F3; color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n")
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        self.txtPassword.setFont(font)
+        self.txtPassword.setStyleSheet("background-color:#F4F3F3;\n"
+"color: black;")
+        self.txtPassword.setText("")
+        self.txtPassword.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
         self.txtPassword.setObjectName("txtPassword")
         self.lblEmail = QtWidgets.QLabel(parent=self.loginFrame)
         self.lblEmail.setGeometry(QtCore.QRect(100, 110, 41, 20))
-        self.lblEmail.setStyleSheet("color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
         font = QtGui.QFont()
         font.setFamily("Futura")
         self.lblEmail.setFont(font)
+        self.lblEmail.setStyleSheet("color: black;")
         self.lblEmail.setObjectName("lblEmail")
         self.lblPassword = QtWidgets.QLabel(parent=self.loginFrame)
         self.lblPassword.setGeometry(QtCore.QRect(80, 150, 71, 20))
         font = QtGui.QFont()
         font.setFamily("Futura")
         self.lblPassword.setFont(font)
+        self.lblPassword.setStyleSheet("color: black;")
         self.lblPassword.setObjectName("lblPassword")
-        self.lblPassword.setStyleSheet("color: Black;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
         self.btnRegister = QtWidgets.QPushButton(parent=self.loginFrame)
         self.btnRegister.setGeometry(QtCore.QRect(210, 230, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(12)
         self.btnRegister.setFont(font)
         self.btnRegister.setStyleSheet("QPushButton {\n"
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
+"    font-size: 12pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
 "    background-color: #A0A0A0;\n"
 "}\n"
-"")
+"\n"
+"   ")
         self.btnRegister.setObjectName("btnRegister")
         self.btnLoginUser = QtWidgets.QPushButton(parent=self.loginFrame)
         self.btnLoginUser.setGeometry(QtCore.QRect(210, 190, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(12)
         self.btnLoginUser.setFont(font)
         self.btnLoginUser.setStyleSheet("QPushButton {\n"
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
+"    font-size: 12pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
@@ -280,51 +318,48 @@ class Ui_Login(object):
 "}\n"
 "")
         self.btnLoginUser.setObjectName("btnLoginUser")
-        self.headerFooter_2 = QtWidgets.QFrame(parent=self.backgroundFrame)
-        self.headerFooter_2.setGeometry(QtCore.QRect(290, 511, 501, 20))
-        self.headerFooter_2.setStyleSheet("background-color:#BCBCBC;\n"
+        self.centerPageFooter = QtWidgets.QFrame(parent=self.backgroundFrame)
+        self.centerPageFooter.setGeometry(QtCore.QRect(290, 511, 501, 20))
+        self.centerPageFooter.setStyleSheet("background-color:#BCBCBC;\n"
 "border:none\n"
 "")
-        self.headerFooter_2.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.headerFooter_2.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.headerFooter_2.setObjectName("headerFooter_2")
-        Home.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(parent=Home)
+        self.centerPageFooter.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.centerPageFooter.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.centerPageFooter.setObjectName("centerPageFooter")
+        Login.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(parent=Login)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1021, 43))
         self.menubar.setObjectName("menubar")
-        Home.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(parent=Home)
+        Login.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(parent=Login)
         self.statusbar.setObjectName("statusbar")
-        Home.setStatusBar(self.statusbar)
+        Login.setStatusBar(self.statusbar)
 
-        self.retranslateUi(Home)
-        QtCore.QMetaObject.connectSlotsByName(Home)
+        self.retranslateUi(Login)
+        QtCore.QMetaObject.connectSlotsByName(Login)
 
-    def retranslateUi(self, Home):
+    def retranslateUi(self, Login):
         _translate = QtCore.QCoreApplication.translate
-        Home.setWindowTitle(_translate("Home", "Home"))
-        self.btnLogin.setText(_translate("Home", "Login"))
-        self.btnDashboard.setText(_translate("Home", "Dashboard"))
-        self.btnHome.setText(_translate("Home", "Home"))
-        self.lblDashboardHeader.setText(_translate("Home", " Login"))
-        self.lblTitle.setText(_translate("Home", "BuddyTrade AI"))
-        self.lblLogo.setText(_translate("Home", "logo"))
-        self.btnSupport.setText(_translate("Home", "Support"))
-        self.btnAbout.setText(_translate("Home", "About"))
-        self.btnLinkedIn.setText(_translate("Home", "lkin"))
-        self.btnGitHub.setText(_translate("Home", "git"))
-        self.btnFAQs.setText(_translate("Home", "FAQs"))
-        self.lblEmail.setText(_translate("Home", " Email:"))
-        self.lblPassword.setText(_translate("Home", "Password:"))
-        self.btnRegister.setText(_translate("Home", "Register"))
-        self.btnLoginUser.setText(_translate("Home", "Login"))
+        Login.setWindowTitle(_translate("Login", "Home"))
+        self.btnLogin.setText(_translate("Login", "Login"))
+        self.btnDashboard.setText(_translate("Login", "Dashboard"))
+        self.btnHome.setText(_translate("Login", "Home"))
+        self.lblDashboardHeader.setText(_translate("Login", " Login"))
+        self.lblTitle.setText(_translate("Login", "BuddyTrade AI"))
+        self.btnSupport.setText(_translate("Login", "Support"))
+        self.btnAbout.setText(_translate("Login", "About"))
+        self.btnFAQs.setText(_translate("Login", "FAQs"))
+        self.lblEmail.setText(_translate("Login", " Email:"))
+        self.lblPassword.setText(_translate("Login", "Password:"))
+        self.btnRegister.setText(_translate("Login", "Register"))
+        self.btnLoginUser.setText(_translate("Login", "Login"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Home = QtWidgets.QMainWindow()
+    Login = QtWidgets.QMainWindow()
     ui = Ui_Login()
-    ui.setupUi(Home)
-    Home.show()
+    ui.setupUi(Login)
+    Login.show()
     sys.exit(app.exec())

@@ -13,6 +13,8 @@ from controllers.screen_manager import ScreenManager
 from PyQt6.QtWidgets import QMainWindow
 from controllers.portfolio_controller import PortfolioController
 from controllers.dashboard_controller import DashboardController
+from PyQt6.QtGui import QDesktopServices
+from PyQt6.QtCore import QUrl
 
 class LoginController:
     def __init__(self, ui, main_window: QMainWindow, db_service: DatabaseService, auth_service: AuthService, app_state: AppState, user_controller: UserController, screen_manager: ScreenManager, portfolio_controller: PortfolioController, dashboard_controller: DashboardController):
@@ -35,6 +37,8 @@ class LoginController:
         self.ui.btnHome.clicked.connect(self.handle_home)
         self.ui.btnDashboard.clicked.connect(self.handle_dashboard)
         self.ui.btnLogin.clicked.connect(self.handle_login_window)
+        self.ui.btnAbout.clicked.connect(self.handle_about)
+        self.ui.btnGitHub.clicked.connect(self.handle_github)
 
     def handle_login(self):
         email = self.ui.txtEmail.text().strip()
@@ -72,13 +76,26 @@ class LoginController:
     def handle_register(self):
         self.screen_manager.show_register()
 
+    # Opens the github profile.
+    def handle_github(self):
+        url = "https://github.com/robertpatel28"
+        opened = QDesktopServices.openUrl(QUrl(url))
+        if not opened:
+            # Fallback to Python's webbrowser if Qt fails
+            import webbrowser
+            webbrowser.open(url)
+
     def handle_faqs(self):
         None
         # IN PROGRESS
 
     def handle_about(self):
-        None
-        # IN PROGRESS
+        url = "https://github.com/robertpatel28/BuddyTrade"
+        opened = QDesktopServices.openUrl(QUrl(url))
+        if not opened:
+            # Fallback to Python's webbrowser if Qt fails
+            import webbrowser
+            webbrowser.open(url)
 
     def handle_support(self):
         None

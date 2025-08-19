@@ -7,15 +7,16 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtGui import QPixmap
 
 class Ui_dashboard(object):
     def setupUi(self, dashboard):
         dashboard.setObjectName("dashboard")
-        dashboard.resize(1021, 777)
+        dashboard.resize(1010, 777)
         self.centralwidget = QtWidgets.QWidget(parent=dashboard)
         self.centralwidget.setObjectName("centralwidget")
         self.backgroundFrame = QtWidgets.QFrame(parent=self.centralwidget)
-        self.backgroundFrame.setGeometry(QtCore.QRect(-10, 0, 1031, 731))
+        self.backgroundFrame.setGeometry(QtCore.QRect(-20, 0, 1031, 731))
         self.backgroundFrame.setStyleSheet("background-color:#F4F3F3;\n"
 "border:none")
         self.backgroundFrame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
@@ -40,13 +41,14 @@ class Ui_dashboard(object):
         self.btnLogin.setGeometry(QtCore.QRect(900, 20, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(12)
         self.btnLogin.setFont(font)
         self.btnLogin.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.CrossCursor))
         self.btnLogin.setStyleSheet("QPushButton {\n"
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
+"    font-size: 12pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
@@ -58,13 +60,14 @@ class Ui_dashboard(object):
         self.btnDashboard.setGeometry(QtCore.QRect(760, 20, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(12)
         self.btnDashboard.setFont(font)
         self.btnDashboard.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.CrossCursor))
         self.btnDashboard.setStyleSheet("QPushButton {\n"
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
+"    font-size: 12pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
@@ -77,13 +80,14 @@ class Ui_dashboard(object):
         self.btnHome.setGeometry(QtCore.QRect(620, 20, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(12)
         self.btnHome.setFont(font)
         self.btnHome.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.CrossCursor))
         self.btnHome.setStyleSheet("QPushButton {\n"
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
+"    font-size: 12pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
@@ -95,7 +99,7 @@ class Ui_dashboard(object):
         self.lblDashboardHeader.setGeometry(QtCore.QRect(10, 70, 161, 31))
         self.lblDashboardHeader.setStyleSheet("color: Black;\n"
 "font-family: \'Futura\';\n"
-"font-size: 20px;\n"
+"font-size: 20pt;\n"
 "   ")
         self.lblDashboardHeader.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lblDashboardHeader.setObjectName("lblDashboardHeader")
@@ -103,13 +107,16 @@ class Ui_dashboard(object):
         self.lblTitle.setGeometry(QtCore.QRect(60, 10, 181, 31))
         self.lblTitle.setStyleSheet("color: Black;\n"
 "font-family: \'Futura\';\n"
-"font-size: 20px;\n"
+"font-size: 20pt;\n"
 "   ")
         self.lblTitle.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lblTitle.setObjectName("lblTitle")
         self.lblLogo = QtWidgets.QLabel(parent=self.headerFrame)
-        self.lblLogo.setGeometry(QtCore.QRect(30, 20, 16, 16))
+        self.lblLogo.setGeometry(QtCore.QRect(24, 11, 32, 32))
         self.lblLogo.setObjectName("lblLogo")
+        pixmap = QPixmap("../resources/logo-removebg-preview.png")
+        self.lblLogo.setPixmap(pixmap.scaled(32, 32, QtCore.Qt.AspectRatioMode.KeepAspectRatio, QtCore.Qt.TransformationMode.SmoothTransformation))
+        self.lblLogo.setGeometry(QtCore.QRect(24, 11, 32, 32))
         self.lineBetweenHomeAndDashboard = QtWidgets.QFrame(parent=self.headerFrame)
         self.lineBetweenHomeAndDashboard.setGeometry(QtCore.QRect(746, 13, 1, 45))
         self.lineBetweenHomeAndDashboard.setStyleSheet("background-color: Black;\n"
@@ -137,13 +144,14 @@ class Ui_dashboard(object):
         self.btnSupport.setGeometry(QtCore.QRect(900, 10, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(12)
         self.btnSupport.setFont(font)
         self.btnSupport.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.CrossCursor))
         self.btnSupport.setStyleSheet("QPushButton {\n"
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
+"    font-size: 12pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
@@ -155,13 +163,14 @@ class Ui_dashboard(object):
         self.btnAbout.setGeometry(QtCore.QRect(760, 10, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(12)
         self.btnAbout.setFont(font)
         self.btnAbout.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.CrossCursor))
         self.btnAbout.setStyleSheet("QPushButton {\n"
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
+"    font-size: 12pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
@@ -170,13 +179,39 @@ class Ui_dashboard(object):
 "")
         self.btnAbout.setObjectName("btnAbout")
         self.btnLinkedIn = QtWidgets.QPushButton(parent=self.footerFrame)
-        self.btnLinkedIn.setGeometry(QtCore.QRect(0, 30, 41, 21))
-        self.btnLinkedIn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.CrossCursor))
-        self.btnLinkedIn.setObjectName("btnLinkedIn")
+        self.btnLinkedIn.setGeometry(QtCore.QRect(10, 30, 32, 32))  # Adjust size as needed
+        self.btnLinkedIn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.btnLinkedIn.setStyleSheet("""
+        QPushButton {
+                background-color: transparent;
+                border: none;
+        }
+        QPushButton:hover {
+                background-color: #B0B0B0;
+                border-radius: 4px;
+        }
+        """)
+        linkedin_icon = QtGui.QIcon("../resources/linkedin-logo-removebg-preview.png")  # Adjust if filename differs
+        self.btnLinkedIn.setIcon(linkedin_icon)
+        self.btnLinkedIn.setIconSize(QtCore.QSize(28, 28))
+        self.btnLinkedIn.setToolTip("View LinkedIn")
         self.btnGitHub = QtWidgets.QPushButton(parent=self.footerFrame)
-        self.btnGitHub.setGeometry(QtCore.QRect(40, 30, 41, 21))
-        self.btnGitHub.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.CrossCursor))
-        self.btnGitHub.setObjectName("btnGitHub")
+        self.btnGitHub.setGeometry(QtCore.QRect(44, 30, 32, 32))  # Adjust as needed
+        self.btnGitHub.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.btnGitHub.setStyleSheet("""
+        QPushButton {
+                background-color: transparent;
+                border: none;
+        }
+        QPushButton:hover {
+                background-color: #B0B0B0;
+                border-radius: 4px;
+        }
+        """)
+        github_icon = QtGui.QIcon("../resources/github-logo-removebg-preview.png")  # Correct path from src/
+        self.btnGitHub.setIcon(github_icon)
+        self.btnGitHub.setIconSize(QtCore.QSize(36, 36))  # Slightly smaller than geometry
+        self.btnGitHub.setToolTip("View GitHub")
         self.lineBetweenAboutAndSupport = QtWidgets.QFrame(parent=self.footerFrame)
         self.lineBetweenAboutAndSupport.setGeometry(QtCore.QRect(885, 5, 1, 45))
         self.lineBetweenAboutAndSupport.setStyleSheet("background-color: Black;\n"
@@ -197,13 +232,14 @@ class Ui_dashboard(object):
         self.btnFAQs.setGeometry(QtCore.QRect(620, 10, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(12)
         self.btnFAQs.setFont(font)
         self.btnFAQs.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.CrossCursor))
         self.btnFAQs.setStyleSheet("QPushButton {\n"
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
+"    font-size: 12pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
@@ -228,72 +264,117 @@ class Ui_dashboard(object):
         self.btnAddHolding.setGeometry(QtCore.QRect(10, 3, 81, 15))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(9)
         self.btnAddHolding.setFont(font)
-        self.btnAddHolding.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.CrossCursor))
         self.btnAddHolding.setStyleSheet("QPushButton {\n"
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 9px;\n"
+"    font-size: 9pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
 "    background-color: #A0A0A0;\n"
-"}\n"
-"")
+"}")
         self.btnAddHolding.setObjectName("btnAddHolding")
         self.btnSellHolding = QtWidgets.QPushButton(parent=self.portfolioFrameFooter)
         self.btnSellHolding.setGeometry(QtCore.QRect(100, 3, 81, 15))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(9)
         self.btnSellHolding.setFont(font)
-        self.btnSellHolding.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.CrossCursor))
         self.btnSellHolding.setStyleSheet("QPushButton {\n"
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 9px;\n"
+"    font-size: 9pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
 "    background-color: #A0A0A0;\n"
-"}\n"
-"")
+"}")
         self.btnSellHolding.setObjectName("btnSellHolding")
+        self.txtDaysChange = QtWidgets.QLineEdit(parent=self.portfolioFrameFooter)
+        self.txtDaysChange.setGeometry(QtCore.QRect(392, 2, 91, 16))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        font.setPointSize(9)
+        self.txtDaysChange.setFont(font)
+        self.txtDaysChange.setStyleSheet("background-color: #A9A9A9;\n"
+"color: black;\n"
+"")
+        self.txtDaysChange.setText("")
+        self.txtDaysChange.setReadOnly(True)
+        self.txtDaysChange.setObjectName("txtDaysChange")
+        self.lblTotalGain = QtWidgets.QLabel(parent=self.portfolioFrameFooter)
+        self.lblTotalGain.setGeometry(QtCore.QRect(329, 0, 61, 20))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        font.setPointSize(9)
+        self.lblTotalGain.setFont(font)
+        self.lblTotalGain.setStyleSheet("color: black;")
+        self.lblTotalGain.setObjectName("lblTotalGain")
         self.tblPortfolio = QtWidgets.QTableWidget(parent=self.portfolioFrame)
         self.tblPortfolio.setEnabled(False)
         self.tblPortfolio.setGeometry(QtCore.QRect(5, 11, 481, 231))
         palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.WindowText, brush)
         brush = QtGui.QBrush(QtGui.QColor(188, 188, 188))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.ButtonText, brush)
         brush = QtGui.QBrush(QtGui.QColor(188, 188, 188))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Base, brush)
         brush = QtGui.QBrush(QtGui.QColor(188, 188, 188))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.WindowText, brush)
         brush = QtGui.QBrush(QtGui.QColor(188, 188, 188))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.ButtonText, brush)
         brush = QtGui.QBrush(QtGui.QColor(188, 188, 188))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Base, brush)
         brush = QtGui.QBrush(QtGui.QColor(188, 188, 188))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.WindowText, brush)
         brush = QtGui.QBrush(QtGui.QColor(188, 188, 188))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.ButtonText, brush)
         brush = QtGui.QBrush(QtGui.QColor(188, 188, 188))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Base, brush)
@@ -307,7 +388,8 @@ class Ui_dashboard(object):
         font.setKerning(True)
         self.tblPortfolio.setFont(font)
         self.tblPortfolio.setStyleSheet("background-color:#BCBCBC;\n"
-"border:2px solid #747171; color: Black;")
+"border:2px solid #747171;\n"
+"color: Black;")
         self.tblPortfolio.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.SizeAdjustPolicy.AdjustIgnored)
         self.tblPortfolio.setShowGrid(True)
         self.tblPortfolio.setGridStyle(QtCore.Qt.PenStyle.SolidLine)
@@ -390,32 +472,24 @@ class Ui_dashboard(object):
         self.insightsFrameFooter.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.insightsFrameFooter.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.insightsFrameFooter.setObjectName("insightsFrameFooter")
-        self.lblMarketInsights = QtWidgets.QLabel(parent=self.insightsFrame)
-        self.lblMarketInsights.setGeometry(QtCore.QRect(10, 10, 401, 20))
-        font = QtGui.QFont()
-        font.setFamily("Futura")
-        self.lblMarketInsights.setFont(font)
-        self.lblMarketInsights.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.lblMarketInsights.setObjectName("lblMarketInsights")
-        self.tblMarketInsights = QtWidgets.QTableWidget(parent=self.insightsFrame)
-        self.tblMarketInsights.setGeometry(QtCore.QRect(10, 40, 401, 31))
-        self.tblMarketInsights.setStyleSheet("background-color:#BCBCBC; \n"
-"border: 2px solid black;")
-        self.tblMarketInsights.setObjectName("tblMarketInsights")
-        self.tblMarketInsights.setColumnCount(0)
-        self.tblMarketInsights.setRowCount(0)
         self.lblMarketSummary = QtWidgets.QLabel(parent=self.insightsFrame)
-        self.lblMarketSummary.setGeometry(QtCore.QRect(9, 80, 401, 20))
+        self.lblMarketSummary.setGeometry(QtCore.QRect(10, 10, 401, 20))
         font = QtGui.QFont()
         font.setFamily("Futura")
         self.lblMarketSummary.setFont(font)
+        self.lblMarketSummary.setStyleSheet("color: black;")
         self.lblMarketSummary.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.lblMarketSummary.setObjectName("lblMarketSummary")
         self.txtMarketSummary = QtWidgets.QTextEdit(parent=self.insightsFrame)
         self.txtMarketSummary.setEnabled(False)
-        self.txtMarketSummary.setGeometry(QtCore.QRect(10, 110, 401, 51))
+        self.txtMarketSummary.setGeometry(QtCore.QRect(10, 40, 401, 121))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        font.setPointSize(9)
+        self.txtMarketSummary.setFont(font)
         self.txtMarketSummary.setStyleSheet("background-color:#BCBCBC; \n"
-"border: 2px solid black;")
+"border: 2px solid black;\n"
+"color: Black;")
         self.txtMarketSummary.setObjectName("txtMarketSummary")
         self.watchlistFrame = QtWidgets.QFrame(parent=self.backgroundFrame)
         self.watchlistFrame.setGeometry(QtCore.QRect(550, 150, 181, 271))
@@ -430,11 +504,46 @@ class Ui_dashboard(object):
         self.watchlistFrameFooter.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.watchlistFrameFooter.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.watchlistFrameFooter.setObjectName("watchlistFrameFooter")
+        self.btnAddWatchlist = QtWidgets.QPushButton(parent=self.watchlistFrameFooter)
+        self.btnAddWatchlist.setGeometry(QtCore.QRect(10, 3, 71, 16))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        font.setPointSize(9)
+        self.btnAddWatchlist.setFont(font)
+        self.btnAddWatchlist.setStyleSheet("QPushButton {\n"
+"    color: black;\n"
+"    background-color: #BCBCBC;\n"
+"    font-family: \'Futura\';\n"
+"    font-size: 9pt;\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #A0A0A0;\n"
+"}")
+        self.btnAddWatchlist.setObjectName("btnAddWatchlist")
+        self.btnRemoveWatchlist = QtWidgets.QPushButton(parent=self.watchlistFrameFooter)
+        self.btnRemoveWatchlist.setGeometry(QtCore.QRect(100, 3, 71, 16))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        font.setPointSize(9)
+        self.btnRemoveWatchlist.setFont(font)
+        self.btnRemoveWatchlist.setStyleSheet("QPushButton {\n"
+"    color: black;\n"
+"    background-color: #BCBCBC;\n"
+"    font-family: \'Futura\';\n"
+"    font-size: 9pt;\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #A0A0A0;\n"
+"}")
+        self.btnRemoveWatchlist.setObjectName("btnRemoveWatchlist")
         self.tblWatchlist = QtWidgets.QTableWidget(parent=self.watchlistFrame)
         self.tblWatchlist.setEnabled(False)
         self.tblWatchlist.setGeometry(QtCore.QRect(10, 10, 161, 231))
         self.tblWatchlist.setStyleSheet("background-color:#BCBCBC;\n"
-"border:2px solid #747171;")
+"border:2px solid #747171;\n"
+"color: Black;")
         self.tblWatchlist.setObjectName("tblWatchlist")
         self.tblWatchlist.setColumnCount(2)
         self.tblWatchlist.setRowCount(0)
@@ -470,6 +579,26 @@ class Ui_dashboard(object):
         self.pieChartFrameFooter.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.pieChartFrameFooter.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.pieChartFrameFooter.setObjectName("pieChartFrameFooter")
+        self.t = QtWidgets.QLineEdit(parent=self.pieChartFrameFooter)
+        self.t.setGeometry(QtCore.QRect(110, 2, 91, 16))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        font.setPointSize(9)
+        self.t.setFont(font)
+        self.t.setStyleSheet("background-color: #A9A9A9;\n"
+"color: black;\n"
+"")
+        self.t.setText("")
+        self.t.setReadOnly(True)
+        self.t.setObjectName("t")
+        self.lblTotalGain_2 = QtWidgets.QLabel(parent=self.pieChartFrameFooter)
+        self.lblTotalGain_2.setGeometry(QtCore.QRect(20, 0, 91, 20))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        font.setPointSize(9)
+        self.lblTotalGain_2.setFont(font)
+        self.lblTotalGain_2.setStyleSheet("color: black;")
+        self.lblTotalGain_2.setObjectName("lblTotalGain_2")
         self.pieChartContainer = QtWidgets.QWidget(parent=self.pieChartFrame)
         self.pieChartContainer.setEnabled(True)
         self.pieChartContainer.setGeometry(QtCore.QRect(10, 10, 231, 231))
@@ -494,8 +623,9 @@ class Ui_dashboard(object):
         font.setFamily("Futura")
         font.setPointSize(10)
         self.txtTickerAnalyzer.setFont(font)
-        self.txtTickerAnalyzer.setStyleSheet("color: black; background-color:#BCBCBC; \n"
+        self.txtTickerAnalyzer.setStyleSheet("background-color:#BCBCBC; \n"
 "border: 2px solid black;\n"
+"color: black;\n"
 "")
         self.txtTickerAnalyzer.setText("")
         self.txtTickerAnalyzer.setObjectName("txtTickerAnalyzer")
@@ -504,6 +634,7 @@ class Ui_dashboard(object):
         font = QtGui.QFont()
         font.setFamily("Futura")
         self.lblEnterTicker.setFont(font)
+        self.lblEnterTicker.setStyleSheet("color: black;")
         self.lblEnterTicker.setObjectName("lblEnterTicker")
         self.lineUnderTickerTextbox = QtWidgets.QFrame(parent=self.analyzerFrame)
         self.lineUnderTickerTextbox.setGeometry(QtCore.QRect(15, 35, 491, 1))
@@ -516,8 +647,9 @@ class Ui_dashboard(object):
         self.tblIndicators = QtWidgets.QTableWidget(parent=self.analyzerFrame)
         self.tblIndicators.setEnabled(True)
         self.tblIndicators.setGeometry(QtCore.QRect(10, 50, 151, 111))
-        self.tblIndicators.setStyleSheet("color: black; background-color:white;\n"
-"border:2px solid black;")
+        self.tblIndicators.setStyleSheet("background-color:white;\n"
+"border:2px solid black;\n"
+"color: Black;")
         self.tblIndicators.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.tblIndicators.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.tblIndicators.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.SizeAdjustPolicy.AdjustIgnored)
@@ -731,7 +863,8 @@ class Ui_dashboard(object):
         font.setItalic(True)
         self.tblTechnicalAnalysis.setFont(font)
         self.tblTechnicalAnalysis.setStyleSheet("background-color:white;\n"
-"border:2px solid black;")
+"border:2px solid black;\n"
+"color: Black;")
         self.tblTechnicalAnalysis.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.tblTechnicalAnalysis.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
         self.tblTechnicalAnalysis.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.SizeAdjustPolicy.AdjustIgnored)
@@ -838,6 +971,7 @@ class Ui_dashboard(object):
         self.btnAnalyze.setGeometry(QtCore.QRect(380, 10, 91, 20))
         font = QtGui.QFont()
         font.setFamily("Futura")
+        font.setPointSize(12)
         self.btnAnalyze.setFont(font)
         self.btnAnalyze.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.CrossCursor))
         self.btnAnalyze.setMouseTracking(False)
@@ -846,7 +980,7 @@ class Ui_dashboard(object):
 "    color: black;\n"
 "    background-color: #BCBCBC;\n"
 "    font-family: \'Futura\';\n"
-"    font-size: 12px;\n"
+"    font-size: 12pt;\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
@@ -865,7 +999,7 @@ class Ui_dashboard(object):
         self.btnAnalyze.raise_()
         dashboard.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=dashboard)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1021, 43))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1010, 43))
         self.menubar.setObjectName("menubar")
         dashboard.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(parent=dashboard)
@@ -879,18 +1013,16 @@ class Ui_dashboard(object):
         _translate = QtCore.QCoreApplication.translate
         dashboard.setWindowTitle(_translate("dashboard", "Dashboard"))
         self.btnLogin.setText(_translate("dashboard", "Profile / Settings"))
-        self.btnAddHolding.setText(_translate("dashboard", "Buy"))
-        self.btnSellHolding.setText(_translate("dashboard", "Sell"))
         self.btnDashboard.setText(_translate("dashboard", "Dashboard"))
         self.btnHome.setText(_translate("dashboard", "Home"))
-        self.lblDashboardHeader.setText(_translate("dashboard", " Dashboard"))
+        self.lblDashboardHeader.setText(_translate("dashboard", "  Dashboard"))
         self.lblTitle.setText(_translate("dashboard", "BuddyTrade"))
-        self.lblLogo.setText(_translate("dashboard", "logo"))
         self.btnSupport.setText(_translate("dashboard", "Support"))
         self.btnAbout.setText(_translate("dashboard", "About"))
-        self.btnLinkedIn.setText(_translate("dashboard", "lkin"))
-        self.btnGitHub.setText(_translate("dashboard", "git"))
         self.btnFAQs.setText(_translate("dashboard", "FAQs"))
+        self.btnAddHolding.setText(_translate("dashboard", "Buy"))
+        self.btnSellHolding.setText(_translate("dashboard", "Sell"))
+        self.lblTotalGain.setText(_translate("dashboard", "Day\'s Change:"))
         self.tblPortfolio.setSortingEnabled(False)
         item = self.tblPortfolio.horizontalHeaderItem(0)
         item.setText(_translate("dashboard", "Ticker"))
@@ -903,13 +1035,15 @@ class Ui_dashboard(object):
         item = self.tblPortfolio.horizontalHeaderItem(4)
         item.setText(_translate("dashboard", "Gain/Loss"))
         item = self.tblPortfolio.horizontalHeaderItem(5)
-        item.setText(_translate("dashboard", "Date Purchased"))
-        self.lblMarketInsights.setText(_translate("dashboard", "Market Insights"))
+        item.setText(_translate("dashboard", "Recommendation"))
         self.lblMarketSummary.setText(_translate("dashboard", "Daily Market Summary"))
+        self.btnAddWatchlist.setText(_translate("dashboard", "Add"))
+        self.btnRemoveWatchlist.setText(_translate("dashboard", "Remove"))
         item = self.tblWatchlist.horizontalHeaderItem(0)
         item.setText(_translate("dashboard", "Ticker"))
         item = self.tblWatchlist.horizontalHeaderItem(1)
         item.setText(_translate("dashboard", "Current Price"))
+        self.lblTotalGain_2.setText(_translate("dashboard", "Total Portfolio Value:"))
         self.lblEnterTicker.setText(_translate("dashboard", "Enter Ticker for Technical Analysis:"))
         item = self.tblIndicators.verticalHeaderItem(0)
         item.setText(_translate("dashboard", "EMA 10"))
@@ -918,7 +1052,7 @@ class Ui_dashboard(object):
         item = self.tblIndicators.verticalHeaderItem(2)
         item.setText(_translate("dashboard", "EMA 50"))
         item = self.tblIndicators.verticalHeaderItem(3)
-        item.setText(_translate("dashboard", "SMA 20"))
+        item.setText(_translate("dashboard", "EMA 20"))
         item = self.tblIndicators.verticalHeaderItem(4)
         item.setText(_translate("dashboard", "SMA 50"))
         item = self.tblIndicators.verticalHeaderItem(5)

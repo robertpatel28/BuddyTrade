@@ -12,6 +12,9 @@ from services.app_state import AppState
 from PyQt6.QtWidgets import QMainWindow
 from controllers.screen_manager import ScreenManager
 from controllers.portfolio_controller import PortfolioController
+from PyQt6.QtGui import QDesktopServices
+from PyQt6.QtCore import QUrl
+import yfinance as yf
 
 class AnalysisController:
     def __init__(self, ui, main_window: QMainWindow, db_service: DatabaseService, auth_service: AuthService, app_state: AppState, user_controller: UserController, screen_manager: ScreenManager, portfolio_controller: PortfolioController):
@@ -31,6 +34,8 @@ class AnalysisController:
         self.ui.btnLogin.clicked.connect(self.handle_login)
         self.ui.btnDashboard.clicked.connect(self.handle_dashboard)
         self.ui.btnHome.clicked.connect(self.handle_home)
+        self.ui.btnGitHub.clicked.connect(self.handle_github)
+        self.ui.btnLinkedIn.clicked.connect(self.handle_linkedin)
 
     # Opens the home window (guest version)
     def handle_home(self):
@@ -48,6 +53,11 @@ class AnalysisController:
             self.screen_manager.show_login()
     
     def load_analysis(self, ticker: str):
+        stock = yf.Ticker(ticker)
+        try:
+            info = stock.fast_info  # faster than .info
+        except Exception:
+            raise ValueError("Ticker does not exist.")
         price_data = self.portfolio_controller.get_price_data(ticker)
 
         self.ui.txtEma10.setText(f"${self.portfolio_controller.get_ema(price_data, 10):.2f}")
@@ -73,11 +83,6 @@ class AnalysisController:
         dividend_yield = self.portfolio_controller.get_dividend_yield(ticker)
         self.ui.txtDividendYield.setText(dividend_yield if isinstance(dividend_yield, str) else "N/A")
 
-
-
-
-
-
     # Opens the login window for user to log into application.
     def handle_login(self):
         self.screen_manager.show_login()
@@ -90,10 +95,31 @@ class AnalysisController:
         None
         # IN PROGRESS
 
-    def handle_about(self):
-        None
-        # IN PROGRESS
+    # Opens the github profile.
+    def handle_github(self):
+        url = "https://github.com/robertpatel28"
+        opened = QDesktopServices.openUrl(QUrl(url))
+        if not opened:
+            # Fallback to Python's webbrowser if Qt fails
+            import webbrowser
+            webbrowser.open(url)
 
+    # Opens the linkedin profile.
+    def handle_linkedin(self):
+        url = "https://www.linkedin.com/in/robertpatel/"
+        opened = QDesktopServices.openUrl(QUrl(url))
+        if not opened:
+            # Fallback to Python's webbrowser if Qt fails
+            import webbrowser
+            webbrowser.open(url)
+
+    def handle_about(self):
+        url = "https://github.com/robertpatel28/BuddyTrade"
+        opened = QDesktopServices.openUrl(QUrl(url))
+        if not opened:
+            # Fallback to Python's webbrowser if Qt fails
+            import webbrowser
+            webbrowser.open(url)
     def handle_support(self):
         None
         # IN PROGRESS

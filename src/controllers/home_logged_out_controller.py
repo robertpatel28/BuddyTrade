@@ -12,6 +12,8 @@ from services.app_state import AppState
 from PyQt6.QtWidgets import QMainWindow
 from controllers.screen_manager import ScreenManager
 from controllers.analysis_controller import AnalysisController
+from PyQt6.QtGui import QDesktopServices
+from PyQt6.QtCore import QUrl
 
 class HomeLoggedOutController:
     def __init__(self, ui, main_window: QMainWindow, db_service: DatabaseService, auth_service: AuthService, app_state: AppState, user_controller: UserController, screen_manager: ScreenManager, analysis_controller: AnalysisController):
@@ -33,6 +35,9 @@ class HomeLoggedOutController:
         self.ui.btnDashboard.clicked.connect(self.handle_dashboard)
         self.ui.btnHome.clicked.connect(self.handle_home)
         self.ui.btnAnalyzeTicker.clicked.connect(self.handle_analyze)
+        self.ui.btnAbout.clicked.connect(self.handle_about)
+        self.ui.btnGitHub.clicked.connect(self.handle_github)
+        self.ui.btnLinkedIn.clicked.connect(self.handle_linkedin)
 
     # Opens the home window (guest version)
     def handle_home(self):
@@ -50,21 +55,61 @@ class HomeLoggedOutController:
     def handle_register(self):
         self.screen_manager.show_register()
 
+    # Opens the github profile.
+    def handle_github(self):
+        url = "https://github.com/robertpatel28"
+        opened = QDesktopServices.openUrl(QUrl(url))
+        if not opened:
+            # Fallback to Python's webbrowser if Qt fails
+            import webbrowser
+            webbrowser.open(url)
+    
+    # Opens the linkedin profile.
+    def handle_linkedin(self):
+        url = "https://www.linkedin.com/in/robertpatel/"
+        opened = QDesktopServices.openUrl(QUrl(url))
+        if not opened:
+            # Fallback to Python's webbrowser if Qt fails
+            import webbrowser
+            webbrowser.open(url)
+
     def handle_faqs(self):
         None
         # IN PROGRESS
 
+    # Opens the github repo for the application.
     def handle_about(self):
-        None
-        # IN PROGRESS
+        url = "https://github.com/robertpatel28/BuddyTrade"
+        opened = QDesktopServices.openUrl(QUrl(url))
+        if not opened:
+            # Fallback to Python's webbrowser if Qt fails
+            import webbrowser
+            webbrowser.open(url)
 
     def handle_support(self):
         None
         # IN PROGRESS
     
     def handle_analyze(self):
-        self.analysis_controller.load_analysis(self.ui.txtTickerSearch.text())
-        self.screen_manager.show_analysis()
+        # Format ticker input to just the letters.
+        ticker = self.ui.txtTickerSearch.text().strip()
+        # Calls error method to show error to user.
+        if not ticker:
+            self.show_error("Invalid Input", "Please enter a ticker symbol.")
+            return
+
+        try:
+            # Attempt to load analysis page.
+            self.analysis_controller.load_analysis(ticker)
+            self.screen_manager.show_analysis()
+
+        except ValueError as e:
+            # Catches invalid ticker / no price data
+            self.show_error("Invalid Ticker", str(e))
+
+        except Exception as e:
+            # Catches unexpected errors
+            self.show_error("Error", f"An unexpected error occurred: {str(e)}")
 
     # Helper method that shows error box with given title and message.
     def show_error(self, title, message):

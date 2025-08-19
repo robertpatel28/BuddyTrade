@@ -41,41 +41,52 @@ class Ui_Analysis(object):
         self.btnProfileSettings.setGeometry(QtCore.QRect(900, 20, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
-        font.setPointSize(-1)
+        font.setPointSize(12)
         self.btnProfileSettings.setFont(font)
-        self.btnProfileSettings.setStyleSheet("color: black;\n"
-"background-color: #BCBCBC;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"border:none\n"
-"")
+        self.btnProfileSettings.setStyleSheet("QPushButton {\n"
+"    color: black;\n"
+"    background-color: #BCBCBC;\n"
+"    font-family: \'Futura\';\n"
+"    font-size: 12pt;\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:hover {\n"
+"   background-color: #A0A0A0;\n"
+"}")
         self.btnProfileSettings.setObjectName("btnProfileSettings")
         self.btnDashboard = QtWidgets.QPushButton(parent=self.headerFrame)
         self.btnDashboard.setGeometry(QtCore.QRect(760, 20, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
-        font.setPointSize(-1)
+        font.setPointSize(12)
         self.btnDashboard.setFont(font)
-        self.btnDashboard.setStyleSheet("color: black;\n"
-"background-color: #BCBCBC;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"border:none\n"
-"\n"
-"   ")
+        self.btnDashboard.setStyleSheet("QPushButton {\n"
+"    color: black;\n"
+"    background-color: #BCBCBC;\n"
+"    font-family: \'Futura\';\n"
+"    font-size: 12pt;\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:hover {\n"
+"   background-color: #A0A0A0;\n"
+"}")
         self.btnDashboard.setObjectName("btnDashboard")
         self.btnHome = QtWidgets.QPushButton(parent=self.headerFrame)
         self.btnHome.setGeometry(QtCore.QRect(620, 20, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
-        font.setPointSize(-1)
+        font.setPointSize(12)
         self.btnHome.setFont(font)
-        self.btnHome.setStyleSheet("color: black;\n"
-"background-color: #BCBCBC;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"border:none\n"
-"   ")
+        self.btnHome.setStyleSheet("QPushButton {\n"
+"    color: black;\n"
+"    background-color: #BCBCBC;\n"
+"    font-family: \'Futura\';\n"
+"    font-size: 12pt;\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:hover {\n"
+"   background-color: #A0A0A0;\n"
+"}")
         self.btnHome.setObjectName("btnHome")
         self.lblDashboardHeader = QtWidgets.QLabel(parent=self.headerFrame)
         self.lblDashboardHeader.setGeometry(QtCore.QRect(10, 70, 161, 31))
@@ -127,33 +138,71 @@ class Ui_Analysis(object):
         self.btnSupport.setGeometry(QtCore.QRect(900, 10, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
-        font.setPointSize(-1)
+        font.setPointSize(12)
         self.btnSupport.setFont(font)
-        self.btnSupport.setStyleSheet("color: black;\n"
-"background-color: #BCBCBC;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"border:none;\n"
+        self.btnSupport.setStyleSheet("QPushButton {\n"
+"    color: black;\n"
+"    background-color: #BCBCBC;\n"
+"    font-family: \'Futura\';\n"
+"    font-size: 12pt;\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:hover {\n"
+"   background-color: #A0A0A0;\n"
+"}\n"
 "   ")
         self.btnSupport.setObjectName("btnSupport")
         self.btnAbout = QtWidgets.QPushButton(parent=self.footerFrame)
         self.btnAbout.setGeometry(QtCore.QRect(760, 10, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
-        font.setPointSize(-1)
+        font.setPointSize(12)
         self.btnAbout.setFont(font)
-        self.btnAbout.setStyleSheet("color: black;\n"
-"background-color: #BCBCBC;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
+        self.btnAbout.setStyleSheet("QPushButton {\n"
+"    color: black;\n"
+"    background-color: #BCBCBC;\n"
+"    font-family: \'Futura\';\n"
+"    font-size: 12pt;\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:hover {\n"
+"   background-color: #A0A0A0;\n"
+"}")
         self.btnAbout.setObjectName("btnAbout")
         self.btnLinkedIn = QtWidgets.QPushButton(parent=self.footerFrame)
-        self.btnLinkedIn.setGeometry(QtCore.QRect(0, 30, 41, 21))
-        self.btnLinkedIn.setObjectName("btnLinkedIn")
+        self.btnLinkedIn.setGeometry(QtCore.QRect(0, 30, 32, 32))  # Adjust size as needed
+        self.btnLinkedIn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.btnLinkedIn.setStyleSheet("""
+        QPushButton {
+                background-color: transparent;
+                border: none;
+        }
+        QPushButton:hover {
+                background-color: #B0B0B0;
+                border-radius: 4px;
+        }
+        """)
+        linkedin_icon = QtGui.QIcon("../resources/linkedin-logo-removebg-preview.png")  # Adjust if filename differs
+        self.btnLinkedIn.setIcon(linkedin_icon)
+        self.btnLinkedIn.setIconSize(QtCore.QSize(28, 28))
+        self.btnLinkedIn.setToolTip("View LinkedIn")
         self.btnGitHub = QtWidgets.QPushButton(parent=self.footerFrame)
-        self.btnGitHub.setGeometry(QtCore.QRect(40, 30, 41, 21))
-        self.btnGitHub.setObjectName("btnGitHub")
+        self.btnGitHub.setGeometry(QtCore.QRect(40, 30, 32, 32))  # Adjust as needed
+        self.btnGitHub.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.btnGitHub.setStyleSheet("""
+        QPushButton {
+                background-color: transparent;
+                border: none;
+        }
+        QPushButton:hover {
+                background-color: #B0B0B0;
+                border-radius: 4px;
+        }
+        """)
+        github_icon = QtGui.QIcon("../resources/github-logo-removebg-preview.png")  # Correct path from src/
+        self.btnGitHub.setIcon(github_icon)
+        self.btnGitHub.setIconSize(QtCore.QSize(36, 36))  # Slightly smaller than geometry
+        self.btnGitHub.setToolTip("View GitHub")
         self.lineBetweenAboutAndSupport = QtWidgets.QFrame(parent=self.footerFrame)
         self.lineBetweenAboutAndSupport.setGeometry(QtCore.QRect(885, 5, 1, 45))
         self.lineBetweenAboutAndSupport.setStyleSheet("background-color: Black;\n"
@@ -174,13 +223,18 @@ class Ui_Analysis(object):
         self.btnFAQs.setGeometry(QtCore.QRect(620, 10, 113, 32))
         font = QtGui.QFont()
         font.setFamily("Futura")
-        font.setPointSize(-1)
+        font.setPointSize(12)
         self.btnFAQs.setFont(font)
-        self.btnFAQs.setStyleSheet("color: black;\n"
-"background-color: #BCBCBC;\n"
-"font-family: \'Futura\';\n"
-"font-size: 12px;\n"
-"   ")
+        self.btnFAQs.setStyleSheet("QPushButton {\n"
+"    color: black;\n"
+"    background-color: #BCBCBC;\n"
+"    font-family: \'Futura\';\n"
+"    font-size: 12pt;\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:hover {\n"
+"   background-color: #A0A0A0;\n"
+"}")
         self.btnFAQs.setObjectName("btnFAQs")
         self.loginFrame = QtWidgets.QFrame(parent=self.backgroundFrame)
         self.loginFrame.setGeometry(QtCore.QRect(240, 220, 571, 391))
@@ -195,7 +249,7 @@ class Ui_Analysis(object):
         self.txtEma10.setStyleSheet("background-color:#F4F3F3;\n"
 "color: black;\n"
 "font-family: Futura;\n"
-"font: 13px;")
+"font: 13pt;")
         self.txtEma10.setText("")
         self.txtEma10.setReadOnly(True)
         self.txtEma10.setObjectName("txtEma10")
@@ -205,7 +259,7 @@ class Ui_Analysis(object):
         self.txtEma50.setStyleSheet("background-color:#F4F3F3;\n"
 "color: black;\n"
 "font-family: Futura;\n"
-"font: 13px;")
+"font: 13pt;")
         self.txtEma50.setReadOnly(True)
         self.txtEma50.setObjectName("txtEma50")
         self.lblEma10 = QtWidgets.QLabel(parent=self.loginFrame)
@@ -233,7 +287,7 @@ class Ui_Analysis(object):
         self.txtEma34.setStyleSheet("background-color:#F4F3F3;\n"
 "color: black;\n"
 "font-family: Futura;\n"
-"font: 13px;")
+"font: 13pt;")
         self.txtEma34.setReadOnly(True)
         self.txtEma34.setObjectName("txtEma34")
         self.lblEma34 = QtWidgets.QLabel(parent=self.loginFrame)
@@ -260,7 +314,7 @@ class Ui_Analysis(object):
         self.txtSma20.setStyleSheet("background-color:#F4F3F3;\n"
 "color: black;\n"
 "font-family: Futura;\n"
-"font: 13px;")
+"font: 13pt;")
         self.txtSma20.setReadOnly(True)
         self.txtSma20.setObjectName("txtSma20")
         self.lblSma20 = QtWidgets.QLabel(parent=self.loginFrame)
@@ -279,7 +333,7 @@ class Ui_Analysis(object):
         self.txtSma50.setStyleSheet("background-color:#F4F3F3;\n"
 "color: black;\n"
 "font-family: Futura;\n"
-"font: 13px;")
+"font: 13pt;")
         self.txtSma50.setReadOnly(True)
         self.txtSma50.setObjectName("txtSma50")
         self.txtSma100 = QtWidgets.QLineEdit(parent=self.loginFrame)
@@ -288,7 +342,7 @@ class Ui_Analysis(object):
         self.txtSma100.setStyleSheet("background-color:#F4F3F3;\n"
 "color: black;\n"
 "font-family: Futura;\n"
-"font: 13px;")
+"font: 13pt;")
         self.txtSma100.setReadOnly(True)
         self.txtSma100.setObjectName("txtSma100")
         self.lblSma50 = QtWidgets.QLabel(parent=self.loginFrame)
@@ -317,7 +371,7 @@ class Ui_Analysis(object):
         self.txtSma200.setStyleSheet("background-color:#F4F3F3;\n"
 "color: black;\n"
 "font-family: Futura;\n"
-"font: 13px;")
+"font: 13pt;")
         self.txtSma200.setReadOnly(True)
         self.txtSma200.setObjectName("txtSma200")
         self.lblSma200 = QtWidgets.QLabel(parent=self.loginFrame)
@@ -336,7 +390,7 @@ class Ui_Analysis(object):
         self.txtAdx.setStyleSheet("background-color:#F4F3F3;\n"
 "color: black;\n"
 "font-family: Futura;\n"
-"font: 13px;")
+"font: 13pt;")
         self.txtAdx.setReadOnly(True)
         self.txtAdx.setObjectName("txtAdx")
         self.txtRsi = QtWidgets.QLineEdit(parent=self.loginFrame)
@@ -345,7 +399,7 @@ class Ui_Analysis(object):
         self.txtRsi.setStyleSheet("background-color:#F4F3F3;\n"
 "color: black;\n"
 "font-family: Futura;\n"
-"font: 13px;")
+"font: 13pt;")
         self.txtRsi.setReadOnly(True)
         self.txtRsi.setObjectName("txtRsi")
         self.lblAdx = QtWidgets.QLabel(parent=self.loginFrame)
@@ -384,7 +438,7 @@ class Ui_Analysis(object):
         self.txtRsiVolume.setStyleSheet("background-color:#F4F3F3;\n"
 "color: black;\n"
 "font-family: Futura;\n"
-"font: 13px;")
+"font: 13pt;")
         self.txtRsiVolume.setReadOnly(True)
         self.txtRsiVolume.setObjectName("txtRsiVolume")
         self.txtMarketCap = QtWidgets.QLineEdit(parent=self.loginFrame)
@@ -393,7 +447,7 @@ class Ui_Analysis(object):
         self.txtMarketCap.setStyleSheet("background-color:#F4F3F3;\n"
 "color: black;\n"
 "font-family: Futura;\n"
-"font: 13px;")
+"font: 13pt;")
         self.txtMarketCap.setText("")
         self.txtMarketCap.setReadOnly(True)
         self.txtMarketCap.setObjectName("txtMarketCap")
@@ -412,7 +466,7 @@ class Ui_Analysis(object):
         self.txtPriceToEarningsRatio.setStyleSheet("background-color:#F4F3F3;\n"
 "color: black;\n"
 "font-family: Futura;\n"
-"font: 13px;")
+"font: 13pt;")
         self.txtPriceToEarningsRatio.setText("")
         self.txtPriceToEarningsRatio.setReadOnly(True)
         self.txtPriceToEarningsRatio.setObjectName("txtPriceToEarningsRatio")
@@ -431,7 +485,7 @@ class Ui_Analysis(object):
         self.txtEps.setStyleSheet("background-color:#F4F3F3;\n"
 "color: black;\n"
 "font-family: Futura;\n"
-"font: 13px;")
+"font: 13pt;")
         self.txtEps.setText("")
         self.txtEps.setReadOnly(True)
         self.txtEps.setObjectName("txtEps")
@@ -459,7 +513,7 @@ class Ui_Analysis(object):
         self.txtDividendYield.setStyleSheet("background-color:#F4F3F3;\n"
 "color: black;\n"
 "font-family: Futura;\n"
-"font: 13px;")
+"font: 13pt;")
         self.txtDividendYield.setText("")
         self.txtDividendYield.setReadOnly(True)
         self.txtDividendYield.setObjectName("txtDividendYield")
@@ -475,7 +529,7 @@ class Ui_Analysis(object):
         self.retranslateUi(Analysis)
         QtCore.QMetaObject.connectSlotsByName(Analysis)
 
-    def retranslateUi(self, Analysis):
+def retranslateUi(self, Analysis):
         _translate = QtCore.QCoreApplication.translate
         Analysis.setWindowTitle(_translate("Analysis", "Analysis"))
         self.btnProfileSettings.setText(_translate("Analysis", "Profile / Settings"))
@@ -486,8 +540,6 @@ class Ui_Analysis(object):
         self.lblLogo.setText(_translate("Analysis", "logo"))
         self.btnSupport.setText(_translate("Analysis", "Support"))
         self.btnAbout.setText(_translate("Analysis", "About"))
-        self.btnLinkedIn.setText(_translate("Analysis", "lkin"))
-        self.btnGitHub.setText(_translate("Analysis", "git"))
         self.btnFAQs.setText(_translate("Analysis", "FAQs"))
         self.lblEma10.setText(_translate("Analysis", "  EMA 10:"))
         self.lblEma50.setText(_translate("Analysis", "  EMA 50:"))

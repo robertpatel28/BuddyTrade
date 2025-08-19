@@ -11,6 +11,8 @@ from services.db_service import DatabaseService
 from services.app_state import AppState
 from PyQt6.QtWidgets import QMainWindow
 from controllers.screen_manager import ScreenManager
+from PyQt6.QtGui import QDesktopServices
+from PyQt6.QtCore import QUrl
 
 class RegistrationController:
     def __init__(self, ui, main_window: QMainWindow, db_service: DatabaseService, auth_service: AuthService, app_state: AppState, user_controller: UserController, screen_manager: ScreenManager):
@@ -30,6 +32,9 @@ class RegistrationController:
         self.ui.btnLogin.clicked.connect(self.handle_login)
         self.ui.btnDashboard.clicked.connect(self.handle_dashboard)
         self.ui.btnHome.clicked.connect(self.handle_home)
+        self.ui.btnAbout.clicked.connect(self.handle_about)
+        self.ui.btnGitHub.clicked.connect(self.handle_github)
+        self.ui.btnLinkedIn.clicked.connect(self.handle_linkedin)
 
     def handle_register(self):
         email = self.ui.txtEmail.text().strip()
@@ -68,13 +73,35 @@ class RegistrationController:
     def handle_login(self):
         self.screen_manager.show_login()
 
+    # Opens the github profile.
+    def handle_github(self):
+        url = "https://github.com/robertpatel28"
+        opened = QDesktopServices.openUrl(QUrl(url))
+        if not opened:
+            # Fallback to Python's webbrowser if Qt fails
+            import webbrowser
+            webbrowser.open(url)
+
+    # Opens the linkedin profile.
+    def handle_linkedin(self):
+        url = "https://www.linkedin.com/in/robertpatel/"
+        opened = QDesktopServices.openUrl(QUrl(url))
+        if not opened:
+            # Fallback to Python's webbrowser if Qt fails
+            import webbrowser
+            webbrowser.open(url)
+
     def handle_faqs(self):
         None
         # IN PROGRESS
 
     def handle_about(self):
-        None
-        # IN PROGRESS
+        url = "https://github.com/robertpatel28/BuddyTrade"
+        opened = QDesktopServices.openUrl(QUrl(url))
+        if not opened:
+            # Fallback to Python's webbrowser if Qt fails
+            import webbrowser
+            webbrowser.open(url)
 
     def handle_support(self):
         None

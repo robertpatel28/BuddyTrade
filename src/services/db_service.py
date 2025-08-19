@@ -31,7 +31,6 @@ class DatabaseService:
 
         try:
             conn = pyodbc.connect(connection_string)
-            print("✅ Database connection successful.")
             return conn
         except Exception as e:
             print("❌ Connection failed:", e)
@@ -179,7 +178,6 @@ class DatabaseService:
                 date_time = date_time.strftime("%Y-%m-%d %H:%M:%S")
 
             query = "INSERT INTO Holdings (portfolio_id, ticker, buy_price, quantity, date_added) VALUES (?, ?, ?, ?, ?)"
-            print("📦 Executing SQL with:", portfolio_id, ticker, purchase_price, quantity, date_time)
 
             cursor.execute(query, (portfolio_id, ticker, purchase_price, quantity, date_time))
             conn.commit()
