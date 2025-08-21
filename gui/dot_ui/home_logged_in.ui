@@ -85,7 +85,7 @@ border:none
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="cursor">
@@ -96,7 +96,7 @@ border:none
     color: black;
     background-color: #BCBCBC;
     font-family: 'Futura';
-    font-size: 12px;
+    font-size: 12pt;
     border: none;
 }
 QPushButton:hover {
@@ -120,7 +120,7 @@ QPushButton:hover {
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="cursor">
@@ -131,7 +131,7 @@ QPushButton:hover {
     color: black;
     background-color: #BCBCBC;
     font-family: 'Futura';
-    font-size: 12px;
+    font-size: 12pt;
     border: none;
 }
 QPushButton:hover {
@@ -155,7 +155,7 @@ QPushButton:hover {
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="cursor">
@@ -166,7 +166,7 @@ QPushButton:hover {
     color: black;
     background-color: #BCBCBC;
     font-family: 'Futura';
-    font-size: 12px;
+    font-size: 12pt;
     border: none;
 }
 QPushButton:hover {
@@ -190,7 +190,7 @@ QPushButton:hover {
       <property name="styleSheet">
        <string notr="true">color: Black;
 font-family: 'Futura';
-font-size: 20px;
+font-size: 20pt;
    </string>
       </property>
       <property name="text">
@@ -303,7 +303,7 @@ border:none</string>
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="cursor">
@@ -314,7 +314,7 @@ border:none</string>
     color: black;
     background-color: #BCBCBC;
     font-family: 'Futura';
-    font-size: 12px;
+    font-size: 12pt;
     border: none;
 }
 QPushButton:hover {
@@ -338,7 +338,7 @@ QPushButton:hover {
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="cursor">
@@ -349,7 +349,7 @@ QPushButton:hover {
     color: black;
     background-color: #BCBCBC;
     font-family: 'Futura';
-    font-size: 12px;
+    font-size: 12pt;
     border: none;
 }
 QPushButton:hover {
@@ -441,7 +441,7 @@ max-width:1px;</string>
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="cursor">
@@ -452,7 +452,7 @@ max-width:1px;</string>
     color: black;
     background-color: #BCBCBC;
     font-family: 'Futura';
-    font-size: 12px;
+    font-size: 12pt;
     border: none;
 }
 QPushButton:hover {
@@ -538,6 +538,9 @@ border:2px solid #BCBCBC;
          <family>Futura</family>
          <pointsize>9</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: black;</string>
        </property>
        <property name="tabChangesFocus">
         <bool>false</bool>
@@ -769,7 +772,8 @@ border:none</string>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color:#BCBCBC;
-border: 2px solid #3E3C3C</string>
+border: 2px solid #3E3C3C;
+color: black;</string>
       </property>
       <property name="text">
        <string/>
@@ -791,7 +795,11 @@ border: 2px solid #3E3C3C</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:#BCBCB</string>
+       <string notr="true">QLabel {
+    color: black;
+	background-color:#CECECE;
+}
+</string>
       </property>
       <property name="text">
        <string>Stock Ticker:</string>
@@ -812,7 +820,8 @@ border: 2px solid #3E3C3C</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-bottom:2px solid #3E3C3C</string>
+       <string notr="true">border-bottom:2px solid #3E3C3C;
+color: black;</string>
       </property>
       <property name="text">
        <string>Enter a Stock Ticker to view Technical Data</string>
@@ -833,7 +842,7 @@ border: 2px solid #3E3C3C</string>
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="cursor">
@@ -844,7 +853,7 @@ border: 2px solid #3E3C3C</string>
     color: black;
     background-color: #BCBCBC;
     font-family: 'Futura';
-    font-size: 12px;
+    font-size: 12pt;
     border: 2px solid black;
     border-radius: 10px;
 }
@@ -918,7 +927,8 @@ border:none</string>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color:#BCBCBC;
-border: 2px solid black;</string>
+border: 2px solid black;
+color: black;</string>
       </property>
      </widget>
      <widget class="QLabel" name="lblTickers">
@@ -934,6 +944,9 @@ border: 2px solid black;</string>
        <font>
         <family>Futura</family>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;</string>
       </property>
       <property name="text">
        <string>Trending Today in the Market</string>
@@ -955,6 +968,12 @@ border: 2px solid black;</string>
        <font>
         <family>Futura</family>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    color: Black;
+}
+</string>
       </property>
       <property name="text">
        <string>Market Summary</string>
@@ -980,7 +999,8 @@ border: 2px solid black;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color:#BCBCBC;
-border:2px solid black;</string>
+border:2px solid black;
+color: black;</string>
       </property>
      </widget>
     </widget>
@@ -1017,98 +1037,14 @@ border:none</string>
         <family>Futura</family>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;</string>
+      </property>
       <property name="text">
-       <string>Market Movers</string>
+       <string>Quick Actions</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QTableWidget" name="tblMarketMovers">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>40</y>
-        <width>501</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Futura</family>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:#BCBCBC;
-border: 2px solid black;</string>
-      </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
-      </property>
-      <property name="horizontalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOn</enum>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="cmbIntervals">
-      <property name="geometry">
-       <rect>
-        <x>430</x>
-        <y>10</y>
-        <width>81</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Futura</family>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>CrossCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:#BCBCBC;
-border: 2px solid black;
-</string>
-      </property>
-      <item>
-       <property name="text">
-        <string>Day</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Week</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Month</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Year</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QLabel" name="lblInterval">
-      <property name="geometry">
-       <rect>
-        <x>370</x>
-        <y>10</y>
-        <width>53</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Futura</family>
-       </font>
-      </property>
-      <property name="text">
-       <string> Interval:</string>
       </property>
      </widget>
      <widget class="QFrame" name="marketMoversFrameFooter">
@@ -1128,6 +1064,126 @@ border: 2px solid black;
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnBuy">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>71</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    color: black;
+    background-color: #BCBCBC;
+    font-family: 'Futura';
+    font-size: 12pt;
+    border: none;
+}
+QPushButton:hover {
+    background-color: #A0A0A0;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Buy</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnSell">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>40</y>
+        <width>71</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    color: black;
+    background-color: #BCBCBC;
+    font-family: 'Futura';
+    font-size: 12pt;
+    border: none;
+}
+QPushButton:hover {
+    background-color: #A0A0A0;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Sell</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnDeposit">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>40</y>
+        <width>71</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    color: black;
+    background-color: #BCBCBC;
+    font-family: 'Futura';
+    font-size: 12pt;
+    border: none;
+}
+QPushButton:hover {
+    background-color: #A0A0A0;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Deposit</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnWithdrawl">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>40</y>
+        <width>71</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    color: black;
+    background-color: #BCBCBC;
+    font-family: 'Futura';
+    font-size: 12pt;
+    border: none;
+}
+QPushButton:hover {
+    background-color: #A0A0A0;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Withdrawl</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>43</y>
+        <width>113</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;</string>
       </property>
      </widget>
     </widget>

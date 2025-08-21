@@ -2,16 +2,15 @@
 # Author: Robert Patel
 # This class represents the controller for the dashboard GUI.
 #
-from PyQt6.QtWidgets import QMessageBox
+from PyQt6.QtWidgets import QMessageBox, QVBoxLayout, QToolTip, QMainWindow, QTableWidgetItem, QInputDialog
 from services.auth_service import AuthService
 from services.db_service import DatabaseService
 from services.app_state import AppState
-from PyQt6.QtWidgets import QMainWindow
-from PyQt6.QtWidgets import QTableWidgetItem
+from PyQt6 import QtGui, QtCore
 from controllers.portfolio_controller import PortfolioController
-from PyQt6.QtGui import QDesktopServices
+from PyQt6.QtGui import QDesktopServices, QCursor
 from PyQt6.QtCore import QUrl
-from PyQt6.QtWidgets import QInputDialog
+from PyQt6.QtCharts import QChart, QChartView, QPieSeries, QPieSlice
 from datetime import datetime
 import yfinance as yf
 
@@ -27,6 +26,15 @@ class DashboardController:
         self.screen_manager = screen_manager
         self.user_controller = user_controller
         self.portfolio_controller = portfolio_controller
+        self._pie_view = None
+        
+        # pie chart plumbing
+        self._pie_view = None
+        layout = self.ui.pieChartContainer.layout()
+        if layout is None:
+            layout = QVBoxLayout(self.ui.pieChartContainer)
+            layout.setContentsMargins(0, 0, 0, 0)
+        self._pie_layout = layout
 
         self.setup_connections()
 
@@ -40,7 +48,6 @@ class DashboardController:
         self.ui.btnGitHub.clicked.connect(self.handle_github)
         self.ui.btnLinkedIn.clicked.connect(self.handle_linkedin)
         self.ui.btnAddWatchlist.clicked.connect(self.handle_add_watchlist_ticker)
-
         self.ui.btnAnalyze.clicked.connect(
             lambda: self.load_recommendations(self.ui.txtTickerAnalyzer.text())
             )
@@ -50,91 +57,167 @@ class DashboardController:
         user = self.app_state.get_current_user()
         if not user:
             return
-        
-        user_email = user.get_email()
-        user_id = self.db_service.get_user_id(user_email)  # get user ID
-        portfolio_id = self.db_service.get_portfolio_id(user_id)
-        portfolio_data = self.db_service.get_user_portfolio(portfolio_id)
 
+        user_email = user.get_email()
+        user_id = self.db_service.get_user_id(user_email)
+        portfolio_id = self.db_service.get_portfolio_id(user_id)
+
+        # --- 1) get holdings: ticker -> quantity --------------------------------
+        holdings = self.db_service.get_tickers(portfolio_id) or []
+
+        # normalize into a list of (ticker, quantity)
+        if isinstance(holdings, dict):
+            items = [(str(t).upper(), float(q or 0)) for t, q in holdings.items()]
+        else:  # assume list of dicts [{'ticker':..., 'quantity':...}]
+            items = [(str(h.get("ticker","")).upper(), float(h.get("quantity") or 0)) for h in holdings]
+
+        # --- 2) fill the table ---------------------------------------------------
         table = self.ui.tblPortfolio
-        table.setRowCount(len(portfolio_data))
-        for row_index, row in enumerate(portfolio_data):
-            gain_or_loss = 0
-            values = list(row.values())  # Retrieves the data for each row of data; The purchase information per stock.
-            ticker = values[0]
-            current_price = self.portfolio_controller.get_current_price(ticker)
-            values.append(current_price)
-            shares = int(values[2])
-            buy_price = float(values[1])
-            gain_or_loss = (shares * (current_price - buy_price))
-            gain_or_loss_formatted = f"${float(gain_or_loss):.2f}"
-            current_price_formatted = f"${float(current_price):.2f}"
-            buy_price_formatted = f"${float(buy_price):.2f}"
-            values.append(gain_or_loss_formatted)
-            values_formatted = [values[0], buy_price_formatted, values[2], current_price_formatted, values[5], values[3]]
-            #golden_cross = self.portfolio_controller.get_golden_cross(ticker)
-            #values.append(golden_cross)
-            for col_index, value in enumerate(values_formatted):
-                table.setItem(row_index, col_index, self.make_table_item(str(value)))
+        table.setRowCount(len(items))
+
+        value_by_ticker = {}
+
+        for row_index, (ticker, shares) in enumerate(items):
+            if not ticker or shares <= 0:
+                # fill row with N/A and continue
+                for col_index, v in enumerate([ticker or "N/A", "N/A", "0", "N/A", "N/A", ""]):
+                    table.setItem(row_index, col_index, self.make_table_item(str(v)))
+                continue
+
+            current_price = float(self.portfolio_controller.get_current_price(ticker) or 0.0)
+
+            # If you still want Gain/Loss, you need a buy price.
+            # Option A: have get_tickers() also return buy_price
+            # Option B: fetch per-ticker avg buy price from DB:
+            buy_price = self.db_service.get_avg_buy_price(portfolio_id, ticker)  # implement this; see SQL below
+
+            # Format cells
+            entry_str   = "N/A" if buy_price is None else f"${float(buy_price):.2f}"
+            curr_str    = f"${current_price:,.2f}"
+            shares_str  = f"{int(shares):d}"
+
+            if buy_price is None:
+                gl_str = "N/A"
+            else:
+                gl = shares * (current_price - float(buy_price))
+                gl_str = f"${gl:,.2f}"
+
+            # Ticker | Entry Price | Shares | Current Price | Gain/Loss | Recommendation
+            row_values = [ticker, entry_str, shares_str, curr_str, gl_str, ""]
+            for col_index, v in enumerate(row_values):
+                table.setItem(row_index, col_index, self.make_table_item(str(v)))
+
+            # accumulate for pie/total
+            value_by_ticker[ticker] = value_by_ticker.get(ticker, 0.0) + shares * current_price
+
+        # Displays the totals value of the portfolio.
+        total = sum(value_by_ticker.values())
+        self.ui.txtPortfolioTotal.setText(f"${total:,.2f}")
+
+        # Displays the total profit for the portfolio.
+        profit = self.db_service.get_portfolio_profit(portfolio_id) or 0.0
+        self.ui.txtTotalProfit.setText(f"${profit:,.2f}")
+
+        # --- 4) (optional) draw/update pie if you added the helper earlier -------
+        if hasattr(self, "_render_pie"):
+            slices = [(t, v) for t, v in value_by_ticker.items() if v > 0]
+            self._render_pie(slices or [("No Data", 1.0)])
+
+            # Loads the portfolio value into the designated textbox.
+            total = self.db_service.get_portfolio_value(portfolio_id) or 0.0
+            self.ui.txtPortfolioTotal.setText(f"${total:,.2f}")
+
+            # Loads the portfolios current total profit.
+            current_total = self.db_service.get_portfolio_profit(portfolio_id) or 0.0
+            self.ui.txtTotalProfit.setText(f"${current_total:,.2f}")
 
     # Loads the recommendations into the corresponding table.
-    def load_recommendations(self, ticker: str):
-        
-        try:
-            # Retrieves the price data.
-            price_data = self.portfolio_controller.get_price_data(ticker)
-            
-            # Assigns the values for the indicators table and places into a list.
-            ema_10 = self.portfolio_controller.get_ema(price_data, 10)
-            ema_34 = self.portfolio_controller.get_ema(price_data, 34)
-            ema_50 = self.portfolio_controller.get_ema(price_data, 50)
-            sma_20 = self.portfolio_controller.get_sma(price_data, 20)
-            sma_50 = self.portfolio_controller.get_sma(price_data, 50)
-            sma_100 = self.portfolio_controller.get_sma(price_data, 100)
-            sma_200 = self.portfolio_controller.get_sma(price_data, 200)
-            adx = self.portfolio_controller.get_adx(price_data)
-            rsi = self.portfolio_controller.get_rsi(price_data)
-            rsi_volume = self.portfolio_controller.get_rsi_volume(price_data)
-            values = [ema_10, ema_34, ema_50, sma_20, sma_50, sma_100, sma_200, adx, rsi, rsi_volume]
+    def load_recommendations(self, ticker: str | None = None):
+        # Prefer the passed-in ticker; otherwise read from the analyzer field.
+        if ticker is None:
+            if hasattr(self.ui, "txtTickerAnalyzer"):
+                ticker = self.ui.txtTickerAnalyzer.text().strip()
+            else:
+                self.show_error("Invalid Input", "Ticker field not found in the UI.")
+                return
+        else:
+            ticker = str(ticker).strip()
 
-            # Loads values into indicators table.
-            for row, value in enumerate(values):
+        if not ticker:
+            self.show_error("Invalid Input", "Please enter a ticker symbol.")
+            return
+
+        # If an analysis controller exists, try to open the analysis page
+        try:
+            if hasattr(self, "analysis_controller") and self.analysis_controller is not None:
+                self.analysis_controller.load_analysis(ticker)
+                self.screen_manager.show_analysis()
+        except ValueError as e:
+            self.show_error("Invalid Ticker", str(e))
+            return
+        except Exception as e:
+            self.show_error("Error", f"An unexpected error occurred: {str(e)}")
+            return
+
+        # Pull indicators and recommendations
+        try:
+            price_data = self.portfolio_controller.get_price_data(ticker)
+
+            # Indicators -> tblIndicators
+            indicators = [
+                self.portfolio_controller.get_ema(price_data, 10),
+                self.portfolio_controller.get_ema(price_data, 34),
+                self.portfolio_controller.get_ema(price_data, 50),
+                self.portfolio_controller.get_sma(price_data, 20),
+                self.portfolio_controller.get_sma(price_data, 50),
+                self.portfolio_controller.get_sma(price_data, 100),
+                self.portfolio_controller.get_sma(price_data, 200),
+                self.portfolio_controller.get_adx(price_data),
+                self.portfolio_controller.get_rsi(price_data),
+                self.portfolio_controller.get_rsi_volume(price_data),
+            ]
+
+            for row, value in enumerate(indicators):
                 try:
                     display_value = f"{float(value):.2f}"
                 except (ValueError, TypeError):
-                    display_value = str(value)  # fallback if value is not a number
+                    display_value = str(value)
                 self.ui.tblIndicators.setItem(row, 0, QTableWidgetItem(display_value))
 
-            # Assigns values for the recommendations table and places into a list.
-            time = self.portfolio_controller.get_datetime()
-            golden_cross = self.portfolio_controller.is_golden_cross(ticker, price_data)
-            short_momentum = self.portfolio_controller.get_short_momentum(price_data)
-            price_over_200_ema = self.portfolio_controller.is_price_over_200_ema(price_data)
-            is_rsi_overbought = self.portfolio_controller.get_rsi_strength(price_data)
-            is_rsi_oversold = self.portfolio_controller.is_rsi_oversold(price_data)
-            is_adx_strong = self.portfolio_controller.is_adx_strong(price_data)
-            pullback_opportunity = self.portfolio_controller.pullback_opportunity(ticker, price_data)
-            volume_spike = self.portfolio_controller.volume_spike(price_data)
-            high_volume = self.portfolio_controller.high_volume(price_data)
-            recommendations = [time, golden_cross, short_momentum, price_over_200_ema, is_rsi_overbought, is_rsi_oversold, is_adx_strong,
-                            pullback_opportunity, volume_spike, high_volume]
-            
-            # Loads recommendations into recommendations table.
+            # Recommendations -> tblTechnicalAnalysis
+            recommendations = [
+                self.portfolio_controller.get_datetime(),
+                self.portfolio_controller.is_golden_cross(ticker, price_data),
+                self.portfolio_controller.get_short_momentum(price_data),
+                self.portfolio_controller.is_price_over_200_ema(price_data),
+                self.portfolio_controller.get_rsi_strength(price_data),
+                self.portfolio_controller.is_rsi_oversold(price_data),
+                self.portfolio_controller.is_adx_strong(price_data),
+                self.portfolio_controller.pullback_opportunity(ticker, price_data),
+                self.portfolio_controller.volume_spike(price_data),
+                self.portfolio_controller.high_volume(price_data),
+            ]
+
             table = self.ui.tblTechnicalAnalysis
             row_idx = table.rowCount()
             table.insertRow(row_idx)
-            # Fill columns
-            for col_idx, value in enumerate(recommendations):
-                table.setItem(row_idx, col_idx, QTableWidgetItem(str(value)))
-        except ValueError as e:
-            # handled gracefully by your error helper
-            raise ValueError("Ticker not valid.")
-        except Exception as e:
-            raise RuntimeError(f"Unexpected error while analyzing '{ticker}': {str(e)}")
 
-    # Opens the analysis window.
-    def analyze_ticker(self):
-        self.screen_manager.show_analysis()
+            for col_idx, value in enumerate(recommendations):
+                item = QTableWidgetItem(str(value))
+
+                # Conditional coloring
+                val_str = str(value).lower()
+                if val_str in ["true", "bullish", "yes"]:
+                    item.setBackground(QtGui.QColor("lightgreen"))
+                elif val_str in ["false", "bearish", "no"]:
+                    item.setBackground(QtGui.QColor("lightcoral"))
+
+                table.setItem(row_idx, col_idx, item)
+
+        except ValueError as e:
+            self.show_error("Invalid Ticker", f"Ticker '{ticker}' is not valid. {str(e)}")
+        except Exception as e:
+            self.show_error("Error", f"Unexpected error while analyzing '{ticker}': {str(e)}")
 
     # Opens the home window for a logged-in user.
     def handle_home(self):
@@ -209,6 +292,89 @@ class DashboardController:
         except Exception:
             QMessageBox.critical(self.main_window, "Invalid Ticker", f"'{ticker}' is not a valid stock ticker.")
 
-    
+    # Adds value to a table.
     def make_table_item(self, value: str) -> QTableWidgetItem:
         return QTableWidgetItem(value)
+    
+    # Helper method that shows error box with given title and message.
+    def show_error(self, title, message):
+        QMessageBox.warning(self.main_window, title, message)
+
+    # Helper method that shows information box with given title and message.
+    def show_info(self, title, message):
+        QMessageBox.information(self.main_window, title, message)
+
+    # Renders the pie chart.
+    def _render_pie(self, slices: list[tuple[str, float]]):
+        """
+        slices: [('AAPL', 1356.06), ('SPY', 1276.22), ...]
+        Renders into self.ui.pieChartContainer with hover tooltips only (no labels/leader lines).
+        """
+        # Ensure the container has a layout
+        layout = self.ui.pieChartContainer.layout()
+        if layout is None:
+            layout = QVBoxLayout(self.ui.pieChartContainer)
+            layout.setContentsMargins(0, 0, 0, 0)
+
+        # Remove previous chart view
+        if getattr(self, "_pie_view", None):
+            layout.removeWidget(self._pie_view)
+            self._pie_view.deleteLater()
+            self._pie_view = None
+
+        # Clean data
+        data = [(str(name).strip() or "Unknown", max(0.0, float(val or 0)))
+                for name, val in (slices or [])]
+        if not data:
+            data = [("No Data", 1.0)]
+        total = sum(v for _, v in data) or 1.0
+
+        # Build series (no labels -> no leader lines)
+        series = QPieSeries()
+        for name, value in data:
+            series.append("", value)  # empty label text
+
+        # Hide labels completely
+        series.setLabelsVisible(False)
+        for s in series.slices():
+            s.setLabelVisible(False)
+            s.setLabel("")  # ensure blank
+
+        # Remove slice borders
+        no_pen = QtGui.QPen()
+        no_pen.setStyle(QtCore.Qt.PenStyle.NoPen)
+        for s in series.slices():
+            s.setPen(no_pen)
+
+        # Chart
+        chart = QChart()
+        chart.addSeries(series)
+        chart.setBackgroundVisible(False)
+        series.setPieSize(0.92)                      # big pie (no labels to make room for)
+        chart.setMargins(QtCore.QMargins(2, 2, 2, 2))
+        chart.legend().setVisible(False)
+
+        # Hover tooltip (full text on hover)
+        def on_hover(slice_obj, state: bool):
+            if not state:
+                QToolTip.hideText()
+                return
+            try:
+                idx = series.slices().index(slice_obj)
+            except ValueError:
+                return
+            name, value = data[idx]
+            pct = value / total
+            QToolTip.showText(
+                QtGui.QCursor.pos(),
+                f"{name}: ${value:,.2f} ({pct:.1%})",
+                self.ui.pieChartContainer
+            )
+
+        series.hovered.connect(on_hover)
+
+        # Mount view
+        view = QChartView(chart)
+        view.setRenderHint(QtGui.QPainter.RenderHint.Antialiasing)
+        layout.addWidget(view)
+        self._pie_view = view

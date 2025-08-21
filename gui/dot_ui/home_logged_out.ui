@@ -85,14 +85,14 @@ border:none
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: black;
 background-color: #BCBCBC;
 font-family: 'Futura';
-font-size: 12px;
+font-size: 12pt;
 border:none
 </string>
       </property>
@@ -112,14 +112,14 @@ border:none
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: black;
 background-color: #BCBCBC;
 font-family: 'Futura';
-font-size: 12px;
+font-size: 12pt;
 border:none
 
    </string>
@@ -140,14 +140,14 @@ border:none
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: black;
 background-color: #BCBCBC;
 font-family: 'Futura';
-font-size: 12px;
+font-size: 12pt;
 border:none
    </string>
       </property>
@@ -280,14 +280,14 @@ border:none</string>
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: black;
 background-color: #BCBCBC;
 font-family: 'Futura';
-font-size: 12px;
+font-size: 12pt;
 border:none;
    </string>
       </property>
@@ -307,14 +307,14 @@ border:none;
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: black;
 background-color: #BCBCBC;
 font-family: 'Futura';
-font-size: 12px;
+font-size: 12pt;
    </string>
       </property>
       <property name="text">
@@ -395,14 +395,14 @@ max-width:1px;</string>
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: black;
 background-color: #BCBCBC;
 font-family: 'Futura';
-font-size: 12px;
+font-size: 12pt;
    </string>
       </property>
       <property name="text">
@@ -421,14 +421,14 @@ font-size: 12px;
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: black;
 background-color: #BCBCBC;
 font-family: 'Futura';
-font-size: 12px;
+font-size: 12pt;
    </string>
       </property>
       <property name="text">
@@ -755,7 +755,8 @@ border:none</string>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color:#BCBCBC;
-border: 2px solid #3E3C3C</string>
+border: 2px solid #3E3C3C;
+color: black;</string>
       </property>
       <property name="text">
        <string/>
@@ -777,7 +778,8 @@ border: 2px solid #3E3C3C</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:#BCBCB</string>
+       <string notr="true">background-color:#BCBCBC; 
+color: black;</string>
       </property>
       <property name="text">
        <string>Stock Ticker:</string>
@@ -891,7 +893,8 @@ border:none</string>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color:#BCBCBC;
-border: 2px solid black;</string>
+border: 2px solid black;
+color: black;</string>
       </property>
      </widget>
      <widget class="QLabel" name="lblTickers">
@@ -953,7 +956,8 @@ border: 2px solid black;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color:#BCBCBC;
-border:2px solid black;</string>
+border:2px solid black;
+color: black;</string>
       </property>
      </widget>
     </widget>
@@ -989,6 +993,9 @@ border:none</string>
        <font>
         <family>Futura</family>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;</string>
       </property>
       <property name="text">
        <string>Market Movers</string>
@@ -1034,6 +1041,7 @@ border: 2px solid black;</string>
       <property name="styleSheet">
        <string notr="true">background-color:#BCBCBC;
 border: 2px solid black;
+color: black;
 </string>
       </property>
       <item>
@@ -1070,6 +1078,9 @@ border: 2px solid black;
        <font>
         <family>Futura</family>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;</string>
       </property>
       <property name="text">
        <string> Interval:</string>

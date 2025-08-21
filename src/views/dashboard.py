@@ -7,7 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtGui import QPixmap
+
 
 class Ui_dashboard(object):
     def setupUi(self, dashboard):
@@ -112,11 +112,8 @@ class Ui_dashboard(object):
         self.lblTitle.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lblTitle.setObjectName("lblTitle")
         self.lblLogo = QtWidgets.QLabel(parent=self.headerFrame)
-        self.lblLogo.setGeometry(QtCore.QRect(24, 11, 32, 32))
+        self.lblLogo.setGeometry(QtCore.QRect(30, 20, 16, 16))
         self.lblLogo.setObjectName("lblLogo")
-        pixmap = QPixmap("../resources/logo-removebg-preview.png")
-        self.lblLogo.setPixmap(pixmap.scaled(32, 32, QtCore.Qt.AspectRatioMode.KeepAspectRatio, QtCore.Qt.TransformationMode.SmoothTransformation))
-        self.lblLogo.setGeometry(QtCore.QRect(24, 11, 32, 32))
         self.lineBetweenHomeAndDashboard = QtWidgets.QFrame(parent=self.headerFrame)
         self.lineBetweenHomeAndDashboard.setGeometry(QtCore.QRect(746, 13, 1, 45))
         self.lineBetweenHomeAndDashboard.setStyleSheet("background-color: Black;\n"
@@ -179,39 +176,13 @@ class Ui_dashboard(object):
 "")
         self.btnAbout.setObjectName("btnAbout")
         self.btnLinkedIn = QtWidgets.QPushButton(parent=self.footerFrame)
-        self.btnLinkedIn.setGeometry(QtCore.QRect(10, 30, 32, 32))  # Adjust size as needed
-        self.btnLinkedIn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.btnLinkedIn.setStyleSheet("""
-        QPushButton {
-                background-color: transparent;
-                border: none;
-        }
-        QPushButton:hover {
-                background-color: #B0B0B0;
-                border-radius: 4px;
-        }
-        """)
-        linkedin_icon = QtGui.QIcon("../resources/linkedin-logo-removebg-preview.png")  # Adjust if filename differs
-        self.btnLinkedIn.setIcon(linkedin_icon)
-        self.btnLinkedIn.setIconSize(QtCore.QSize(28, 28))
-        self.btnLinkedIn.setToolTip("View LinkedIn")
+        self.btnLinkedIn.setGeometry(QtCore.QRect(0, 30, 41, 21))
+        self.btnLinkedIn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.CrossCursor))
+        self.btnLinkedIn.setObjectName("btnLinkedIn")
         self.btnGitHub = QtWidgets.QPushButton(parent=self.footerFrame)
-        self.btnGitHub.setGeometry(QtCore.QRect(44, 30, 32, 32))  # Adjust as needed
-        self.btnGitHub.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.btnGitHub.setStyleSheet("""
-        QPushButton {
-                background-color: transparent;
-                border: none;
-        }
-        QPushButton:hover {
-                background-color: #B0B0B0;
-                border-radius: 4px;
-        }
-        """)
-        github_icon = QtGui.QIcon("../resources/github-logo-removebg-preview.png")  # Correct path from src/
-        self.btnGitHub.setIcon(github_icon)
-        self.btnGitHub.setIconSize(QtCore.QSize(36, 36))  # Slightly smaller than geometry
-        self.btnGitHub.setToolTip("View GitHub")
+        self.btnGitHub.setGeometry(QtCore.QRect(40, 30, 41, 21))
+        self.btnGitHub.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.CrossCursor))
+        self.btnGitHub.setObjectName("btnGitHub")
         self.lineBetweenAboutAndSupport = QtWidgets.QFrame(parent=self.footerFrame)
         self.lineBetweenAboutAndSupport.setGeometry(QtCore.QRect(885, 5, 1, 45))
         self.lineBetweenAboutAndSupport.setStyleSheet("background-color: Black;\n"
@@ -295,7 +266,7 @@ class Ui_dashboard(object):
 "}")
         self.btnSellHolding.setObjectName("btnSellHolding")
         self.txtDaysChange = QtWidgets.QLineEdit(parent=self.portfolioFrameFooter)
-        self.txtDaysChange.setGeometry(QtCore.QRect(392, 2, 91, 16))
+        self.txtDaysChange.setGeometry(QtCore.QRect(266, 3, 71, 15))
         font = QtGui.QFont()
         font.setFamily("Futura")
         font.setPointSize(9)
@@ -306,14 +277,34 @@ class Ui_dashboard(object):
         self.txtDaysChange.setText("")
         self.txtDaysChange.setReadOnly(True)
         self.txtDaysChange.setObjectName("txtDaysChange")
-        self.lblTotalGain = QtWidgets.QLabel(parent=self.portfolioFrameFooter)
-        self.lblTotalGain.setGeometry(QtCore.QRect(329, 0, 61, 20))
+        self.lblDaysGain = QtWidgets.QLabel(parent=self.portfolioFrameFooter)
+        self.lblDaysGain.setGeometry(QtCore.QRect(200, 0, 61, 20))
         font = QtGui.QFont()
         font.setFamily("Futura")
         font.setPointSize(9)
-        self.lblTotalGain.setFont(font)
-        self.lblTotalGain.setStyleSheet("color: black;")
-        self.lblTotalGain.setObjectName("lblTotalGain")
+        self.lblDaysGain.setFont(font)
+        self.lblDaysGain.setStyleSheet("color: black;")
+        self.lblDaysGain.setObjectName("lblDaysGain")
+        self.lblCurrentProfit = QtWidgets.QLabel(parent=self.portfolioFrameFooter)
+        self.lblCurrentProfit.setGeometry(QtCore.QRect(340, 0, 51, 20))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        font.setPointSize(9)
+        self.lblCurrentProfit.setFont(font)
+        self.lblCurrentProfit.setStyleSheet("color: black;")
+        self.lblCurrentProfit.setObjectName("lblCurrentProfit")
+        self.txtTotalProfit = QtWidgets.QLineEdit(parent=self.portfolioFrameFooter)
+        self.txtTotalProfit.setGeometry(QtCore.QRect(390, 3, 71, 15))
+        font = QtGui.QFont()
+        font.setFamily("Futura")
+        font.setPointSize(9)
+        self.txtTotalProfit.setFont(font)
+        self.txtTotalProfit.setStyleSheet("background-color: #A9A9A9;\n"
+"color: black;\n"
+"")
+        self.txtTotalProfit.setText("")
+        self.txtTotalProfit.setReadOnly(True)
+        self.txtTotalProfit.setObjectName("txtTotalProfit")
         self.tblPortfolio = QtWidgets.QTableWidget(parent=self.portfolioFrame)
         self.tblPortfolio.setEnabled(False)
         self.tblPortfolio.setGeometry(QtCore.QRect(5, 11, 481, 231))
@@ -487,8 +478,7 @@ class Ui_dashboard(object):
         font.setFamily("Futura")
         font.setPointSize(9)
         self.txtMarketSummary.setFont(font)
-        self.txtMarketSummary.setStyleSheet("background-color:#BCBCBC; \n"
-"border: 2px solid black;\n"
+        self.txtMarketSummary.setStyleSheet("background-color:#A9A9A9; \n"
 "color: Black;")
         self.txtMarketSummary.setObjectName("txtMarketSummary")
         self.watchlistFrame = QtWidgets.QFrame(parent=self.backgroundFrame)
@@ -579,20 +569,20 @@ class Ui_dashboard(object):
         self.pieChartFrameFooter.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.pieChartFrameFooter.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.pieChartFrameFooter.setObjectName("pieChartFrameFooter")
-        self.t = QtWidgets.QLineEdit(parent=self.pieChartFrameFooter)
-        self.t.setGeometry(QtCore.QRect(110, 2, 91, 16))
+        self.txtPortfolioTotal = QtWidgets.QLineEdit(parent=self.pieChartFrameFooter)
+        self.txtPortfolioTotal.setGeometry(QtCore.QRect(90, 3, 91, 15))
         font = QtGui.QFont()
         font.setFamily("Futura")
         font.setPointSize(9)
-        self.t.setFont(font)
-        self.t.setStyleSheet("background-color: #A9A9A9;\n"
+        self.txtPortfolioTotal.setFont(font)
+        self.txtPortfolioTotal.setStyleSheet("background-color: #A9A9A9;\n"
 "color: black;\n"
 "")
-        self.t.setText("")
-        self.t.setReadOnly(True)
-        self.t.setObjectName("t")
+        self.txtPortfolioTotal.setText("")
+        self.txtPortfolioTotal.setReadOnly(True)
+        self.txtPortfolioTotal.setObjectName("txtPortfolioTotal")
         self.lblTotalGain_2 = QtWidgets.QLabel(parent=self.pieChartFrameFooter)
-        self.lblTotalGain_2.setGeometry(QtCore.QRect(20, 0, 91, 20))
+        self.lblTotalGain_2.setGeometry(QtCore.QRect(0, 0, 91, 20))
         font = QtGui.QFont()
         font.setFamily("Futura")
         font.setPointSize(9)
@@ -623,8 +613,7 @@ class Ui_dashboard(object):
         font.setFamily("Futura")
         font.setPointSize(10)
         self.txtTickerAnalyzer.setFont(font)
-        self.txtTickerAnalyzer.setStyleSheet("background-color:#BCBCBC; \n"
-"border: 2px solid black;\n"
+        self.txtTickerAnalyzer.setStyleSheet("background-color:#A9A9A9; \n"
 "color: black;\n"
 "")
         self.txtTickerAnalyzer.setText("")
@@ -1017,12 +1006,16 @@ class Ui_dashboard(object):
         self.btnHome.setText(_translate("dashboard", "Home"))
         self.lblDashboardHeader.setText(_translate("dashboard", "  Dashboard"))
         self.lblTitle.setText(_translate("dashboard", "BuddyTrade"))
+        self.lblLogo.setText(_translate("dashboard", "logo"))
         self.btnSupport.setText(_translate("dashboard", "Support"))
         self.btnAbout.setText(_translate("dashboard", "About"))
+        self.btnLinkedIn.setText(_translate("dashboard", "lkin"))
+        self.btnGitHub.setText(_translate("dashboard", "git"))
         self.btnFAQs.setText(_translate("dashboard", "FAQs"))
         self.btnAddHolding.setText(_translate("dashboard", "Buy"))
         self.btnSellHolding.setText(_translate("dashboard", "Sell"))
-        self.lblTotalGain.setText(_translate("dashboard", "Day\'s Change:"))
+        self.lblDaysGain.setText(_translate("dashboard", "Day\'s Change:"))
+        self.lblCurrentProfit.setText(_translate("dashboard", "Total Profit:"))
         self.tblPortfolio.setSortingEnabled(False)
         item = self.tblPortfolio.horizontalHeaderItem(0)
         item.setText(_translate("dashboard", "Ticker"))
@@ -1043,7 +1036,7 @@ class Ui_dashboard(object):
         item.setText(_translate("dashboard", "Ticker"))
         item = self.tblWatchlist.horizontalHeaderItem(1)
         item.setText(_translate("dashboard", "Current Price"))
-        self.lblTotalGain_2.setText(_translate("dashboard", "Total Portfolio Value:"))
+        self.lblTotalGain_2.setText(_translate("dashboard", " Total Portfolio Value:"))
         self.lblEnterTicker.setText(_translate("dashboard", "Enter Ticker for Technical Analysis:"))
         item = self.tblIndicators.verticalHeaderItem(0)
         item.setText(_translate("dashboard", "EMA 10"))

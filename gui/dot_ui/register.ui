@@ -85,14 +85,14 @@ border:none
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: black;
 background-color: #BCBCBC;
 font-family: 'Futura';
-font-size: 12px;
+font-size: 12pt;
 border:none
 </string>
       </property>
@@ -112,14 +112,14 @@ border:none
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: black;
 background-color: #BCBCBC;
 font-family: 'Futura';
-font-size: 12px;
+font-size: 12pt;
 border:none
 
    </string>
@@ -140,14 +140,14 @@ border:none
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: black;
 background-color: #BCBCBC;
 font-family: 'Futura';
-font-size: 12px;
+font-size: 12pt;
 border:none
    </string>
       </property>
@@ -280,14 +280,14 @@ border:none</string>
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: black;
 background-color: #BCBCBC;
 font-family: 'Futura';
-font-size: 12px;
+font-size: 12pt;
 border:none;
    </string>
       </property>
@@ -307,14 +307,14 @@ border:none;
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: black;
 background-color: #BCBCBC;
 font-family: 'Futura';
-font-size: 12px;
+font-size: 12pt;
    </string>
       </property>
       <property name="text">
@@ -395,14 +395,14 @@ max-width:1px;</string>
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: black;
 background-color: #BCBCBC;
 font-family: 'Futura';
-font-size: 12px;
+font-size: 12pt;
    </string>
       </property>
       <property name="text">
@@ -438,11 +438,17 @@ font-size: 12px;
         <height>21</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+       </font>
+      </property>
       <property name="toolTipDuration">
        <number>0</number>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:#F4F3F3</string>
+       <string notr="true">background-color:#F4F3F3;
+color: black;</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="txtPassword">
@@ -454,11 +460,17 @@ font-size: 12px;
         <height>21</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+       </font>
+      </property>
       <property name="toolTipDuration">
        <number>0</number>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:#F4F3F3</string>
+       <string notr="true">background-color:#F4F3F3;
+color: black;</string>
       </property>
      </widget>
      <widget class="QLabel" name="lblEmail">
@@ -477,6 +489,9 @@ font-size: 12px;
       </property>
       <property name="toolTipDuration">
        <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;</string>
       </property>
       <property name="text">
        <string> Email:</string>
@@ -499,6 +514,9 @@ font-size: 12px;
       <property name="toolTipDuration">
        <number>0</number>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;</string>
+      </property>
       <property name="text">
        <string>  Password:</string>
       </property>
@@ -518,14 +536,14 @@ font-size: 12px;
       <property name="font">
        <font>
         <family>Futura</family>
-        <pointsize>-1</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: black;
 background-color: #BCBCBC;
 font-family: 'Futura';
-font-size: 12px;
+font-size: 12pt;
    </string>
       </property>
       <property name="text">
@@ -541,11 +559,17 @@ font-size: 12px;
         <height>21</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+       </font>
+      </property>
       <property name="toolTipDuration">
        <number>0</number>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:#F4F3F3</string>
+       <string notr="true">background-color:#F4F3F3;
+color: black;</string>
       </property>
      </widget>
      <widget class="QLabel" name="lblEmail_2">
@@ -564,6 +588,9 @@ font-size: 12px;
       </property>
       <property name="toolTipDuration">
        <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;</string>
       </property>
       <property name="text">
        <string> Verify Email:</string>
@@ -602,11 +629,17 @@ border:none
         <height>21</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+       </font>
+      </property>
       <property name="toolTipDuration">
        <number>0</number>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:#F4F3F3</string>
+       <string notr="true">background-color:#F4F3F3;
+color: black;</string>
       </property>
      </widget>
      <widget class="QLabel" name="lblVerifyPassword">
@@ -626,6 +659,9 @@ border:none
       <property name="toolTipDuration">
        <number>0</number>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;</string>
+      </property>
       <property name="text">
        <string>Verify Password:</string>
       </property>
@@ -642,11 +678,17 @@ border:none
         <height>21</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+       </font>
+      </property>
       <property name="toolTipDuration">
        <number>0</number>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:#F4F3F3</string>
+       <string notr="true">background-color:#F4F3F3;
+color: black;</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="txtLastName">
@@ -658,11 +700,17 @@ border:none
         <height>21</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+       </font>
+      </property>
       <property name="toolTipDuration">
        <number>0</number>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:#F4F3F3</string>
+       <string notr="true">background-color:#F4F3F3;
+color: black;</string>
       </property>
       <property name="readOnly">
        <bool>false</bool>
@@ -684,6 +732,9 @@ border:none
       </property>
       <property name="toolTipDuration">
        <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;</string>
       </property>
       <property name="text">
        <string>        First Name:</string>
@@ -708,6 +759,9 @@ border:none
       </property>
       <property name="toolTipDuration">
        <number>0</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;</string>
       </property>
       <property name="text">
        <string>        Last Name:</string>
